@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O'Leary Labs — Crypto &amp; Web3 Studio</title>
+  <meta name="description" content="O'Leary Labs builds protocol infrastructure for the decentralized web. Home of Signet, the threshold signing network." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    /* ─── Design Tokens ─── */
+    :root {
+      /* Primary — Slate Blue */
+      --p50: #f0f4f8; --p100: #d9e2ec; --p200: #bcccdc; --p300: #9fb3c8;
+      --p400: #829ab1; --p500: #627d98; --p600: #486581; --p700: #334e68;
+      --p800: #243b53; --p900: #102a43; --p950: #0a1929;
+
+      /* Accent — Sunset Orange */
+      --a50: #fff8f1; --a100: #feecdc; --a200: #fcd9bd; --a300: #fdba8c;
+      --a400: #f6a354; --a500: #e8873c; --a600: #cb6d2a; --a700: #a65521;
+      --a800: #8a4520; --a900: #6f3720; --a950: #3d1c0e;
+
+      /* Neutral — Warm Stone */
+      --n50: #faf9f7; --n100: #f0eeeb; --n200: #e2dfd9; --n300: #ccc8c0;
+      --n400: #aca69c; --n500: #918a7e; --n600: #756e63; --n700: #5e5850;
+
+      /* Semantic */
+      --success: #3d9f6f;
+      --error: #c4523b;
+
+      /* Layout */
+      --max-w: 1120px;
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--p900);
+      background: var(--n50);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── Utility ─── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .mono { font-family: var(--font-mono); }
+    .accent { color: var(--a500); }
+    .muted { color: var(--n500); }
+
+    /* ─── Nav ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250, 249, 247, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--n200);
+    }
+    nav .container {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-size: 18px; font-weight: 700; color: var(--p900);
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--a500); }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500; color: var(--n500);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--p900); }
+
+    /* ─── Hero ─── */
+    .hero {
+      padding: 160px 0 120px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; right: -300px;
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(232, 135, 60, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content { max-width: 720px; position: relative; }
+    .hero-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; color: var(--a600);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero-label::before {
+      content: ''; display: block;
+      width: 24px; height: 2px; background: var(--a500);
+    }
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 700; line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--p900);
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--a500), var(--a700));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      margin-top: 24px; font-size: 18px; line-height: 1.7;
+      color: var(--n500); max-width: 560px;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; margin-top: 40px; flex-wrap: wrap;
+    }
+
+    /* ─── Buttons ─── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: 10px;
+      font-size: 14px; font-weight: 600;
+      transition: all 0.2s; cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: var(--p800); color: #fff;
+    }
+    .btn-primary:hover { background: var(--p700); }
+    .btn-accent {
+      background: var(--a500); color: #fff;
+    }
+    .btn-accent:hover { background: var(--a600); }
+    .btn-outline {
+      background: transparent; color: var(--p700);
+      border: 1.5px solid var(--n300);
+    }
+    .btn-outline:hover { border-color: var(--a400); color: var(--a600); }
+    .btn-ghost {
+      background: transparent; color: var(--n500);
+      padding: 12px 0;
+    }
+    .btn-ghost:hover { color: var(--p900); }
+    .btn-ghost .arrow { transition: transform 0.2s; }
+    .btn-ghost:hover .arrow { transform: translateX(4px); }
+
+    /* ─── Section ─── */
+    section { padding: 100px 0; }
+    .section-label {
+      font-size: 13px; font-weight: 600; color: var(--a600);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700; letter-spacing: -0.02em;
+      color: var(--p900); line-height: 1.15;
+    }
+    .section-desc {
+      margin-top: 16px; font-size: 17px; color: var(--n500);
+      max-width: 540px; line-height: 1.7;
+    }
+
+    /* ─── About ─── */
+    .about { border-top: 1px solid var(--n200); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; margin-top: 60px; align-items: start;
+    }
+    .about-text p {
+      font-size: 16px; color: var(--p700); line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .values {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    }
+    .value-card {
+      padding: 24px; border-radius: 12px;
+      background: #fff; border: 1px solid var(--n200);
+      transition: border-color 0.2s;
+    }
+    .value-card:hover { border-color: var(--a200); }
+    .value-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; margin-bottom: 12px;
+      background: var(--p50); color: var(--p700);
+    }
+    .value-card h4 {
+      font-size: 14px; font-weight: 600; color: var(--p900);
+      margin-bottom: 6px;
+    }
+    .value-card p {
+      font-size: 13px; color: var(--n500); line-height: 1.55;
+    }
+
+    /* ─── Projects ─── */
+    .projects { background: var(--p950); color: var(--p50); }
+    .projects .section-label { color: var(--a400); }
+    .projects .section-title { color: var(--p50); }
+    .projects .section-desc { color: var(--p300); }
+
+    .project-cards { margin-top: 60px; display: grid; gap: 24px; }
+
+    .project-card {
+      display: grid; grid-template-columns: 1fr 1fr;
+      background: var(--p900); border: 1px solid var(--p700);
+      border-radius: 16px; overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .project-card:hover { border-color: var(--a500); }
+    .project-card.featured {
+      grid-template-columns: 1fr;
+    }
+
+    .project-info { padding: 40px; display: flex; flex-direction: column; }
+    .project-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .project-badge.live {
+      color: var(--success);
+    }
+    .project-badge.live::before {
+      content: ''; display: block;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--success);
+    }
+    .project-badge.coming { color: var(--a400); }
+    .project-info h3 {
+      font-size: 24px; font-weight: 700; color: #fff;
+      letter-spacing: -0.02em;
+    }
+    .project-info .tagline {
+      font-size: 15px; color: var(--p300); margin-top: 8px;
+      line-height: 1.6;
+    }
+    .project-info .desc {
+      font-size: 14px; color: var(--p400); margin-top: 16px;
+      line-height: 1.65; flex: 1;
+    }
+    .project-links {
+      display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap;
+    }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: 8px;
+      font-size: 13px; font-weight: 600;
+      transition: all 0.15s;
+    }
+    .project-link.primary {
+      background: var(--a500); color: #fff;
+    }
+    .project-link.primary:hover { background: var(--a600); }
+    .project-link.secondary {
+      border: 1px solid var(--p600); color: var(--p200);
+    }
+    .project-link.secondary:hover { border-color: var(--p400); color: #fff; }
+
+    .project-visual {
+      background: linear-gradient(135deg, var(--p800), var(--p950));
+      display: flex; align-items: center; justify-content: center;
+      padding: 40px; min-height: 240px;
+      position: relative; overflow: hidden;
+    }
+    .project-visual::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 70% 50%, rgba(232, 135, 60, 0.08) 0%, transparent 60%);
+    }
+    .signet-graphic {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+    }
+    .signet-nodes {
+      display: flex; gap: 12px;
+    }
+    .signet-node {
+      width: 48px; height: 48px; border-radius: 12px;
+      border: 2px solid var(--p600);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+      color: var(--p300);
+      transition: all 0.3s;
+    }
+    .signet-node.active {
+      border-color: var(--a500); color: var(--a400);
+      box-shadow: 0 0 20px rgba(232, 135, 60, 0.15);
+    }
+    .signet-threshold {
+      font-family: var(--font-mono); font-size: 13px;
+      color: var(--p400); letter-spacing: 0.05em;
+    }
+    .signet-threshold span { color: var(--a400); font-weight: 600; }
+
+    /* Small project card */
+    .project-card.small {
+      grid-template-columns: 1fr;
+    }
+    .project-card.small .project-info { padding: 32px; }
+
+    .projects-grid-small {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      margin-top: 24px;
+    }
+
+    /* ─── Contact / Footer ─── */
+    .contact {
+      border-top: 1px solid var(--n200);
+      padding: 80px 0;
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; margin-top: 48px;
+    }
+    .contact-text p {
+      font-size: 16px; color: var(--n500); line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .contact-email {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 18px; font-weight: 600; color: var(--p800);
+      transition: color 0.15s;
+    }
+    .contact-email:hover { color: var(--a500); }
+    .contact-links { display: flex; flex-direction: column; gap: 16px; }
+    .contact-link-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 16px 20px; border-radius: 12px;
+      border: 1px solid var(--n200); background: #fff;
+      transition: all 0.15s;
+    }
+    .contact-link-item:hover {
+      border-color: var(--a300); background: var(--a50);
+    }
+    .contact-link-item .icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--p50); color: var(--p700);
+      font-size: 18px; flex-shrink: 0;
+    }
+    .contact-link-item h4 {
+      font-size: 14px; font-weight: 600; color: var(--p900);
+    }
+    .contact-link-item p {
+      font-size: 13px; color: var(--n500); margin-top: 2px;
+    }
+
+    footer {
+      border-top: 1px solid var(--n200);
+      padding: 32px 0;
+    }
+    footer .container {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    footer p {
+      font-size: 13px; color: var(--n400);
+    }
+    footer .footer-links { display: flex; gap: 24px; }
+    footer .footer-links a {
+      font-size: 13px; color: var(--n400);
+      transition: color 0.15s;
+    }
+    footer .footer-links a:hover { color: var(--p700); }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      .hero { padding: 120px 0 80px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .values { grid-template-columns: 1fr; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-visual { min-height: 200px; }
+      .projects-grid-small { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .nav-links { gap: 20px; }
+      .nav-links a:first-child { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Nav ─── -->
+  <nav>
+    <div class="container">
+      <a href="#" class="nav-logo">O'Leary<span>Labs</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="https://testnet.signet.sh" class="btn btn-accent" style="padding: 8px 18px; font-size: 13px;">Signet Testnet</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── Hero ─── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-label">Crypto &amp; Web3 Studio</div>
+        <h1>Building the <em>trust layer</em> for the decentralized web.</h1>
+        <p>
+          We design and ship protocol infrastructure that makes decentralized
+          systems practical — starting with threshold cryptography and smart
+          account tooling.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">See Our Work</a>
+          <a href="#contact" class="btn btn-ghost">
+            Get in touch <span class="arrow">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── About ─── -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-label">About</div>
+      <h2 class="section-title">Infrastructure that earns trust by design.</h2>
+      <p class="section-desc">
+        O'Leary Labs is a small, focused team building protocol-level tools
+        for the crypto ecosystem.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            We believe the next wave of crypto adoption depends on better
+            primitives — not more platforms. Our work sits at the intersection
+            of applied cryptography, smart contract systems, and developer
+            experience.
+          </p>
+          <p>
+            Every project we ship is designed to be composable, auditable,
+            and useful from day one. We don't build for whitepapers — we build
+            for production.
+          </p>
+        </div>
+        <div class="values">
+          <div class="value-card">
+            <div class="value-icon">&#x1f512;</div>
+            <h4>Security First</h4>
+            <p>Threshold cryptography and formally verified contracts. No single points of failure.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">&#x2692;&#xfe0f;</div>
+            <h4>Ship to Mainnet</h4>
+            <p>Production-grade code from day one. We dogfood everything we build.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">&#x1f310;</div>
+            <h4>Open Protocols</h4>
+            <p>Standards-based, composable, and permissionless. Built on open specs like FROST and ERC-4337.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">&#x1f4e6;</div>
+            <h4>Developer-Centric</h4>
+            <p>Clean APIs, clear docs, and tools that respect your time. Complexity belongs in the protocol, not the SDK.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Projects ─── -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="section-label">Projects</div>
+      <h2 class="section-title">What we're building.</h2>
+      <p class="section-desc">
+        Protocol infrastructure for key management, threshold signing,
+        and smart accounts.
+      </p>
+
+      <div class="project-cards">
+        <!-- Signet — Featured -->
+        <div class="project-card featured">
+          <div style="display: grid; grid-template-columns: 1fr 1fr;">
+            <div class="project-info">
+              <div class="project-badge live">Testnet Live</div>
+              <h3>Signet</h3>
+              <p class="tagline">
+                The threshold signing network for social login key management.
+              </p>
+              <p class="desc">
+                Signet is a decentralized marketplace of signing providers that
+                uses FROST threshold cryptography (RFC 9591) to split private keys
+                across independent nodes. Developers get social login auth for
+                their users with no single custodian — and a smart account (ERC-4337)
+                that's ready from the first sign-in.
+              </p>
+              <div class="project-links">
+                <a href="https://testnet.signet.sh" class="project-link primary">
+                  Launch Testnet &rarr;
+                </a>
+                <a href="https://github.com/olearylabs/signet-protocol" class="project-link secondary">
+                  GitHub
+                </a>
+                <a href="#" class="project-link secondary">
+                  Docs
+                </a>
+              </div>
+            </div>
+            <div class="project-visual">
+              <div class="signet-graphic">
+                <div class="signet-nodes">
+                  <div class="signet-node active">N1</div>
+                  <div class="signet-node active">N2</div>
+                  <div class="signet-node">N3</div>
+                  <div class="signet-node active">N4</div>
+                  <div class="signet-node">N5</div>
+                </div>
+                <div class="signet-threshold">
+                  threshold: <span>3</span> of 5
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Smaller projects -->
+        <div class="projects-grid-small">
+          <div class="project-card small">
+            <div class="project-info">
+              <div class="project-badge coming">In Development</div>
+              <h3>Signet Wallet</h3>
+              <p class="tagline">ERC-4337 smart account with modular plugins.</p>
+              <p class="desc">
+                Kernel v3 based smart account with ERC-7579 module support.
+                Session keys, gas sponsorship, and batch operations — all
+                backed by Signet's threshold signing.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/olearylabs/signet-wallet" class="project-link secondary">GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card small">
+            <div class="project-info">
+              <div class="project-badge coming">In Development</div>
+              <h3>FROST-Go</h3>
+              <p class="tagline">Production Go implementation of RFC 9591.</p>
+              <p class="desc">
+                A clean, tested implementation of the FROST threshold signature
+                scheme for Go. Powers Signet's signing nodes and available as a
+                standalone library.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/olearylabs/frost" class="project-link secondary">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Contact ─── -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Let's talk.</h2>
+      <p class="section-desc">
+        Interested in running a Signet node, integrating threshold signing,
+        or collaborating on protocol research? Reach out.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-text">
+          <p>
+            We're always open to conversations about cryptography, protocol
+            design, and the future of key management. Whether you're a
+            developer, a potential node operator, or just curious — we'd
+            love to hear from you.
+          </p>
+          <a href="mailto:paul@oleary.com" class="contact-email">
+            paul@oleary.com <span class="arrow">&rarr;</span>
+          </a>
+        </div>
+        <div class="contact-links">
+          <a href="https://github.com/olearylabs" class="contact-link-item">
+            <div class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </div>
+            <div>
+              <h4>GitHub</h4>
+              <p>Open source repos and protocol code</p>
+            </div>
+          </a>
+          <a href="https://x.com/olearylabs" class="contact-link-item">
+            <div class="icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <div>
+              <h4>X (Twitter)</h4>
+              <p>Updates and protocol musings</p>
+            </div>
+          </a>
+          <a href="https://testnet.signet.sh" class="contact-link-item">
+            <div class="icon" style="background: var(--a50); color: var(--a600);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <h4>Signet Testnet</h4>
+              <p>Try threshold signing today</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 O'Leary Labs. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://github.com/olearylabs">GitHub</a>
+        <a href="https://x.com/olearylabs">X</a>
+        <a href="mailto:paul@oleary.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
