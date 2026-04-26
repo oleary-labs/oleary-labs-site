@@ -1,0 +1,15 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="0" fill="#2d3a4a"/>
+  <line x1="256" y1="128" x2="160" y2="368" stroke="#c4653a" stroke-width="16" stroke-linecap="round"/>
+  <line x1="256" y1="128" x2="352" y2="368" stroke="#c4653a" stroke-width="16" stroke-linecap="round"/>
+  <line x1="160" y1="368" x2="352" y2="368" stroke="#c4653a" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="256" cy="128" r="36" fill="#c4653a"/>
+  <circle cx="160" cy="368" r="36" fill="#c4653a"/>
+  <circle cx="352" cy="368" r="36" fill="#c4653a"/>
+  <circle cx="128" cy="220" r="26" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="10"/>
+  <circle cx="384" cy="220" r="26" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="10"/>
+  <line x1="128" y1="220" x2="256" y2="128" stroke="rgba(255,255,255,0.15)" stroke-width="8"/>
+  <line x1="128" y1="220" x2="160" y2="368" stroke="rgba(255,255,255,0.15)" stroke-width="8"/>
+  <line x1="384" y1="220" x2="256" y2="128" stroke="rgba(255,255,255,0.15)" stroke-width="8"/>
+  <line x1="384" y1="220" x2="352" y2="368" stroke="rgba(255,255,255,0.15)" stroke-width="8"/>
+</svg>

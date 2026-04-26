@@ -70,8 +70,10 @@
     .nav-logo {
       font-size: 18px; font-weight: 700; color: var(--p900);
       letter-spacing: -0.02em;
+      display: flex; align-items: center; gap: 10px;
     }
     .nav-logo span { color: var(--a500); }
+    .nav-logo svg { width: 32px; height: 32px; flex-shrink: 0; }
     .nav-links { display: flex; gap: 32px; align-items: center; }
     .nav-links a {
       font-size: 14px; font-weight: 500; color: var(--n500);
@@ -393,7 +395,23 @@
   <!-- ─── Nav ─── -->
   <nav>
     <div class="container">
-      <a href="#" class="nav-logo">O'Leary<span>Labs</span></a>
+      <a href="#" class="nav-logo">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <line x1="50" y1="10" x2="22" y2="70" stroke="#c4653a" stroke-width="4" stroke-linecap="round"/>
+          <line x1="50" y1="10" x2="78" y2="70" stroke="#c4653a" stroke-width="4" stroke-linecap="round"/>
+          <line x1="22" y1="70" x2="78" y2="70" stroke="#c4653a" stroke-width="4" stroke-linecap="round"/>
+          <line x1="12" y1="38" x2="50" y2="10" stroke="#2d3a4a" stroke-width="2" opacity="0.35"/>
+          <line x1="12" y1="38" x2="22" y2="70" stroke="#2d3a4a" stroke-width="2" opacity="0.35"/>
+          <line x1="88" y1="38" x2="50" y2="10" stroke="#2d3a4a" stroke-width="2" opacity="0.35"/>
+          <line x1="88" y1="38" x2="78" y2="70" stroke="#2d3a4a" stroke-width="2" opacity="0.35"/>
+          <circle cx="50" cy="10" r="9" fill="#c4653a"/>
+          <circle cx="22" cy="70" r="9" fill="#c4653a"/>
+          <circle cx="78" cy="70" r="9" fill="#c4653a"/>
+          <circle cx="12" cy="38" r="7" fill="#2d3a4a"/>
+          <circle cx="88" cy="38" r="7" fill="#2d3a4a"/>
+        </svg>
+        O'Leary<span>Labs</span>
+      </a>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
