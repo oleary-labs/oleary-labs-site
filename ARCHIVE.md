@@ -179,3 +179,47 @@ _None._
   - 2026-06-09T03:05:43Z: Implemented logo-aware luxury-tech homepage, design tokens, UI styling, and style-guide route; starting verification (`app/layout.tsx, app/page.tsx, app/globals.css, app/style-guide/page.tsx, components/brand-logo.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/site.ts, data/style-guide.ts, types/site.ts, types/style-guide.ts, README.md`)
   - 2026-06-09T03:07:13Z: released completed files: app/layout.tsx, app/page.tsx, app/globals.css, app/style-guide/page.tsx, components/brand-logo.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/site.ts, data/style-guide.ts, types/site.ts, types/style-guide.ts, public/oleary_labs_logo_kit/app_icon.png, public/oleary_labs_logo_kit/wordmark_transparent.png, public/oleary_labs_logo_kit/full_logo.png, public/oleary_labs_logo_kit/logomark_transparent.png, public/oleary_labs_logo_kit/full_logo_transparent.png, README.md (`app/layout.tsx, app/page.tsx, app/globals.css, app/style-guide/page.tsx, components/brand-logo.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/site.ts, data/style-guide.ts, types/site.ts, types/style-guide.ts, public/oleary_labs_logo_kit/app_icon.png, public/oleary_labs_logo_kit/wordmark_transparent.png, public/oleary_labs_logo_kit/full_logo.png, public/oleary_labs_logo_kit/logomark_transparent.png, public/oleary_labs_logo_kit/full_logo_transparent.png, README.md`)
   - 2026-06-09T03:07:48Z: finished implementation (`app/layout.tsx, app/page.tsx, app/globals.css, app/style-guide/page.tsx, components/brand-logo.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/site.ts, data/style-guide.ts, types/site.ts, types/style-guide.ts, public/oleary_labs_logo_kit/app_icon.png, public/oleary_labs_logo_kit/wordmark_transparent.png, public/oleary_labs_logo_kit/full_logo.png, public/oleary_labs_logo_kit/logomark_transparent.png, public/oleary_labs_logo_kit/full_logo_transparent.png, README.md`)
+
+## Completed 2026-06-09T03:15:53Z - `add-bracket-project`
+
+- Agent: Codex [61b763a1-0ca8-4743-8c71-ceff63befa49]
+- Started: 2026-06-09T03:10:55Z
+- Last check-in: 2026-06-09T03:15:53Z
+- Completed: 2026-06-09T03:15:53Z
+- Goal: Add Bracket as an O'Leary Labs project with Bracket branding
+- Final progress: finished implementation
+- Planned paths:
+  - `app/page.tsx`
+  - `data/site.ts`
+  - `types/site.ts`
+  - `app/style-guide/page.tsx`
+  - `README.md`
+  - `public/bracket/bracket-logo-transparent.svg`
+  - `public/bracket/bracket-logomark-transparent.svg`
+  - `public/bracket/bracket-logomark-with-background.svg`
+  - `public/bracket/bracket-logomark-with-background.png`
+  - `public/bracket/bracket-wordmark-transparent.svg`
+  - `public/bracket/social-card.png`
+- Completed paths:
+  - `app/page.tsx`
+  - `data/site.ts`
+  - `types/site.ts`
+  - `app/style-guide/page.tsx`
+  - `README.md`
+  - `public/bracket/bracket-logo-transparent.svg`
+  - `public/bracket/bracket-logomark-transparent.svg`
+  - `public/bracket/bracket-logomark-with-background.svg`
+  - `public/bracket/bracket-logomark-with-background.png`
+  - `public/bracket/bracket-wordmark-transparent.svg`
+  - `public/bracket/social-card.png`
+- Checked-out paths at completion:
+_None._
+- Queued paths at completion:
+_None._
+- Bumped paths at completion:
+_None._
+- Recent check-ins:
+  - 2026-06-09T03:10:55Z: checkout requested (`app/page.tsx, data/site.ts, types/site.ts, app/style-guide/page.tsx, README.md, public/bracket/bracket-logo-transparent.svg, public/bracket/bracket-logomark-transparent.svg, public/bracket/bracket-logomark-with-background.svg, public/bracket/bracket-logomark-with-background.png, public/bracket/bracket-wordmark-transparent.svg, public/bracket/social-card.png`)
+  - 2026-06-09T03:13:37Z: Added Bracket project data, assets, homepage panel, and style-guide product guidance; starting verification (`app/page.tsx, data/site.ts, types/site.ts, app/style-guide/page.tsx, README.md, public/bracket/bracket-logo-transparent.svg, public/bracket/bracket-logomark-transparent.svg, public/bracket/bracket-logomark-with-background.svg, public/bracket/bracket-logomark-with-background.png, public/bracket/bracket-wordmark-transparent.svg, public/bracket/social-card.png`)
+  - 2026-06-09T03:15:06Z: released completed files: app/page.tsx, data/site.ts, types/site.ts, app/style-guide/page.tsx, README.md, public/bracket/bracket-logo-transparent.svg, public/bracket/bracket-logomark-transparent.svg, public/bracket/bracket-logomark-with-background.svg, public/bracket/bracket-logomark-with-background.png, public/bracket/bracket-wordmark-transparent.svg, public/bracket/social-card.png (`app/page.tsx, data/site.ts, types/site.ts, app/style-guide/page.tsx, README.md, public/bracket/bracket-logo-transparent.svg, public/bracket/bracket-logomark-transparent.svg, public/bracket/bracket-logomark-with-background.svg, public/bracket/bracket-logomark-with-background.png, public/bracket/bracket-wordmark-transparent.svg, public/bracket/social-card.png`)
+  - 2026-06-09T03:15:53Z: finished implementation (`app/page.tsx, data/site.ts, types/site.ts, app/style-guide/page.tsx, README.md, public/bracket/bracket-logo-transparent.svg, public/bracket/bracket-logomark-transparent.svg, public/bracket/bracket-logomark-with-background.svg, public/bracket/bracket-logomark-with-background.png, public/bracket/bracket-wordmark-transparent.svg, public/bracket/social-card.png`)
