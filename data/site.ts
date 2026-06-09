@@ -1,36 +1,47 @@
-import type { ContactLink, NavItem, Project, ValueItem } from "@/types/site"
+import type { ContactLink, Metric, NavItem, Project, ValueItem } from "@/types/site"
 
 export const navItems: NavItem[] = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/#about" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Style Guide", href: "/style-guide" },
+  { label: "Contact", href: "/#contact" },
 ]
 
 export const values: ValueItem[] = [
   {
     title: "Security First",
+    eyebrow: "Trust",
     description:
-      "Threshold cryptography and auditable contracts. No single points of failure.",
+      "Threshold cryptography and auditable contracts presented with boardroom clarity.",
     icon: "security",
   },
   {
     title: "Ship to Mainnet",
+    eyebrow: "Execution",
     description:
-      "Production-grade code from day one. We dogfood the infrastructure we build.",
+      "Production-grade code from day one, with the polish expected from a premium advisory team.",
     icon: "ship",
   },
   {
     title: "Open Protocols",
+    eyebrow: "Standards",
     description:
       "Standards-based, composable, and permissionless. Built on open specs like FROST and ERC-4337.",
     icon: "protocols",
   },
   {
     title: "Developer-Centric",
+    eyebrow: "Craft",
     description:
-      "Clean APIs, clear docs, and tools that keep protocol complexity out of the SDK.",
+      "Clean APIs, precise docs, and tools that keep protocol complexity out of the SDK.",
     icon: "developer",
   },
+]
+
+export const metrics: Metric[] = [
+  { label: "Signing threshold", value: "3 / 5" },
+  { label: "Core stack", value: "FROST" },
+  { label: "Account layer", value: "4337" },
 ]
 
 export const projects: Project[] = [
@@ -38,9 +49,9 @@ export const projects: Project[] = [
     title: "Signet",
     status: "Testnet Live",
     tagline:
-      "The threshold signing network for social login key management.",
+      "Threshold signing for social-login key management.",
     description:
-      "Signet is a decentralized marketplace of signing providers that uses FROST threshold cryptography (RFC 9591) to split private keys across independent nodes. Developers get social login auth for their users with no single custodian, plus a smart account that is ready from the first sign-in.",
+      "Signet is a decentralized marketplace of signing providers that uses FROST threshold cryptography to split private keys across independent nodes. Developers get social-login auth with no single custodian, plus a smart account ready from first sign-in.",
     featured: true,
     links: [
       {

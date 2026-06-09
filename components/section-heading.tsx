@@ -16,19 +16,20 @@ export function SectionHeading({
   className,
 }: SectionHeadingProps) {
   return (
-    <div className={cn("max-w-2xl", className)}>
+    <div className={cn("max-w-3xl", className)}>
       <p
         className={cn(
-          "text-sm font-semibold uppercase text-primary",
-          inverted && "text-amber-300",
+          "inline-flex items-center gap-3 text-sm font-semibold uppercase text-primary",
+          "before:h-px before:w-8 before:bg-current before:content-['']",
+          inverted && "text-[#d6aa52]",
         )}
       >
         {eyebrow}
       </p>
       <h2
         className={cn(
-          "mt-3 text-3xl font-bold leading-tight text-foreground sm:text-4xl",
-          inverted && "text-white",
+          "mt-4 text-3xl font-semibold leading-tight text-foreground sm:text-4xl",
+          inverted && "text-[#fff8ec]",
         )}
       >
         {title}
@@ -36,8 +37,8 @@ export function SectionHeading({
       {description ? (
         <p
           className={cn(
-            "mt-4 text-base leading-7 text-muted-foreground sm:text-lg",
-            inverted && "text-slate-300",
+            "mt-5 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg",
+            inverted && "text-[#d8c5a1]",
           )}
         >
           {description}

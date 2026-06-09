@@ -5,30 +5,55 @@ import { cn } from "@/lib/utils"
 
 type BrandLogoProps = {
   className?: string
-  markClassName?: string
+  imageClassName?: string
+  variant?: "full" | "mark" | "wordmark"
 }
 
-export function BrandLogo({ className, markClassName }: BrandLogoProps) {
+const logoAssets = {
+  full: {
+    src: "/oleary_labs_logo_kit/full_logo_transparent.png",
+    width: 2213,
+    height: 420,
+  },
+  mark: {
+    src: "/oleary_labs_logo_kit/logomark_transparent.png",
+    width: 641,
+    height: 659,
+  },
+  wordmark: {
+    src: "/oleary_labs_logo_kit/wordmark_transparent.png",
+    width: 868,
+    height: 235,
+  },
+}
+
+export function BrandLogo({
+  className,
+  imageClassName,
+  variant = "full",
+}: BrandLogoProps) {
+  const asset = logoAssets[variant]
+
   return (
     <Link
       href="/"
       className={cn(
-        "inline-flex min-h-10 items-center gap-3 text-base font-bold text-foreground",
+        "inline-flex min-h-10 items-center",
         className,
       )}
       aria-label="O'Leary Labs home"
     >
       <Image
-        src="/logo-mark.svg"
+        src={asset.src}
         alt=""
-        width={40}
-        height={40}
-        className={cn("h-10 w-10", markClassName)}
+        width={asset.width}
+        height={asset.height}
+        className={cn(
+          variant === "mark" ? "h-11 w-auto" : "h-10 w-auto",
+          imageClassName,
+        )}
         priority
       />
-      <span className="leading-none">
-        O&apos;Leary <span className="text-primary">Labs</span>
-      </span>
     </Link>
   )
 }

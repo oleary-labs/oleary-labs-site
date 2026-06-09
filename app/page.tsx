@@ -1,3 +1,4 @@
+import Image from "next/image"
 import {
   ArrowRight,
   Github,
@@ -10,6 +11,7 @@ import {
   ShieldCheck,
 } from "lucide-react"
 
+import { BrandLogo } from "@/components/brand-logo"
 import { SignetThreshold } from "@/components/signet-threshold"
 import { SectionHeading } from "@/components/section-heading"
 import { SiteFooter } from "@/components/site-footer"
@@ -24,7 +26,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { contactLinks, projects, values } from "@/data/site"
+import { contactLinks, metrics, projects, values } from "@/data/site"
 import type { ContactLink, ValueItem } from "@/types/site"
 
 const valueIcons: Record<ValueItem["icon"], typeof ShieldCheck> = {
@@ -45,61 +47,112 @@ export default function HomePage() {
   const supportingProjects = projects.filter((project) => !project.featured)
 
   return (
-    <>
+    <div className="luxury-page">
       <SiteHeader />
       <main>
-        <section className="hero-surface border-b border-border pt-32 sm:pt-36">
-          <div className="container pb-20 sm:pb-24">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase text-primary">
-                Blockchain &amp; Web3 Studio
-              </p>
-              <h1 className="mt-5 max-w-2xl text-5xl font-bold leading-none text-foreground sm:text-6xl">
-                O&apos;Leary Labs
-              </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
-                We design and ship the protocol infrastructure and bespoke
-                applications that make onchain systems practical, starting with
-                threshold cryptography, smart account tooling, and novel payment
-                systems.
-              </p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Button asChild size="lg">
-                  <a href="#projects">
-                    See our work
-                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                  </a>
-                </Button>
-                <Button asChild variant="ghost" size="lg">
-                  <a href="#contact">
-                    Get in touch
-                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                  </a>
-                </Button>
+        <section className="hero-surface luxury-grid pt-32 text-[#fff8ec] sm:pt-36">
+          <div className="container pb-16 sm:pb-20">
+            <div className="grid gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:items-end">
+              <div className="animate-in-up max-w-3xl">
+                <div className="mb-8 w-fit rounded-lg border border-[#d6aa52]/24 bg-[#fbf7ef]/96 px-4 py-3 shadow-[0_24px_80px_rgba(10,7,6,0.22)]">
+                  <BrandLogo imageClassName="h-12 w-auto" />
+                </div>
+                <p className="inline-flex items-center gap-3 text-sm font-semibold uppercase text-[#d6aa52] before:h-px before:w-9 before:bg-current before:content-['']">
+                  Luxury-tech protocol studio
+                </p>
+                <h1 className="mt-6 max-w-3xl text-5xl font-semibold leading-none sm:text-6xl">
+                  O&apos;Leary Labs
+                </h1>
+                <p className="mt-6 max-w-2xl text-lg leading-8 text-[#eadfc8] sm:text-xl">
+                  We build protocol infrastructure for clients who expect
+                  precision, discretion, and technical depth. The experience is
+                  refined; the underlying systems are unapologetically advanced.
+                </p>
+                <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                  <Button asChild size="lg">
+                    <a href="#projects">
+                      Explore the systems
+                      <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="border-[#d6aa52]/60 text-[#fff8ec] hover:bg-[#d6aa52]/12"
+                  >
+                    <a href="/style-guide">
+                      View style guide
+                      <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                    </a>
+                  </Button>
+                </div>
+              </div>
+
+              <div className="animate-in-up lg:pb-4">
+                <div className="relative overflow-hidden rounded-lg border border-[#d6aa52]/26 bg-black/44 p-5 shadow-[0_30px_90px_rgba(0,0,0,0.34)] backdrop-blur">
+                  <div className="metal-line mb-5" />
+                  <div className="grid gap-5 sm:grid-cols-[0.8fr_1.2fr] sm:items-center">
+                    <div className="rounded-lg border border-[#d6aa52]/20 bg-[#fbf7ef] p-4">
+                      <Image
+                        src="/oleary_labs_logo_kit/logomark_transparent.png"
+                        alt=""
+                        width={641}
+                        height={659}
+                        className="mx-auto h-auto w-full max-w-48"
+                        priority
+                      />
+                    </div>
+                    <div>
+                      <p className="mono text-sm text-[#d6aa52]">
+                        live network posture
+                      </p>
+                      <div className="mt-4 grid gap-3">
+                        {metrics.map((metric) => (
+                          <div
+                            key={metric.label}
+                            className="flex items-center justify-between border-b border-[#d6aa52]/18 pb-3"
+                          >
+                            <span className="text-sm text-[#d8c5a1]">
+                              {metric.label}
+                            </span>
+                            <span className="mono text-sm text-[#fff8ec]">
+                              {metric.value}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-5 flex items-center gap-2 text-sm text-[#d8c5a1]">
+                        <span className="pulse-data h-2 w-2 rounded-full bg-[#2d8a5d]" />
+                        threshold systems online
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="about" className="bg-background py-20 sm:py-24">
+        <section id="about" className="bg-[#fbf7ef] py-20 sm:py-24">
           <div className="container">
             <SectionHeading
               eyebrow="About"
-              title="Infrastructure that earns trust by design."
-              description="O'Leary Labs is a small, focused team building protocol-level tools for the crypto ecosystem."
+              title="Private-client polish, protocol-grade engineering."
+              description="O'Leary Labs is a focused team building infrastructure for teams that need security, taste, and deep technical fluency in the same room."
             />
-            <div className="mt-12 grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
-              <div className="space-y-5 text-base leading-8 text-muted-foreground">
+            <div className="mt-12 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+              <div className="space-y-6 text-base leading-8 text-muted-foreground">
                 <p>
-                  We believe the next wave of crypto adoption depends on better
-                  primitives, not more platforms. Our work sits at the
-                  intersection of applied cryptography, smart contract systems,
-                  and developer experience.
+                  The next wave of adoption will be won by infrastructure that
+                  feels understandable without becoming simplistic. We build for
+                  sophisticated buyers, careful operators, and technical teams
+                  that need primitives they can audit.
                 </p>
                 <p>
-                  Every project we ship is designed to be composable, auditable,
-                  and useful from day one. We build for production systems and
-                  the teams that need to operate them.
+                  The visual language follows that same principle: black-tie
+                  restraint, metallic confidence, and enough data-forward detail
+                  to signal that the elegance is backed by real systems.
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
@@ -107,11 +160,17 @@ export default function HomePage() {
                   const Icon = valueIcons[value.icon]
 
                   return (
-                    <Card key={value.title}>
+                    <Card
+                      key={value.title}
+                      className="group border-[#c79b45]/28 bg-[#fffbf3]/88 transition-transform duration-300 hover:-translate-y-1 hover:border-[#9b1219]/35"
+                    >
                       <CardHeader>
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-accent">
+                        <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-[#d6aa52]/28 bg-[#f4ead8] text-[#9b1219]">
                           <Icon className="h-5 w-5" aria-hidden="true" />
                         </div>
+                        <p className="mono text-xs uppercase text-[#8f151a]">
+                          {value.eyebrow}
+                        </p>
                         <CardTitle>{value.title}</CardTitle>
                       </CardHeader>
                       <CardContent>
@@ -125,27 +184,27 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="projects" className="bg-[#101b2a] py-20 text-white sm:py-24">
+        <section id="projects" className="luxury-grid bg-[#0a0706] py-20 text-[#fff8ec] sm:py-24">
           <div className="container">
             <SectionHeading
               eyebrow="Projects"
-              title="What we're building."
+              title="Systems with a ceremonial surface and a rigorous core."
               description="Protocol infrastructure for key management, threshold signing, and smart accounts."
               inverted
             />
             <div className="mt-12 grid gap-5">
               {featuredProject ? (
-                <Card className="overflow-hidden border-slate-700 bg-[#152437] text-white shadow-none">
+                <Card className="overflow-hidden border-[#d6aa52]/28 bg-[#120d0b]/94 text-[#fff8ec] shadow-[0_30px_90px_rgba(0,0,0,0.34)]">
                   <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
                     <div className="p-6 sm:p-8">
                       <Badge variant="success">{featuredProject.status}</Badge>
-                      <h3 className="mt-5 text-3xl font-bold">
+                      <h3 className="mt-5 text-3xl font-semibold text-[#fff8ec]">
                         {featuredProject.title}
                       </h3>
-                      <p className="mt-3 text-base leading-7 text-slate-300">
+                      <p className="mt-3 text-base leading-7 text-[#eadfc8]">
                         {featuredProject.tagline}
                       </p>
-                      <p className="mt-5 text-sm leading-7 text-slate-400 sm:text-base">
+                      <p className="mt-5 text-sm leading-7 text-[#d8c5a1] sm:text-base">
                         {featuredProject.description}
                       </p>
                       <div className="mt-7 flex flex-wrap gap-3">
@@ -159,7 +218,7 @@ export default function HomePage() {
                             className={
                               link.kind === "primary"
                                 ? ""
-                                : "border-slate-600 bg-transparent text-white hover:bg-white/10"
+                                : "border-[#d6aa52]/45 text-[#fff8ec] hover:bg-[#d6aa52]/12"
                             }
                           >
                             <a href={link.href}>
@@ -182,21 +241,21 @@ export default function HomePage() {
                 {supportingProjects.map((project) => (
                   <Card
                     key={project.title}
-                    className="border-slate-700 bg-[#152437] text-white shadow-none"
+                    className="border-[#d6aa52]/24 bg-[#120d0b]/88 text-[#fff8ec] shadow-none"
                   >
                     <CardHeader>
                       <Badge variant="warning" className="w-fit">
                         {project.status}
                       </Badge>
-                      <CardTitle className="text-2xl text-white">
+                      <CardTitle className="text-2xl text-[#fff8ec]">
                         {project.title}
                       </CardTitle>
-                      <CardDescription className="text-slate-300">
+                      <CardDescription className="text-[#eadfc8]">
                         {project.tagline}
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-sm leading-7 text-slate-400">
+                      <p className="text-sm leading-7 text-[#d8c5a1]">
                         {project.description}
                       </p>
                     </CardContent>
@@ -206,7 +265,7 @@ export default function HomePage() {
                           key={link.href}
                           asChild
                           variant="outline"
-                          className="border-slate-600 bg-transparent text-white hover:bg-white/10"
+                          className="border-[#d6aa52]/45 text-[#fff8ec] hover:bg-[#d6aa52]/12"
                         >
                           <a href={link.href}>
                             {link.label}
@@ -225,24 +284,18 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="contact" className="bg-background py-20 sm:py-24">
+        <section id="contact" className="bg-[#f4ead8] py-20 sm:py-24">
           <div className="container">
-            <SectionHeading
-              eyebrow="Contact"
-              title="Let's talk."
-              description="Interested in running a Signet node, integrating threshold signing, or collaborating on protocol research? Reach out."
-            />
-            <div className="mt-12 grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
-              <div className="space-y-6 text-base leading-8 text-muted-foreground">
-                <p>
-                  We&apos;re always open to conversations about cryptography,
-                  protocol design, and the future of key management. Whether
-                  you&apos;re a developer, a potential node operator, or just
-                  curious, we&apos;d love to hear from you.
-                </p>
+            <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
+              <div>
+                <SectionHeading
+                  eyebrow="Contact"
+                  title="Bring us the hard systems problem."
+                  description="Interested in running a Signet node, integrating threshold signing, or collaborating on protocol research? Reach out."
+                />
                 <a
                   href="mailto:hello@olearylabs.com"
-                  className="inline-flex items-center gap-2 text-lg font-semibold text-foreground transition-colors hover:text-primary"
+                  className="mt-8 inline-flex items-center gap-2 text-lg font-semibold text-[#0a0706] transition-colors hover:text-[#9b1219]"
                 >
                   <Mail className="h-5 w-5" aria-hidden="true" />
                   hello@olearylabs.com
@@ -254,9 +307,9 @@ export default function HomePage() {
 
                   return (
                     <a key={link.href} href={link.href} className="block">
-                      <Card className="transition-colors hover:border-primary/45 hover:bg-secondary/40">
+                      <Card className="border-[#c79b45]/32 bg-[#fffbf3]/90 transition-transform duration-300 hover:-translate-y-1 hover:border-[#9b1219]/40">
                         <CardHeader className="flex-row items-center gap-4">
-                          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-secondary text-accent">
+                          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[#d6aa52]/30 bg-[#f4ead8] text-[#9b1219]">
                             <Icon className="h-5 w-5" aria-hidden="true" />
                           </div>
                           <div>
@@ -278,6 +331,6 @@ export default function HomePage() {
         </section>
       </main>
       <SiteFooter />
-    </>
+    </div>
   )
 }

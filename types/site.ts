@@ -6,6 +6,7 @@ export type NavItem = {
 export type ValueItem = {
   title: string
   description: string
+  eyebrow: string
   icon: "security" | "ship" | "protocols" | "developer"
 }
 
@@ -29,4 +30,9 @@ export type ContactLink = {
   description: string
   href: string
   icon: "github" | "updates" | "signet"
+}
+
+export type Metric = {
+  label: string
+  value: string
 }

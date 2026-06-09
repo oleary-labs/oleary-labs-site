@@ -3,11 +3,16 @@ import { BrandLogo } from "@/components/brand-logo"
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-background">
-      <div className="container flex flex-col gap-6 py-8 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-col gap-3">
-          <BrandLogo markClassName="h-8 w-8" />
-          <p className="text-sm text-muted-foreground">
+    <footer className="border-t border-[#c79b45]/30 bg-[#0a0706] text-[#f8efe2]">
+      <div className="container flex flex-col gap-8 py-10 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4">
+          <div className="w-fit rounded-lg bg-[#fbf7ef] px-3 py-2">
+            <BrandLogo
+              variant="wordmark"
+              imageClassName="h-8 w-auto"
+            />
+          </div>
+          <p className="text-sm text-[#d8c5a1]">
             &copy; 2026 O&apos;Leary Labs. All rights reserved.
           </p>
         </div>
@@ -16,14 +21,14 @@ export function SiteFooter() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm font-semibold text-[#d8c5a1] transition-colors hover:text-[#d6aa52]"
             >
               {link.title}
             </a>
           ))}
           <a
             href="mailto:hello@olearylabs.com"
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-sm font-semibold text-[#d8c5a1] transition-colors hover:text-[#d6aa52]"
           >
             Contact
           </a>
