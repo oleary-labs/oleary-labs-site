@@ -6,7 +6,9 @@ import { cn } from "@/lib/utils"
 type BrandLogoProps = {
   className?: string
   imageClassName?: string
-  variant?: "full" | "mark" | "wordmark"
+  markClassName?: string
+  wordmarkClassName?: string
+  variant?: "full" | "mark" | "wordmark" | "split"
 }
 
 const logoAssets = {
@@ -30,8 +32,37 @@ const logoAssets = {
 export function BrandLogo({
   className,
   imageClassName,
+  markClassName,
+  wordmarkClassName,
   variant = "full",
 }: BrandLogoProps) {
+  if (variant === "split") {
+    return (
+      <Link
+        href="/"
+        className={cn("inline-flex min-h-10 items-center gap-3", className)}
+        aria-label="O'Leary Labs home"
+      >
+        <Image
+          src={logoAssets.mark.src}
+          alt=""
+          width={logoAssets.mark.width}
+          height={logoAssets.mark.height}
+          className={cn("h-14 w-auto shrink-0", markClassName)}
+          priority
+        />
+        <Image
+          src={logoAssets.wordmark.src}
+          alt="O'Leary Labs"
+          width={logoAssets.wordmark.width}
+          height={logoAssets.wordmark.height}
+          className={cn("h-8 w-auto", wordmarkClassName)}
+          priority
+        />
+      </Link>
+    )
+  }
+
   const asset = logoAssets[variant]
 
   return (

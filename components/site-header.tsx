@@ -8,7 +8,12 @@ export function SiteHeader() {
   return (
     <header className="topbar">
       <div className="container topbar-inner">
-        <BrandLogo className="brand-frame" imageClassName="h-10 w-auto" />
+        <BrandLogo
+          variant="split"
+          className="brand-frame"
+          markClassName="h-14"
+          wordmarkClassName="h-5 sm:h-6"
+        />
         <nav className="nav-links" aria-label="Primary">
           {navItems.map((item) => (
             <a key={item.href} href={item.href}>
