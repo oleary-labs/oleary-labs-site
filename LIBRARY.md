@@ -31,6 +31,7 @@ Use the agent-work-coordinator skill or `scripts/coordinator.py` to edit this fi
     "next-env.d.ts": "nextjs-rework",
     "next.config.mjs": "nextjs-rework",
     "package.json": "nextjs-rework",
+    "pnpm-lock.yaml": "nextjs-rework",
     "postcss.config.mjs": "nextjs-rework",
     "public/logo-mark-512.png": "nextjs-rework",
     "public/logo-mark.svg": "nextjs-rework",
@@ -74,7 +75,8 @@ Use the agent-work-coordinator skill or `scripts/coordinator.py` to edit this fi
         "data/site.ts",
         "public/logo-mark.svg",
         "public/logo-mark-512.png",
-        "README.md"
+        "README.md",
+        "pnpm-lock.yaml"
       ],
       "checkins": [
         {
@@ -207,16 +209,17 @@ Use the agent-work-coordinator skill or `scripts/coordinator.py` to edit this fi
         "data/site.ts",
         "public/logo-mark.svg",
         "public/logo-mark-512.png",
-        "README.md"
+        "README.md",
+        "pnpm-lock.yaml"
       ],
       "progress_note": "Scaffolded Next.js project config and base UI/provider files; converting page sections next",
       "queued": [],
       "started_at": "2026-06-09T02:39:35Z",
-      "updated_at": "2026-06-09T02:42:06Z"
+      "updated_at": "2026-06-09T02:44:29Z"
     }
   },
   "queues": {},
-  "updated_at": "2026-06-09T02:42:06Z",
+  "updated_at": "2026-06-09T02:44:29Z",
   "version": 1
 }
 agent-work-coordinator-state -->
@@ -262,6 +265,7 @@ agent-work-coordinator-state -->
   - `public/logo-mark.svg`
   - `public/logo-mark-512.png`
   - `README.md`
+  - `pnpm-lock.yaml`
 - Completed paths:
 _None._
 - Checked-out paths:
@@ -296,6 +300,7 @@ _None._
   - `public/logo-mark.svg`
   - `public/logo-mark-512.png`
   - `README.md`
+  - `pnpm-lock.yaml`
 - Queued paths:
 _None._
 - Bumped paths:
@@ -331,6 +336,7 @@ _None._
 - `next-env.d.ts` -> `nextjs-rework` by Codex [52aaa43c-e486-48a0-8d66-7e07258b99a9] (Convert static O'Leary Labs site into a Next.js project modeled after SFLuv/app frontend)
 - `next.config.mjs` -> `nextjs-rework` by Codex [52aaa43c-e486-48a0-8d66-7e07258b99a9] (Convert static O'Leary Labs site into a Next.js project modeled after SFLuv/app frontend)
 - `package.json` -> `nextjs-rework` by Codex [52aaa43c-e486-48a0-8d66-7e07258b99a9] (Convert static O'Leary Labs site into a Next.js project modeled after SFLuv/app frontend)
+- `pnpm-lock.yaml` -> `nextjs-rework` by Codex [52aaa43c-e486-48a0-8d66-7e07258b99a9] (Convert static O'Leary Labs site into a Next.js project modeled after SFLuv/app frontend)
 - `postcss.config.mjs` -> `nextjs-rework` by Codex [52aaa43c-e486-48a0-8d66-7e07258b99a9] (Convert static O'Leary Labs site into a Next.js project modeled after SFLuv/app frontend)
 - `public/logo-mark-512.png` -> `nextjs-rework` by Codex [52aaa43c-e486-48a0-8d66-7e07258b99a9] (Convert static O'Leary Labs site into a Next.js project modeled after SFLuv/app frontend)
 - `public/logo-mark.svg` -> `nextjs-rework` by Codex [52aaa43c-e486-48a0-8d66-7e07258b99a9] (Convert static O'Leary Labs site into a Next.js project modeled after SFLuv/app frontend)
