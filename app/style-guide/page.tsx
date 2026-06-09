@@ -16,8 +16,9 @@ export default function StyleGuidePage() {
             <h1 className="hero-title">Readable first. Stylized with intent.</h1>
             <p className="hero-copy">
               The visual system should make complex infrastructure feel easier
-              to approach. High contrast, strong typography, restrained brand
-              color, and fewer competing surfaces do the heavy lifting.
+              to approach. White space, sharp definition, editorial typography,
+              restrained brand color, and fewer competing surfaces do the heavy
+              lifting.
             </p>
           </div>
         </section>
@@ -43,7 +44,7 @@ export default function StyleGuidePage() {
               <div className="logo-board signet">
                 <img src="/logo-mark.svg" alt="Signet mark" />
               </div>
-              <div className="logo-board dark">
+              <div className="logo-board bracket">
                 <img
                   src="/bracket/bracket-logo-transparent.svg"
                   alt="Bracket"
@@ -59,7 +60,7 @@ export default function StyleGuidePage() {
             <SectionHeading
               eyebrow="Palette"
               title="A narrow palette with stronger hierarchy."
-              description="Paper and ink carry readability. Red, gold, and green are accents, not the page base. Bracket keeps its red and silver inside its own product area."
+              description="White carries the site architecture. Red, gold, graphite, and green create hierarchy, product context, and technical confidence without turning into heavy panels."
             />
             <div className="guide-grid five">
               {brandColors.map((color) => (
@@ -98,22 +99,21 @@ export default function StyleGuidePage() {
           </div>
         </section>
 
-        <section className="section dark">
+        <section className="section featured">
           <div className="container">
             <SectionHeading
               eyebrow="Product expression"
               title="Each product can have a voice without breaking the site."
-              description="Signet uses quiet gold and green technical signals. Bracket uses black, red, and silver for tournament operations. Both sit inside the same readable page system."
-              inverted
+              description="Signet uses quiet gold and green technical signals. Bracket uses red, graphite, and silver for tournament operations. Both sit inside the same white-led page system."
             />
             <div className="guide-grid">
               <article className="guide-card dark">
                 <h3>Signet</h3>
                 <p>
                   Use the geometric node mark from <span className="mono">/logo-mark.svg</span>,
-                  gold rules, green live-state indicators, and dark technical
-                  panels. Do not substitute the O&apos;Leary Labs lion/ship
-                  logo for Signet.
+                  gold rules, green live-state indicators, and light technical
+                  panels with graphite details. Do not substitute the
+                  O&apos;Leary Labs lion/ship logo for Signet.
                 </p>
               </article>
               <article className="guide-card dark">

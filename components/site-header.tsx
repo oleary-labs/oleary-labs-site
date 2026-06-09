@@ -11,8 +11,8 @@ export function SiteHeader() {
         <BrandLogo
           variant="split"
           className="brand-frame"
-          markClassName="h-12"
-          wordmarkClassName="h-6 sm:h-7"
+          markClassName="h-10"
+          wordmarkClassName="h-7 sm:h-8"
         />
         <nav className="nav-links" aria-label="Primary">
           {navItems.map((item) => (

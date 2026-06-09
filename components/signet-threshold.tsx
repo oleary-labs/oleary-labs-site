@@ -12,7 +12,7 @@ export function SignetThreshold({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "relative flex min-h-72 flex-col items-center justify-center overflow-hidden rounded-lg border border-[rgba(236,215,168,0.22)] bg-[rgba(8,7,6,0.68)] p-6 text-white",
+        "relative flex min-h-72 flex-col items-center justify-center overflow-hidden rounded-[2px] border border-[rgba(8,8,8,0.12)] bg-white p-6 text-[var(--ink)] shadow-[inset_0_3px_0_rgba(200,148,63,0.42),0_18px_44px_rgba(8,8,8,0.045)]",
         className,
       )}
       aria-label="Signet threshold signing visual, 3 of 5 nodes active"
@@ -23,18 +23,18 @@ export function SignetThreshold({ className }: { className?: string }) {
           <div
             key={node.label}
             className={cn(
-              "relative flex aspect-square items-center justify-center rounded-lg border font-mono text-xs font-bold",
+              "relative flex aspect-square items-center justify-center rounded-[2px] border font-mono text-xs font-bold shadow-[inset_0_-2px_0_rgba(8,8,8,0.04)]",
               node.active
-                ? "border-[var(--gold)] bg-[rgba(200,148,63,0.12)] text-[var(--gold-soft)]"
-                : "border-[rgba(236,215,168,0.16)] bg-black/30 text-[rgba(255,250,241,0.48)]",
+                ? "border-[var(--gold)] bg-[rgba(200,148,63,0.1)] text-[var(--gold-deep)]"
+                : "border-[rgba(8,8,8,0.12)] bg-[var(--white-mist)] text-[var(--ink-soft)]",
             )}
           >
             {node.label}
           </div>
         ))}
       </div>
-      <div className="mt-6 rounded-full border border-[rgba(236,215,168,0.22)] bg-black/30 px-4 py-2 font-mono text-sm text-[rgba(255,250,241,0.74)]">
-        threshold: <span className="text-[var(--gold-soft)]">3</span> of 5
+      <div className="mt-6 rounded-[2px] border border-[rgba(8,8,8,0.12)] bg-white px-4 py-2 font-mono text-sm text-[var(--ink-soft)] shadow-[inset_0_-2px_0_rgba(36,95,69,0.14)]">
+        threshold: <span className="text-[var(--green)]">3</span> of 5
       </div>
     </div>
   )

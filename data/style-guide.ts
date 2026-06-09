@@ -2,10 +2,16 @@ import type { BrandColor, MotionRule, TypeStyle } from "@/types/style-guide"
 
 export const brandColors: BrandColor[] = [
   {
-    name: "Obsidian",
-    token: "--carbon",
-    hex: "#080706",
-    usage: "Deep hero, footer, and primary technical surfaces.",
+    name: "White Lacquer",
+    token: "--white",
+    hex: "#ffffff",
+    usage: "Primary page architecture, cards, project surfaces, and logo-safe space.",
+  },
+  {
+    name: "Graphite Ink",
+    token: "--ink",
+    hex: "#161616",
+    usage: "Headlines, body hierarchy, small technical accents, and crisp borders.",
   },
   {
     name: "O'Leary Red",
@@ -25,25 +31,19 @@ export const brandColors: BrandColor[] = [
     hex: "#245f45",
     usage: "Live-state and technical confidence signals, used sparingly.",
   },
-  {
-    name: "Warm Paper",
-    token: "--paper",
-    hex: "#f7efe2",
-    usage: "Primary reading surface and long-form content background.",
-  },
 ]
 
 export const typeStyles: TypeStyle[] = [
   {
     name: "Display",
     sample: "Infrastructure with presence and clarity.",
-    guidance: "Use the serif display face for major ideas and section titles.",
+    guidance: "Use the editorial serif stack for major ideas and section titles.",
     className: "font-display text-3xl font-semibold leading-tight text-[var(--ink)]",
   },
   {
     name: "Interface",
     sample: "Mainnet-ready tooling for signing, accounts, events, and operations.",
-    guidance: "Use the system sans stack for body copy, navigation, and controls.",
+    guidance: "Use the clean sans stack for body copy, navigation, and controls.",
     className: "text-base leading-8 text-[var(--ink-soft)]",
   },
   {

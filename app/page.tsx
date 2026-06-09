@@ -153,13 +153,12 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="projects" className="section dark">
+        <section id="projects" className="section featured">
           <div className="container">
             <SectionHeading
               eyebrow="Projects"
               title="Two products, one standard for clarity."
               description="Signet remains the primary infrastructure project. Bracket sits beside it as a focused tournament operations product under the O'Leary Labs umbrella."
-              inverted
             />
 
             <div className="project-stack">
