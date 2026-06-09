@@ -298,3 +298,28 @@ _None._
   - 2026-06-09T03:39:31Z: checkout requested (`components/brand-logo.tsx, components/site-header.tsx`)
   - 2026-06-09T03:41:33Z: released completed files: components/brand-logo.tsx, components/site-header.tsx (`components/brand-logo.tsx, components/site-header.tsx`)
   - 2026-06-09T03:42:07Z: finished implementation (`components/brand-logo.tsx, components/site-header.tsx`)
+
+## Completed 2026-06-09T03:44:21Z - `rebalance-topbar-logo`
+
+- Agent: Codex [84cd9743-795a-46d7-ac77-f84fc8d6ee1b]
+- Started: 2026-06-09T03:42:45Z
+- Last check-in: 2026-06-09T03:44:21Z
+- Completed: 2026-06-09T03:44:21Z
+- Goal: Rebalance split topbar logo sizing
+- Final progress: finished implementation
+- Planned paths:
+  - `components/brand-logo.tsx`
+  - `components/site-header.tsx`
+- Completed paths:
+  - `components/brand-logo.tsx`
+  - `components/site-header.tsx`
+- Checked-out paths at completion:
+_None._
+- Queued paths at completion:
+_None._
+- Bumped paths at completion:
+_None._
+- Recent check-ins:
+  - 2026-06-09T03:42:45Z: checkout requested (`components/brand-logo.tsx, components/site-header.tsx`)
+  - 2026-06-09T03:43:50Z: released completed files: components/brand-logo.tsx, components/site-header.tsx (`components/brand-logo.tsx, components/site-header.tsx`)
+  - 2026-06-09T03:44:21Z: finished implementation (`components/brand-logo.tsx, components/site-header.tsx`)
