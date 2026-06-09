@@ -29,24 +29,42 @@ Use the agent-work-coordinator skill or `scripts/coordinator.py` to edit this fi
             "app/layout.tsx"
           ],
           "note": "checkout requested"
+        },
+        {
+          "at": "2026-06-09T18:56:47Z",
+          "bumped": [],
+          "checked_out": [
+            "app/page.tsx",
+            "data/site.ts",
+            "app/layout.tsx"
+          ],
+          "files": [
+            "app/page.tsx",
+            "data/site.ts",
+            "app/layout.tsx"
+          ],
+          "note": "Updated public messaging toward broader software capability",
+          "queued": [],
+          "remote_state": "up-to-date"
         }
       ],
       "completed_files": [],
       "goal": "Broaden public messaging from blockchain-specific to general engineering capability",
       "id": "broader-capability-messaging",
-      "last_checkin_at": "2026-06-09T18:55:25Z",
+      "last_checkin_at": "2026-06-09T18:56:47Z",
       "planned_files": [
         "app/page.tsx",
         "data/site.ts",
         "app/layout.tsx"
       ],
-      "progress_note": "checkout requested",
+      "progress_note": "Updated public messaging toward broader software capability",
       "queued": [],
-      "started_at": "2026-06-09T18:55:25Z"
+      "started_at": "2026-06-09T18:55:25Z",
+      "updated_at": "2026-06-09T18:56:47Z"
     }
   },
   "queues": {},
-  "updated_at": "2026-06-09T18:55:25Z",
+  "updated_at": "2026-06-09T18:56:47Z",
   "version": 1
 }
 agent-work-coordinator-state -->
@@ -57,9 +75,9 @@ agent-work-coordinator-state -->
 
 - Agent: Codex [85dd3cb4-01cd-4337-874e-b72e8b053fd9]
 - Started: 2026-06-09T18:55:25Z
-- Last check-in: 2026-06-09T18:55:25Z
+- Last check-in: 2026-06-09T18:56:47Z
 - Goal: Broaden public messaging from blockchain-specific to general engineering capability
-- Progress: checkout requested
+- Progress: Updated public messaging toward broader software capability
 - Planned paths:
   - `app/page.tsx`
   - `data/site.ts`
@@ -76,6 +94,7 @@ _None._
 _None._
 - Recent check-ins:
   - 2026-06-09T18:55:25Z: checkout requested (`app/page.tsx, data/site.ts, app/layout.tsx`)
+  - 2026-06-09T18:56:47Z: Updated public messaging toward broader software capability (`app/page.tsx, data/site.ts, app/layout.tsx`)
 
 ## File Checkouts
 
