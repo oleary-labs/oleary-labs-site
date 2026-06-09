@@ -5,17 +5,17 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-semibold ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-lg border text-sm font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         default:
-          "border border-[#d6aa52]/55 bg-[#9b1219] text-[#fff8ec] shadow-[0_10px_28px_rgba(155,18,25,0.22)] hover:bg-[#781015] hover:shadow-[0_14px_34px_rgba(155,18,25,0.28)]",
+          "border-[var(--red)] bg-[var(--red)] text-[var(--paper-soft)] shadow-[0_12px_34px_rgba(169,22,32,0.22)] hover:bg-[#86131a]",
         outline:
-          "border border-[#c79b45]/55 bg-transparent text-foreground shadow-sm hover:border-[#d6aa52] hover:bg-[#d6aa52]/10",
+          "border-[rgba(200,148,63,0.56)] bg-transparent text-current hover:bg-[rgba(200,148,63,0.12)]",
         secondary:
-          "border border-[#c79b45]/40 bg-[#f4ead8] text-[#29201b] shadow-sm hover:bg-[#ead7b5]",
-        ghost: "text-foreground hover:bg-[#d6aa52]/12",
+          "border-[rgba(21,16,13,0.14)] bg-[var(--paper-soft)] text-[var(--ink)] hover:bg-[var(--paper-deep)]",
+        ghost: "border-transparent text-current hover:bg-[rgba(200,148,63,0.12)]",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {

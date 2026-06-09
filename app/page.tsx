@@ -2,7 +2,6 @@ import Image from "next/image"
 import {
   ArrowRight,
   Github,
-  ListChecks,
   Mail,
   MessageCircle,
   Network,
@@ -16,20 +15,12 @@ import {
 } from "lucide-react"
 
 import { BrandLogo } from "@/components/brand-logo"
-import { SignetThreshold } from "@/components/signet-threshold"
 import { SectionHeading } from "@/components/section-heading"
+import { SignetThreshold } from "@/components/signet-threshold"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
 import { contactLinks, metrics, projects, values } from "@/data/site"
 import type { ContactLink, ValueItem } from "@/types/site"
 
@@ -46,6 +37,12 @@ const contactIcons: Record<ContactLink["icon"], typeof Github> = {
   signet: Shield,
 }
 
+const bracketRows = [
+  { label: "Discovery", icon: Users },
+  { label: "Pairings", icon: Swords },
+  { label: "Results", icon: Trophy },
+]
+
 export default function HomePage() {
   const featuredProject = projects.find((project) => project.featured)
   const bracketProject = projects.find((project) => project.brand === "bracket")
@@ -54,136 +51,101 @@ export default function HomePage() {
   )
 
   return (
-    <div className="luxury-page">
+    <div className="site-shell">
       <SiteHeader />
       <main>
-        <section className="hero-surface luxury-grid pt-32 text-[#fff8ec] sm:pt-36">
-          <div className="container pb-16 sm:pb-20">
-            <div className="grid gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:items-end">
-              <div className="animate-in-up max-w-3xl">
-                <div className="mb-8 w-fit rounded-lg border border-[#d6aa52]/24 bg-[#fbf7ef]/96 px-4 py-3 shadow-[0_24px_80px_rgba(10,7,6,0.22)]">
-                  <BrandLogo imageClassName="h-12 w-auto" />
-                </div>
-                <p className="inline-flex items-center gap-3 text-sm font-semibold uppercase text-[#d6aa52] before:h-px before:w-9 before:bg-current before:content-['']">
-                  Luxury-tech protocol studio
-                </p>
-                <h1 className="mt-6 max-w-3xl text-5xl font-semibold leading-none sm:text-6xl">
-                  O&apos;Leary Labs
-                </h1>
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-[#eadfc8] sm:text-xl">
-                  We build protocol infrastructure for clients who expect
-                  precision, discretion, and technical depth. The experience is
-                  refined; the underlying systems are unapologetically advanced.
-                </p>
-                <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                  <Button asChild size="lg">
-                    <a href="#projects">
-                      Explore the systems
-                      <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                    </a>
-                  </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    size="lg"
-                    className="border-[#d6aa52]/60 text-[#fff8ec] hover:bg-[#d6aa52]/12"
-                  >
-                    <a href="/style-guide">
-                      View style guide
-                      <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                    </a>
-                  </Button>
-                </div>
-              </div>
-
-              <div className="animate-in-up lg:pb-4">
-                <div className="relative overflow-hidden rounded-lg border border-[#d6aa52]/26 bg-black/44 p-5 shadow-[0_30px_90px_rgba(0,0,0,0.34)] backdrop-blur">
-                  <div className="metal-line mb-5" />
-                  <div className="grid gap-5 sm:grid-cols-[0.8fr_1.2fr] sm:items-center">
-                    <div className="rounded-lg border border-[#d6aa52]/20 bg-[#fbf7ef] p-4">
-                      <Image
-                        src="/oleary_labs_logo_kit/logomark_transparent.png"
-                        alt=""
-                        width={641}
-                        height={659}
-                        className="mx-auto h-auto w-full max-w-48"
-                        priority
-                      />
-                    </div>
-                    <div>
-                      <p className="mono text-sm text-[#d6aa52]">
-                        live network posture
-                      </p>
-                      <div className="mt-4 grid gap-3">
-                        {metrics.map((metric) => (
-                          <div
-                            key={metric.label}
-                            className="flex items-center justify-between border-b border-[#d6aa52]/18 pb-3"
-                          >
-                            <span className="text-sm text-[#d8c5a1]">
-                              {metric.label}
-                            </span>
-                            <span className="mono text-sm text-[#fff8ec]">
-                              {metric.value}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="mt-5 flex items-center gap-2 text-sm text-[#d8c5a1]">
-                        <span className="pulse-data h-2 w-2 rounded-full bg-[#2d8a5d]" />
-                        threshold systems online
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        <section className="hero">
+          <div className="container hero-layout">
+            <div className="fade-up">
+              <BrandLogo className="brand-frame" imageClassName="h-12 w-auto" />
+              <p className="hero-kicker">Protocol systems studio</p>
+              <h1 className="hero-title">
+                Infrastructure with presence, clarity, and serious depth.
+              </h1>
+              <p className="hero-copy">
+                O&apos;Leary Labs builds focused infrastructure products for the
+                onchain economy. The work is technical, but the experience
+                should feel composed, legible, and credible from the first read.
+              </p>
+              <div className="hero-actions">
+                <Button asChild size="lg">
+                  <a href="#projects">
+                    View projects
+                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                  </a>
+                </Button>
+                <Button asChild variant="outline" size="lg">
+                  <a href="#contact">
+                    Start a conversation
+                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                  </a>
+                </Button>
               </div>
             </div>
+
+            <aside className="hero-panel fade-up" aria-label="Network summary">
+              <Image
+                src="/oleary_labs_logo_kit/logomark_transparent.png"
+                alt=""
+                width={641}
+                height={659}
+                className="mx-auto h-auto w-44"
+                priority
+              />
+              <dl className="metric-row">
+                {metrics.map((metric) => (
+                  <div key={metric.label}>
+                    <dt>{metric.label}</dt>
+                    <dd>{metric.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="hero-status">
+                <span className="status-dot" />
+                Threshold systems online
+              </p>
+            </aside>
           </div>
         </section>
 
-        <section id="about" className="bg-[#fbf7ef] py-20 sm:py-24">
+        <section id="about" className="section">
           <div className="container">
             <SectionHeading
               eyebrow="About"
-              title="Private-client polish, protocol-grade engineering."
-              description="O'Leary Labs is a focused team building infrastructure for teams that need security, taste, and deep technical fluency in the same room."
+              title="Readable interfaces for difficult systems."
+              description="The studio sits between protocol engineering and product judgment. We build tools that can stand up to technical scrutiny while remaining easy to understand."
             />
-            <div className="mt-12 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
-              <div className="space-y-6 text-base leading-8 text-muted-foreground">
+
+            <div className="about-grid">
+              <div className="copy-column">
                 <p>
-                  The next wave of adoption will be won by infrastructure that
-                  feels understandable without becoming simplistic. We build for
-                  sophisticated buyers, careful operators, and technical teams
-                  that need primitives they can audit.
+                  Our work starts with primitives: signing, accounts, event
+                  operations, and infrastructure workflows that need to be
+                  precise. We care as much about the operator&apos;s read of a
+                  screen as we do about the cryptographic or systems layer
+                  underneath it.
                 </p>
                 <p>
-                  The visual language follows that same principle: black-tie
-                  restraint, metallic confidence, and enough data-forward detail
-                  to signal that the elegance is backed by real systems.
+                  The new site follows that philosophy. Fewer competing
+                  treatments, stronger typography, calmer surfaces, and visual
+                  accents that help orient the reader instead of asking for
+                  attention.
                 </p>
               </div>
-              <div className="grid gap-4 sm:grid-cols-2">
+
+              <div className="value-grid">
                 {values.map((value) => {
                   const Icon = valueIcons[value.icon]
 
                   return (
-                    <Card
-                      key={value.title}
-                      className="group border-[#c79b45]/28 bg-[#fffbf3]/88 transition-transform duration-300 hover:-translate-y-1 hover:border-[#9b1219]/35"
-                    >
-                      <CardHeader>
-                        <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-[#d6aa52]/28 bg-[#f4ead8] text-[#9b1219]">
-                          <Icon className="h-5 w-5" aria-hidden="true" />
-                        </div>
-                        <p className="mono text-xs uppercase text-[#8f151a]">
-                          {value.eyebrow}
-                        </p>
-                        <CardTitle>{value.title}</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <CardDescription>{value.description}</CardDescription>
-                      </CardContent>
-                    </Card>
+                    <article className="value-card" key={value.title}>
+                      <div className="value-icon">
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </div>
+                      <p className="value-eyebrow">{value.eyebrow}</p>
+                      <h3>{value.title}</h3>
+                      <p>{value.description}</p>
+                    </article>
                   )
                 })}
               </div>
@@ -191,42 +153,37 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="projects" className="luxury-grid bg-[#0a0706] py-20 text-[#fff8ec] sm:py-24">
+        <section id="projects" className="section dark">
           <div className="container">
             <SectionHeading
               eyebrow="Projects"
-              title="Systems with a ceremonial surface and a rigorous core."
-              description="Protocol infrastructure for key management, threshold signing, and smart accounts."
+              title="Two products, one standard for clarity."
+              description="Signet remains the primary infrastructure project. Bracket sits beside it as a focused tournament operations product under the O'Leary Labs umbrella."
               inverted
             />
-            <div className="mt-12 grid gap-5">
+
+            <div className="project-stack">
               {featuredProject ? (
-                <Card className="overflow-hidden border-[#d6aa52]/28 bg-[#120d0b]/94 text-[#fff8ec] shadow-[0_30px_90px_rgba(0,0,0,0.34)]">
-                  <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
-                    <div className="p-6 sm:p-8">
+                <article className="project-card primary">
+                  <div className="project-grid">
+                    <div className="project-body">
                       <Badge variant="success">{featuredProject.status}</Badge>
-                      <h3 className="mt-5 text-3xl font-semibold text-[#fff8ec]">
-                        {featuredProject.title}
-                      </h3>
-                      <p className="mt-3 text-base leading-7 text-[#eadfc8]">
-                        {featuredProject.tagline}
-                      </p>
-                      <p className="mt-5 text-sm leading-7 text-[#d8c5a1] sm:text-base">
-                        {featuredProject.description}
-                      </p>
-                      <div className="mt-7 flex flex-wrap gap-3">
+                      <div className="signet-lockup">
+                        <img src="/logo-mark.svg" alt="" />
+                        <div>
+                          <strong>Signet</strong>
+                          <span>Original threshold network mark</span>
+                        </div>
+                      </div>
+                      <h3>{featuredProject.title}</h3>
+                      <p>{featuredProject.tagline}</p>
+                      <p>{featuredProject.description}</p>
+                      <div className="project-actions">
                         {featuredProject.links.map((link) => (
                           <Button
                             key={link.href}
                             asChild
-                            variant={
-                              link.kind === "primary" ? "default" : "outline"
-                            }
-                            className={
-                              link.kind === "primary"
-                                ? ""
-                                : "border-[#d6aa52]/45 text-[#fff8ec] hover:bg-[#d6aa52]/12"
-                            }
+                            variant={link.kind === "primary" ? "default" : "outline"}
                           >
                             <a href={link.href}>
                               {link.label}
@@ -239,60 +196,38 @@ export default function HomePage() {
                         ))}
                       </div>
                     </div>
-                    <SignetThreshold className="m-4 lg:m-5" />
+                    <div className="signet-visual">
+                      <SignetThreshold />
+                    </div>
                   </div>
-                </Card>
+                </article>
               ) : null}
 
               {bracketProject ? (
-                <Card className="overflow-hidden border-[#f11225]/40 bg-[#07080a] text-[#f7f8fa] shadow-[0_28px_86px_rgba(0,0,0,0.38)]">
-                  <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
-                    <div className="relative p-6 sm:p-8">
-                      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#980611] via-[#ff3d4b] to-[#d7dbe0]" />
-                      <Badge className="border-[#ff3d4b]/40 bg-[#f11225]/12 text-[#ff3d4b]">
-                        {bracketProject.status}
-                      </Badge>
-                      <div className="mt-5 flex items-center gap-4">
+                <article className="project-card bracket-card">
+                  <div className="project-grid">
+                    <div className="project-body">
+                      <Badge>{bracketProject.status}</Badge>
+                      <div className="bracket-lockup">
                         <img
                           src="/bracket/bracket-logomark-transparent.svg"
                           alt=""
-                          className="h-14 w-14 shrink-0"
                         />
                         <img
                           src="/bracket/bracket-wordmark-transparent.svg"
                           alt="Bracket"
-                          className="h-8 w-auto max-w-44"
                         />
                       </div>
-                      <h3 className="mt-6 text-3xl font-semibold text-[#f7f8fa]">
-                        {bracketProject.tagline}
-                      </h3>
-                      <p className="mt-5 text-sm leading-7 text-[#b7bdc5] sm:text-base">
-                        {bracketProject.description}
-                      </p>
-                      <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                      <h3>{bracketProject.tagline}</h3>
+                      <p>{bracketProject.description}</p>
+                      <div className="proof-grid">
                         {bracketProject.proofPoints?.map((point) => (
-                          <div
-                            key={point}
-                            className="rounded border border-[#d7dbe0]/16 bg-[#151922] p-3"
-                          >
-                            <ListChecks
-                              className="mb-2 h-4 w-4 text-[#ff3d4b]"
-                              aria-hidden="true"
-                            />
-                            <p className="text-xs font-semibold uppercase text-[#edf0f3]">
-                              {point}
-                            </p>
-                          </div>
+                          <div key={point}>{point}</div>
                         ))}
                       </div>
-                      <div className="mt-7 flex flex-wrap gap-3">
+                      <div className="project-actions">
                         {bracketProject.links.map((link) => (
-                          <Button
-                            key={link.href}
-                            asChild
-                            className="border-[#ff3d4b]/55 bg-[#f11225] text-white hover:bg-[#d30718]"
-                          >
+                          <Button key={link.href} asChild>
                             <a href={link.href}>
                               {link.label}
                               <ArrowRight
@@ -304,148 +239,89 @@ export default function HomePage() {
                         ))}
                       </div>
                     </div>
-                    <div className="tech-panel relative min-h-80 overflow-hidden border-t border-[#d7dbe0]/12 bg-[#0b0d10] p-5 lg:border-l lg:border-t-0">
-                      <div className="absolute inset-x-6 top-8 h-px bg-[#f11225]" />
-                      <div className="absolute right-7 top-8 h-10 w-24 bg-[#f11225] [clip-path:polygon(18%_0,100%_0,82%_100%,0_100%)]" />
-                      <div className="relative mt-14 grid gap-5">
-                        <div className="rounded border border-[#d7dbe0]/20 bg-[#111419] p-5">
-                          <div className="flex items-center gap-4">
-                            <img
-                              src="/bracket/bracket-logomark-with-background.svg"
-                              alt=""
-                              className="h-16 w-16 rounded"
-                            />
-                            <div>
-                              <p className="text-xs font-semibold uppercase text-[#ff3d4b]">
-                                Redline tournament ops
-                              </p>
-                              <p className="mt-2 text-sm leading-6 text-[#d7dbe0]">
-                                Built for public discovery, registration flow,
-                                match operations, and fast event-day reads.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="grid gap-3">
-                          {[
-                            { label: "Discovery", icon: Users },
-                            { label: "Pairings", icon: Swords },
-                            { label: "Results", icon: Trophy },
-                          ].map((item) => {
-                            const Icon = item.icon
 
-                            return (
-                              <div
-                                key={item.label}
-                                className="flex items-center justify-between rounded border border-[#d7dbe0]/14 bg-black/35 px-4 py-3"
-                              >
-                                <span className="flex items-center gap-3 text-sm font-semibold uppercase text-[#edf0f3]">
-                                  <Icon
-                                    className="h-4 w-4 text-[#ff3d4b]"
-                                    aria-hidden="true"
-                                  />
-                                  {item.label}
-                                </span>
-                                <span className="h-2 w-12 bg-[#f11225]" />
-                              </div>
-                            )
-                          })}
-                        </div>
+                    <div className="bracket-visual">
+                      <div className="bracket-command">
+                        <img
+                          src="/bracket/bracket-logomark-with-background.svg"
+                          alt=""
+                        />
+                        <p>
+                          Public discovery, registration, match operations, and
+                          fast event-day reads.
+                        </p>
+                      </div>
+                      <div className="bracket-rows">
+                        {bracketRows.map((item) => {
+                          const Icon = item.icon
+
+                          return (
+                            <div className="bracket-row" key={item.label}>
+                              <span className="inline-flex items-center gap-2">
+                                <Icon className="h-4 w-4" aria-hidden="true" />
+                                {item.label}
+                              </span>
+                              <span>Ready</span>
+                            </div>
+                          )
+                        })}
                       </div>
                     </div>
                   </div>
-                </Card>
+                </article>
               ) : null}
 
-              <div className="grid gap-5 md:grid-cols-2">
+              <div className="support-grid">
                 {supportingProjects.map((project) => (
-                  <Card
-                    key={project.title}
-                    className="border-[#d6aa52]/24 bg-[#120d0b]/88 text-[#fff8ec] shadow-none"
-                  >
-                    <CardHeader>
-                      <Badge variant="warning" className="w-fit">
-                        {project.status}
-                      </Badge>
-                      <CardTitle className="text-2xl text-[#fff8ec]">
-                        {project.title}
-                      </CardTitle>
-                      <CardDescription className="text-[#eadfc8]">
-                        {project.tagline}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm leading-7 text-[#d8c5a1]">
-                        {project.description}
-                      </p>
-                    </CardContent>
-                    <CardFooter>
+                  <article className="support-card" key={project.title}>
+                    <Badge variant="warning">{project.status}</Badge>
+                    <h3 className="mt-5">{project.title}</h3>
+                    <p>{project.tagline}</p>
+                    <p>{project.description}</p>
+                    <div className="project-actions">
                       {project.links.map((link) => (
-                        <Button
-                          key={link.href}
-                          asChild
-                          variant="outline"
-                          className="border-[#d6aa52]/45 text-[#fff8ec] hover:bg-[#d6aa52]/12"
-                        >
-                          <a href={link.href}>
-                            {link.label}
-                            <ArrowRight
-                              className="ml-2 h-4 w-4"
-                              aria-hidden="true"
-                            />
-                          </a>
+                        <Button key={link.href} asChild variant="outline">
+                          <a href={link.href}>{link.label}</a>
                         </Button>
                       ))}
-                    </CardFooter>
-                  </Card>
+                    </div>
+                  </article>
                 ))}
               </div>
             </div>
           </div>
         </section>
 
-        <section id="contact" className="bg-[#f4ead8] py-20 sm:py-24">
-          <div className="container">
-            <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
-              <div>
-                <SectionHeading
-                  eyebrow="Contact"
-                  title="Bring us the hard systems problem."
-                  description="Interested in running a Signet node, integrating threshold signing, or collaborating on protocol research? Reach out."
-                />
-                <a
-                  href="mailto:hello@olearylabs.com"
-                  className="mt-8 inline-flex items-center gap-2 text-lg font-semibold text-[#0a0706] transition-colors hover:text-[#9b1219]"
-                >
-                  <Mail className="h-5 w-5" aria-hidden="true" />
-                  hello@olearylabs.com
-                </a>
-              </div>
-              <div className="grid gap-4">
-                {contactLinks.map((link) => {
-                  const Icon = contactIcons[link.icon]
+        <section id="contact" className="section tint">
+          <div className="container contact-layout">
+            <div>
+              <SectionHeading
+                eyebrow="Contact"
+                title="Bring the system that needs a better read."
+                description="Reach out about Signet, Bracket, protocol infrastructure, or a product surface that needs to become sharper and easier to operate."
+              />
+              <a className="mt-8 inline-flex items-center gap-2 font-bold" href="mailto:hello@olearylabs.com">
+                <Mail className="h-5 w-5" aria-hidden="true" />
+                hello@olearylabs.com
+              </a>
+            </div>
 
-                  return (
-                    <a key={link.href} href={link.href} className="block">
-                      <Card className="border-[#c79b45]/32 bg-[#fffbf3]/90 transition-transform duration-300 hover:-translate-y-1 hover:border-[#9b1219]/40">
-                        <CardHeader className="flex-row items-center gap-4">
-                          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[#d6aa52]/30 bg-[#f4ead8] text-[#9b1219]">
-                            <Icon className="h-5 w-5" aria-hidden="true" />
-                          </div>
-                          <div>
-                            <CardTitle className="text-base">
-                              {link.title}
-                            </CardTitle>
-                            <CardDescription>
-                              {link.description}
-                            </CardDescription>
-                          </div>
-                        </CardHeader>
-                      </Card>
-                    </a>
-                  )
-                })}
-              </div>
+            <div className="contact-card-grid">
+              {contactLinks.map((link) => {
+                const Icon = contactIcons[link.icon]
+
+                return (
+                  <a className="contact-card" key={link.href} href={link.href}>
+                    <span className="contact-icon">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <span>
+                      <strong>{link.title}</strong>
+                      <span>{link.description}</span>
+                    </span>
+                  </a>
+                )
+              })}
             </div>
           </div>
         </section>

@@ -3,68 +3,68 @@ import type { BrandColor, MotionRule, TypeStyle } from "@/types/style-guide"
 export const brandColors: BrandColor[] = [
   {
     name: "Obsidian",
-    token: "--foreground",
-    hex: "#0a0706",
-    usage: "Primary luxury canvas, footer, and high-confidence product surfaces.",
+    token: "--carbon",
+    hex: "#080706",
+    usage: "Deep hero, footer, and primary technical surfaces.",
   },
   {
     name: "O'Leary Red",
-    token: "--primary",
-    hex: "#9b1219",
-    usage: "Primary actions, brand moments, active states, and decisive calls.",
+    token: "--red",
+    hex: "#a91620",
+    usage: "Primary actions, product emphasis, and decisive navigation states.",
   },
   {
-    name: "Gilded Gold",
-    token: "--accent",
-    hex: "#d6aa52",
-    usage: "Premium emphasis, rules, highlights, status borders, and logo-adjacent details.",
+    name: "Measured Gold",
+    token: "--gold",
+    hex: "#c8943f",
+    usage: "Rules, premium emphasis, logo-adjacent details, and quiet highlights.",
   },
   {
     name: "Signal Green",
-    token: "undercurrent",
-    hex: "#215f43",
-    usage: "Technical confidence, live status, successful operations, and data accents.",
+    token: "--green",
+    hex: "#245f45",
+    usage: "Live-state and technical confidence signals, used sparingly.",
   },
   {
-    name: "Ivory Ledger",
-    token: "--background",
-    hex: "#fbf7ef",
-    usage: "Readable calm surfaces for luxury audiences and long-form content.",
+    name: "Warm Paper",
+    token: "--paper",
+    hex: "#f7efe2",
+    usage: "Primary reading surface and long-form content background.",
   },
 ]
 
 export const typeStyles: TypeStyle[] = [
   {
     name: "Display",
-    sample: "Protocol infrastructure with private-client polish.",
-    guidance: "Use Georgia for brand headlines and editorial section titles.",
-    className: "font-display text-3xl font-semibold leading-tight",
+    sample: "Infrastructure with presence and clarity.",
+    guidance: "Use the serif display face for major ideas and section titles.",
+    className: "font-display text-3xl font-semibold leading-tight text-[var(--ink)]",
   },
   {
     name: "Interface",
-    sample: "Mainnet-ready tooling for signing, accounts, and payments.",
+    sample: "Mainnet-ready tooling for signing, accounts, events, and operations.",
     guidance: "Use the system sans stack for body copy, navigation, and controls.",
-    className: "text-base leading-8 text-muted-foreground",
+    className: "text-base leading-8 text-[var(--ink-soft)]",
   },
   {
     name: "Technical",
     sample: "threshold: 3 / 5 | stack: FROST | account: ERC-4337",
     guidance: "Use mono sparingly for proofs, metrics, and protocol details.",
-    className: "mono text-sm text-[#d6aa52]",
+    className: "mono text-sm text-[var(--red)]",
   },
 ]
 
 export const motionRules: MotionRule[] = [
   {
     name: "Slow reveal",
-    guidance: "Use short upward fades for first-load hierarchy and keep motion below one second.",
+    guidance: "Use short upward fades only for first-load hierarchy and major section entry.",
   },
   {
-    name: "Signal sweep",
-    guidance: "Use gold line sweeps on technical surfaces to imply infrastructure activity.",
+    name: "Status only",
+    guidance: "Use small status indicators for live systems. Avoid decorative motion loops.",
   },
   {
-    name: "Status pulse",
-    guidance: "Use green pulses only for live or successful system states.",
+    name: "Hover response",
+    guidance: "Use modest lifts and border changes to clarify clickable surfaces.",
   },
 ]
