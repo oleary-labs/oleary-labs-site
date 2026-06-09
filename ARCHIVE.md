@@ -113,3 +113,69 @@ _None._
   - 2026-06-09T02:56:32Z: checkout requested (`.gitignore, next-env.d.ts`)
   - 2026-06-09T02:57:25Z: released completed files: .gitignore, next-env.d.ts (`.gitignore, next-env.d.ts`)
   - 2026-06-09T02:58:18Z: finished implementation (`.gitignore, next-env.d.ts`)
+
+## Completed 2026-06-09T03:07:48Z - `luxury-tech-style`
+
+- Agent: Codex [9863fd18-3e40-4f46-9af0-d9906427f8ce]
+- Started: 2026-06-09T03:01:03Z
+- Last check-in: 2026-06-09T03:07:48Z
+- Completed: 2026-06-09T03:07:48Z
+- Goal: Luxury-tech visual overhaul with logo kit integration and app style guide
+- Final progress: finished implementation
+- Planned paths:
+  - `app/layout.tsx`
+  - `app/page.tsx`
+  - `app/globals.css`
+  - `app/style-guide/page.tsx`
+  - `components/brand-logo.tsx`
+  - `components/site-header.tsx`
+  - `components/site-footer.tsx`
+  - `components/section-heading.tsx`
+  - `components/signet-threshold.tsx`
+  - `components/ui/button.tsx`
+  - `components/ui/card.tsx`
+  - `components/ui/badge.tsx`
+  - `data/site.ts`
+  - `data/style-guide.ts`
+  - `types/site.ts`
+  - `types/style-guide.ts`
+  - `public/oleary_labs_logo_kit/app_icon.png`
+  - `public/oleary_labs_logo_kit/wordmark_transparent.png`
+  - `public/oleary_labs_logo_kit/full_logo.png`
+  - `public/oleary_labs_logo_kit/logomark_transparent.png`
+  - `public/oleary_labs_logo_kit/full_logo_transparent.png`
+  - `README.md`
+- Completed paths:
+  - `app/layout.tsx`
+  - `app/page.tsx`
+  - `app/globals.css`
+  - `app/style-guide/page.tsx`
+  - `components/brand-logo.tsx`
+  - `components/site-header.tsx`
+  - `components/site-footer.tsx`
+  - `components/section-heading.tsx`
+  - `components/signet-threshold.tsx`
+  - `components/ui/button.tsx`
+  - `components/ui/card.tsx`
+  - `components/ui/badge.tsx`
+  - `data/site.ts`
+  - `data/style-guide.ts`
+  - `types/site.ts`
+  - `types/style-guide.ts`
+  - `public/oleary_labs_logo_kit/app_icon.png`
+  - `public/oleary_labs_logo_kit/wordmark_transparent.png`
+  - `public/oleary_labs_logo_kit/full_logo.png`
+  - `public/oleary_labs_logo_kit/logomark_transparent.png`
+  - `public/oleary_labs_logo_kit/full_logo_transparent.png`
+  - `README.md`
+- Checked-out paths at completion:
+_None._
+- Queued paths at completion:
+_None._
+- Bumped paths at completion:
+_None._
+- Recent check-ins:
+  - 2026-06-09T03:01:03Z: checkout requested (`app/layout.tsx, app/page.tsx, app/globals.css, app/style-guide/page.tsx, components/brand-logo.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/site.ts, data/style-guide.ts, types/site.ts, types/style-guide.ts, public/oleary_labs_logo_kit/app_icon.png, public/oleary_labs_logo_kit/wordmark_transparent.png, public/oleary_labs_logo_kit/full_logo.png, public/oleary_labs_logo_kit/logomark_transparent.png, public/oleary_labs_logo_kit/full_logo_transparent.png, README.md`)
+  - 2026-06-09T03:05:43Z: Implemented logo-aware luxury-tech homepage, design tokens, UI styling, and style-guide route; starting verification (`app/layout.tsx, app/page.tsx, app/globals.css, app/style-guide/page.tsx, components/brand-logo.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/site.ts, data/style-guide.ts, types/site.ts, types/style-guide.ts, README.md`)
+  - 2026-06-09T03:07:13Z: released completed files: app/layout.tsx, app/page.tsx, app/globals.css, app/style-guide/page.tsx, components/brand-logo.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/site.ts, data/style-guide.ts, types/site.ts, types/style-guide.ts, public/oleary_labs_logo_kit/app_icon.png, public/oleary_labs_logo_kit/wordmark_transparent.png, public/oleary_labs_logo_kit/full_logo.png, public/oleary_labs_logo_kit/logomark_transparent.png, public/oleary_labs_logo_kit/full_logo_transparent.png, README.md (`app/layout.tsx, app/page.tsx, app/globals.css, app/style-guide/page.tsx, components/brand-logo.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/site.ts, data/style-guide.ts, types/site.ts, types/style-guide.ts, public/oleary_labs_logo_kit/app_icon.png, public/oleary_labs_logo_kit/wordmark_transparent.png, public/oleary_labs_logo_kit/full_logo.png, public/oleary_labs_logo_kit/logomark_transparent.png, public/oleary_labs_logo_kit/full_logo_transparent.png, README.md`)
+  - 2026-06-09T03:07:48Z: finished implementation (`app/layout.tsx, app/page.tsx, app/globals.css, app/style-guide/page.tsx, components/brand-logo.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/site.ts, data/style-guide.ts, types/site.ts, types/style-guide.ts, public/oleary_labs_logo_kit/app_icon.png, public/oleary_labs_logo_kit/wordmark_transparent.png, public/oleary_labs_logo_kit/full_logo.png, public/oleary_labs_logo_kit/logomark_transparent.png, public/oleary_labs_logo_kit/full_logo_transparent.png, README.md`)
