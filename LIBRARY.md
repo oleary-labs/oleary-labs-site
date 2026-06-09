@@ -5,21 +5,83 @@ Use the agent-work-coordinator skill or `scripts/coordinator.py` to edit this fi
 
 <!-- agent-work-coordinator-state
 {
-  "checkouts": {},
-  "implementations": {},
+  "checkouts": {
+    "app/globals.css": "initial-view-redesign",
+    "app/page.tsx": "initial-view-redesign",
+    "data/site.ts": "initial-view-redesign"
+  },
+  "implementations": {
+    "initial-view-redesign": {
+      "agent": "Codex",
+      "agent_uuid": "b85e2f70-4bbe-4785-a698-a504cd98d483",
+      "bumped_files": [],
+      "checked_out": [
+        "app/page.tsx",
+        "app/globals.css",
+        "data/site.ts"
+      ],
+      "checkins": [
+        {
+          "at": "2026-06-09T04:23:55Z",
+          "files": [
+            "app/page.tsx",
+            "app/globals.css",
+            "data/site.ts"
+          ],
+          "note": "checkout requested"
+        }
+      ],
+      "completed_files": [],
+      "goal": "Rework initial view away from hero-title layout and remove public style guide tab",
+      "id": "initial-view-redesign",
+      "last_checkin_at": "2026-06-09T04:23:55Z",
+      "planned_files": [
+        "app/page.tsx",
+        "app/globals.css",
+        "data/site.ts"
+      ],
+      "progress_note": "checkout requested",
+      "queued": [],
+      "started_at": "2026-06-09T04:23:55Z"
+    }
+  },
   "queues": {},
-  "updated_at": "2026-06-09T04:22:04Z",
+  "updated_at": "2026-06-09T04:23:55Z",
   "version": 1
 }
 agent-work-coordinator-state -->
 
 ## Active Implementation Briefs
 
-_No active implementations._
+### `initial-view-redesign`
+
+- Agent: Codex [b85e2f70-4bbe-4785-a698-a504cd98d483]
+- Started: 2026-06-09T04:23:55Z
+- Last check-in: 2026-06-09T04:23:55Z
+- Goal: Rework initial view away from hero-title layout and remove public style guide tab
+- Progress: checkout requested
+- Planned paths:
+  - `app/page.tsx`
+  - `app/globals.css`
+  - `data/site.ts`
+- Completed paths:
+_None._
+- Checked-out paths:
+  - `app/page.tsx`
+  - `app/globals.css`
+  - `data/site.ts`
+- Queued paths:
+_None._
+- Bumped paths:
+_None._
+- Recent check-ins:
+  - 2026-06-09T04:23:55Z: checkout requested (`app/page.tsx, app/globals.css, data/site.ts`)
 
 ## File Checkouts
 
-_No checked-out files._
+- `app/globals.css` -> `initial-view-redesign` by Codex [b85e2f70-4bbe-4785-a698-a504cd98d483] (Rework initial view away from hero-title layout and remove public style guide tab)
+- `app/page.tsx` -> `initial-view-redesign` by Codex [b85e2f70-4bbe-4785-a698-a504cd98d483] (Rework initial view away from hero-title layout and remove public style guide tab)
+- `data/site.ts` -> `initial-view-redesign` by Codex [b85e2f70-4bbe-4785-a698-a504cd98d483] (Rework initial view away from hero-title layout and remove public style guide tab)
 
 ## Queues
 
