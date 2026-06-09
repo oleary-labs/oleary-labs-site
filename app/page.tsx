@@ -60,12 +60,12 @@ export default function HomePage() {
               <BrandLogo className="brand-frame" imageClassName="h-12 w-auto" />
               <p className="hero-kicker">Protocol systems studio</p>
               <h1 className="hero-title">
-                Infrastructure with presence, clarity, and serious depth.
+                Protocol tools for teams that need the details to hold.
               </h1>
               <p className="hero-copy">
-                O&apos;Leary Labs builds focused infrastructure products for the
-                onchain economy. The work is technical, but the experience
-                should feel composed, legible, and credible from the first read.
+                O&apos;Leary Labs builds Signet, Bracket, and the systems around
+                them: signing infrastructure, account workflows, and operations
+                surfaces for work that cannot afford loose ends.
               </p>
               <div className="hero-actions">
                 <Button asChild size="lg">
@@ -126,10 +126,9 @@ export default function HomePage() {
                   underneath it.
                 </p>
                 <p>
-                  The new site follows that philosophy. Fewer competing
-                  treatments, stronger typography, calmer surfaces, and visual
-                  accents that help orient the reader instead of asking for
-                  attention.
+                  We prefer explicit states, quiet controls, and language that
+                  says what the system is doing. The point is not to make
+                  infrastructure look simple; it is to make it easier to trust.
                 </p>
               </div>
 

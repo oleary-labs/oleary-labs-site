@@ -321,16 +321,16 @@
 
   .hero-title {
     margin-top: 28px;
-    max-width: 840px;
+    max-width: 760px;
     color: var(--ink);
-    font-size: 82px;
-    font-weight: 760;
-    line-height: 0.94;
+    font-size: 70px;
+    font-weight: 720;
+    line-height: 0.99;
   }
 
   .hero-copy {
     margin-top: 28px;
-    max-width: 700px;
+    max-width: 660px;
     color: var(--ink-soft);
     font-size: 20px;
     line-height: 1.75;
@@ -1038,7 +1038,7 @@
   }
 
   .hero-title {
-    font-size: 50px;
+    font-size: 43px;
   }
 
   .section {
