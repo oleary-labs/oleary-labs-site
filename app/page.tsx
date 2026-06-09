@@ -60,7 +60,7 @@ export default function HomePage() {
                 <BrandLogo className="brand-frame" imageClassName="h-12 w-auto" />
               </div>
               <div className="hero-record-body">
-                <p className="hero-kicker">O&apos;Leary Labs / protocol systems</p>
+                <p className="hero-kicker">O&apos;Leary Labs / software systems</p>
                 <h1 className="hero-brief-title">
                   A team that works.
                 </h1>
@@ -127,7 +127,7 @@ export default function HomePage() {
               </dl>
               <p className="hero-status">
                 <span className="status-dot" />
-                Threshold systems online
+                Active workstreams online
               </p>
             </aside>
           </div>
@@ -137,23 +137,24 @@ export default function HomePage() {
           <div className="container">
             <SectionHeading
               eyebrow="About"
-              title="Readable interfaces for difficult systems."
-              description="The studio sits between protocol engineering and product judgment. We build tools that can stand up to technical scrutiny while remaining easy to understand."
+              title="Software for hard operating environments."
+              description="The studio sits between engineering, product judgment, and execution. We build systems that can survive real usage, not just a clean demo."
             />
 
             <div className="about-grid">
               <div className="copy-column">
                 <p>
-                  Our work starts with primitives: signing, accounts, event
-                  operations, and infrastructure workflows that need to be
-                  precise. We care as much about the operator&apos;s read of a
-                  screen as we do about the cryptographic or systems layer
-                  underneath it.
+                  Our work starts with the part of a project that cannot be
+                  flimsy: account flows, internal tools, event operations,
+                  system integrations, and infrastructure that needs to be
+                  precise. We care as much about how a screen reads under
+                  pressure as we do about the machinery behind it.
                 </p>
                 <p>
                   We prefer explicit states, quiet controls, and language that
                   says what the system is doing. The point is not to make
-                  infrastructure look simple; it is to make it easier to trust.
+                  difficult software look simple; it is to make it easier to
+                  trust.
                 </p>
               </div>
 
@@ -181,8 +182,8 @@ export default function HomePage() {
           <div className="container">
             <SectionHeading
               eyebrow="Projects"
-              title="Two products, one standard for clarity."
-              description="Signet remains the primary infrastructure project. Bracket sits beside it as a focused tournament operations product under the O'Leary Labs umbrella."
+              title="Current work, built from the same habits."
+              description="Signet and Bracket are different products, but they come from the same discipline: make the hard parts reliable, make the working surface clear, and ship the parts people actually need."
             />
 
             <div className="project-stack">
@@ -195,7 +196,7 @@ export default function HomePage() {
                         <img src="/logo-mark.svg" alt="" />
                         <div>
                           <strong>Signet</strong>
-                          <span>Original threshold network mark</span>
+                          <span>Secure account infrastructure</span>
                         </div>
                       </div>
                       <h3>{featuredProject.title}</h3>
@@ -320,8 +321,8 @@ export default function HomePage() {
             <div>
               <SectionHeading
                 eyebrow="Contact"
-                title="Bring the system that needs a better read."
-                description="Reach out about Signet, Bracket, protocol infrastructure, or a product surface that needs to become sharper and easier to operate."
+                title="Bring the system that needs to work better."
+                description="Reach out about product infrastructure, internal tooling, operations software, Signet, Bracket, or a surface that needs to become sharper and easier to run."
               />
               <a className="mt-8 inline-flex items-center gap-2 font-bold" href="mailto:hello@olearylabs.com">
                 <Mail className="h-5 w-5" aria-hidden="true" />

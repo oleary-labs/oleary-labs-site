@@ -6,9 +6,9 @@ import Providers from "@/context/Providers"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://olearylabs.com"),
-  title: "O'Leary Labs - Luxury-Tech Protocol Studio",
+  title: "O'Leary Labs - Software Systems Studio",
   description:
-    "O'Leary Labs builds refined protocol infrastructure and bespoke applications for the onchain economy, including Signet.",
+    "O'Leary Labs builds infrastructure, internal tools, and product systems for projects that need the technical layer to hold up under pressure.",
   icons: {
     icon: "/oleary_labs_logo_kit/app_icon.png",
     apple: "/oleary_labs_logo_kit/app_icon.png",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "O'Leary Labs",
     description:
-      "Refined protocol infrastructure and bespoke applications for the onchain economy.",
+      "Infrastructure, internal tools, and product systems for projects that need the technical layer to hold up under pressure.",
     images: ["/oleary_labs_logo_kit/app_icon.png"],
   },
 }

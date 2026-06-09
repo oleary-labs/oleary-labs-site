@@ -8,39 +8,39 @@ export const navItems: NavItem[] = [
 
 export const values: ValueItem[] = [
   {
-    title: "Security First",
+    title: "Systems That Hold",
     eyebrow: "Trust",
     description:
-      "Threshold cryptography and auditable contracts presented with boardroom clarity.",
+      "Critical paths, edge cases, and operational risk handled with the seriousness they deserve.",
     icon: "security",
   },
   {
-    title: "Ship to Mainnet",
+    title: "Ship the Thing",
     eyebrow: "Execution",
     description:
-      "Production-grade code from day one, with the polish expected from a premium advisory team.",
+      "Production-grade software with the taste, pacing, and follow-through expected from a senior team.",
     icon: "ship",
   },
   {
-    title: "Open Protocols",
+    title: "Integration Fluent",
     eyebrow: "Standards",
     description:
-      "Standards-based, composable, and permissionless. Built on open specs like FROST and ERC-4337.",
+      "APIs, identity, payments, data flows, workflow tools, and specialized infrastructure where the job calls for it.",
     icon: "protocols",
   },
   {
-    title: "Developer-Centric",
+    title: "Operator-Centered",
     eyebrow: "Craft",
     description:
-      "Clean APIs, precise docs, and tools that keep protocol complexity out of the SDK.",
+      "Interfaces, docs, and internal tools built for the people who have to use them repeatedly.",
     icon: "developer",
   },
 ]
 
 export const metrics: Metric[] = [
-  { label: "Signing threshold", value: "3 / 5" },
-  { label: "Core stack", value: "FROST" },
-  { label: "Account layer", value: "4337" },
+  { label: "Delivery mode", value: "Build / refine" },
+  { label: "Project range", value: "Infra + apps" },
+  { label: "Current focus", value: "Signet / Bracket" },
 ]
 
 export const projects: Project[] = [
@@ -49,9 +49,9 @@ export const projects: Project[] = [
     status: "Testnet Live",
     brand: "signet",
     tagline:
-      "Threshold signing for social-login key management.",
+      "Secure signing and account access for product teams.",
     description:
-      "Signet is a decentralized marketplace of signing providers that uses FROST threshold cryptography to split private keys across independent nodes. Developers get social-login auth with no single custodian, plus a smart account ready from first sign-in.",
+      "Signet is a secure signing system for products that need strong account access without making users think about keys. Under the hood it splits trust across independent providers; on the surface it gives teams a cleaner way to bring people into an application.",
     featured: true,
     links: [
       {
@@ -73,9 +73,9 @@ export const projects: Project[] = [
     title: "Bracket",
     status: "Public Board",
     brand: "bracket",
-    tagline: "Tournament operations for the heat of event day.",
+    tagline: "Event operations for the heat of the day.",
     description:
-      "Bracket gives organizers one place to publish public events, manage divisions, run check-in, generate pairings, operate timers, and report results. It brings a redline broadcast-command-center feel to the practical work of running competitive events.",
+      "Bracket gives organizers one place to publish events, manage divisions, run check-in, generate pairings, operate timers, and report results. It is the kind of practical operations software we like building: clear, fast, and useful when the room is busy.",
     proofPoints: ["Publish events", "Manage divisions", "Generate pairings"],
     links: [
       {
@@ -89,9 +89,9 @@ export const projects: Project[] = [
     title: "Signet Wallet",
     status: "In Development",
     brand: "signet",
-    tagline: "ERC-4337 smart account with modular plugins.",
+    tagline: "Specialized account system with modular controls.",
     description:
-      "Kernel v3 based smart account with ERC-7579 module support. Session keys, gas sponsorship, and batch operations, all backed by Signet threshold signing.",
+      "A modular account system built for session keys, sponsorship, and batch operations, backed by the Signet signing layer where strong account infrastructure matters.",
     links: [
       {
         label: "GitHub",
@@ -103,9 +103,9 @@ export const projects: Project[] = [
     title: "Signet Bundler",
     status: "In Development",
     brand: "signet",
-    tagline: "Minimal ERC-4337 bundler for UserOperations.",
+    tagline: "Lean transaction service for Signet accounts.",
     description:
-      "A lightweight bundler that submits UserOperations on behalf of Signet smart accounts. Minimal dependencies, fast inclusion, and built to pair with the Signet signing flow.",
+      "A lightweight service for moving Signet account operations through the system with minimal dependencies, fast inclusion, and a narrow operational surface.",
     links: [
       {
         label: "GitHub",
@@ -118,19 +118,19 @@ export const projects: Project[] = [
 export const contactLinks: ContactLink[] = [
   {
     title: "GitHub",
-    description: "Open source repos and protocol code",
+    description: "Product code, infrastructure, and experiments",
     href: "https://github.com/oleary-labs",
     icon: "github",
   },
   {
     title: "X",
-    description: "Updates and protocol notes",
+    description: "Build notes and product updates",
     href: "https://x.com/olearylabs",
     icon: "updates",
   },
   {
     title: "Signet Testnet",
-    description: "Try threshold signing today",
+    description: "Try the current signing system",
     href: "https://signet-testnet.olearylabs.com",
     icon: "signet",
   },
