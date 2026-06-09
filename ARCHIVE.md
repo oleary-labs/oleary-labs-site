@@ -223,3 +223,53 @@ _None._
   - 2026-06-09T03:13:37Z: Added Bracket project data, assets, homepage panel, and style-guide product guidance; starting verification (`app/page.tsx, data/site.ts, types/site.ts, app/style-guide/page.tsx, README.md, public/bracket/bracket-logo-transparent.svg, public/bracket/bracket-logomark-transparent.svg, public/bracket/bracket-logomark-with-background.svg, public/bracket/bracket-logomark-with-background.png, public/bracket/bracket-wordmark-transparent.svg, public/bracket/social-card.png`)
   - 2026-06-09T03:15:06Z: released completed files: app/page.tsx, data/site.ts, types/site.ts, app/style-guide/page.tsx, README.md, public/bracket/bracket-logo-transparent.svg, public/bracket/bracket-logomark-transparent.svg, public/bracket/bracket-logomark-with-background.svg, public/bracket/bracket-logomark-with-background.png, public/bracket/bracket-wordmark-transparent.svg, public/bracket/social-card.png (`app/page.tsx, data/site.ts, types/site.ts, app/style-guide/page.tsx, README.md, public/bracket/bracket-logo-transparent.svg, public/bracket/bracket-logomark-transparent.svg, public/bracket/bracket-logomark-with-background.svg, public/bracket/bracket-logomark-with-background.png, public/bracket/bracket-wordmark-transparent.svg, public/bracket/social-card.png`)
   - 2026-06-09T03:15:53Z: finished implementation (`app/page.tsx, data/site.ts, types/site.ts, app/style-guide/page.tsx, README.md, public/bracket/bracket-logo-transparent.svg, public/bracket/bracket-logomark-transparent.svg, public/bracket/bracket-logomark-with-background.svg, public/bracket/bracket-logomark-with-background.png, public/bracket/bracket-wordmark-transparent.svg, public/bracket/social-card.png`)
+
+## Completed 2026-06-09T03:36:14Z - `readable-style-overhaul`
+
+- Agent: Codex [7f8b1274-cffc-4245-a7cd-6cec4a504e2a]
+- Started: 2026-06-09T03:27:19Z
+- Last check-in: 2026-06-09T03:36:14Z
+- Completed: 2026-06-09T03:36:14Z
+- Goal: Complete readability-first style overhaul from the ground up
+- Final progress: finished implementation
+- Planned paths:
+  - `app/globals.css`
+  - `app/page.tsx`
+  - `app/style-guide/page.tsx`
+  - `components/site-header.tsx`
+  - `components/site-footer.tsx`
+  - `components/section-heading.tsx`
+  - `components/signet-threshold.tsx`
+  - `components/brand-logo.tsx`
+  - `components/ui/button.tsx`
+  - `components/ui/card.tsx`
+  - `components/ui/badge.tsx`
+  - `data/style-guide.ts`
+  - `data/site.ts`
+  - `types/style-guide.ts`
+- Completed paths:
+  - `app/globals.css`
+  - `app/page.tsx`
+  - `app/style-guide/page.tsx`
+  - `components/site-header.tsx`
+  - `components/site-footer.tsx`
+  - `components/section-heading.tsx`
+  - `components/signet-threshold.tsx`
+  - `components/brand-logo.tsx`
+  - `components/ui/button.tsx`
+  - `components/ui/card.tsx`
+  - `components/ui/badge.tsx`
+  - `data/style-guide.ts`
+  - `data/site.ts`
+  - `types/style-guide.ts`
+- Checked-out paths at completion:
+_None._
+- Queued paths at completion:
+_None._
+- Bumped paths at completion:
+_None._
+- Recent check-ins:
+  - 2026-06-09T03:27:19Z: checkout requested (`app/globals.css, app/page.tsx, app/style-guide/page.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/brand-logo.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts, data/site.ts, types/style-guide.ts`)
+  - 2026-06-09T03:32:25Z: Rebuilt global styles, homepage, shared chrome, UI primitives, and style guide around a readability-first visual system (`app/globals.css, app/page.tsx, app/style-guide/page.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts`)
+  - 2026-06-09T03:34:43Z: released completed files: app/globals.css, app/page.tsx, app/style-guide/page.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/brand-logo.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts, data/site.ts, types/style-guide.ts (`app/globals.css, app/page.tsx, app/style-guide/page.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/brand-logo.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts, data/site.ts, types/style-guide.ts`)
+  - 2026-06-09T03:36:14Z: finished implementation (`app/globals.css, app/page.tsx, app/style-guide/page.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/brand-logo.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts, data/site.ts, types/style-guide.ts`)
