@@ -62,13 +62,10 @@ export default function HomePage() {
               <div className="hero-record-body">
                 <p className="hero-kicker">O&apos;Leary Labs / protocol systems</p>
                 <h1 className="hero-brief-title">
-                  Signet first. Bracket alongside it. Systems work with a low
-                  tolerance for loose ends.
+                  A team that works.
                 </h1>
                 <p className="hero-copy">
-                  We build signing infrastructure, account workflows, and
-                  operations surfaces for teams that need the technical layer to
-                  read cleanly under pressure.
+                  We build infrastructure for projects that need their technical layer to hold up under pressure.
                 </p>
                 <div className="hero-actions">
                   <Button asChild size="lg">
