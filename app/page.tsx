@@ -12,9 +12,9 @@ import {
   Trophy,
   Users,
 } from "lucide-react"
-import type { CSSProperties } from "react"
 
 import { BrandLogo } from "@/components/brand-logo"
+import { ProjectRotator } from "@/components/project-rotator"
 import { SectionHeading } from "@/components/section-heading"
 import { SignetThreshold } from "@/components/signet-threshold"
 import { SiteFooter } from "@/components/site-footer"
@@ -43,44 +43,12 @@ const bracketRows = [
   { label: "Results", icon: Trophy },
 ]
 
-const projectBannerTone: Record<string, string> = {
-  Signet: "featured",
-  Bracket: "bracket",
-  "Signet Wallet": "wallet",
-  "Signet Bundler": "bundler",
-}
-
-function getProjectMark(project: Project) {
-  return project.brand === "bracket"
-    ? "/bracket/bracket-logomark-transparent.svg"
-    : "/logo-mark.svg"
-}
-
-function getProjectRole(project: Project) {
-  if (project.brand === "bracket") {
-    return "Operations software"
-  }
-
-  if (project.featured) {
-    return "Primary infrastructure"
-  }
-
-  return "Supporting system"
-}
-
-function getProjectCardClass(project: Project) {
-  return [
-    "banner-project-card",
-    project.brand,
-    projectBannerTone[project.title] ?? "",
-  ]
-    .filter(Boolean)
-    .join(" ")
-}
-
 export default function HomePage() {
   const featuredProject = projects.find((project) => project.featured)
   const bracketProject = projects.find((project) => project.brand === "bracket")
+  const heroProjects = [featuredProject, bracketProject].filter(
+    (project): project is Project => Boolean(project),
+  )
   const supportingProjects = projects.filter(
     (project) => !project.featured && project.brand !== "bracket",
   )
@@ -120,77 +88,7 @@ export default function HomePage() {
               </div>
             </article>
 
-            <aside
-              className="hero-project-banner fade-up"
-              aria-label="Rotating list of current projects"
-            >
-              <div className="project-banner-topline">
-                <span>Working on</span>
-                <span>{projects.length} active tracks</span>
-              </div>
-              <div
-                className="project-banner-stage"
-                style={
-                  {
-                    "--project-cycle": `${projects.length * 6}s`,
-                  } as CSSProperties
-                }
-              >
-                {projects.map((project, index) => (
-                  <a
-                    className={getProjectCardClass(project)}
-                    href={project.links[0]?.href ?? "#projects"}
-                    key={project.title}
-                    style={
-                      {
-                        "--project-index": index,
-                      } as CSSProperties
-                    }
-                  >
-                    <span className="banner-project-card-glow" aria-hidden="true" />
-                    <span className="banner-project-card-top">
-                      <span className="banner-project-mark">
-                        <img src={getProjectMark(project)} alt="" />
-                      </span>
-                      <Badge variant={project.featured ? "success" : "default"}>
-                        {project.status}
-                      </Badge>
-                    </span>
-                    <span className="banner-project-card-body">
-                      <span className="banner-project-role">
-                        {getProjectRole(project)}
-                      </span>
-                      <strong>{project.title}</strong>
-                      <span>{project.tagline}</span>
-                    </span>
-                    <span className="banner-project-card-foot">
-                      <span>
-                        {String(index + 1).padStart(2, "0")} /{" "}
-                        {String(projects.length).padStart(2, "0")}
-                      </span>
-                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                    </span>
-                  </a>
-                ))}
-              </div>
-              <div className="project-banner-rail" aria-hidden="true">
-                {projects.map((project, index) => (
-                  <span
-                    key={project.title}
-                    style={
-                      {
-                        "--project-cycle": `${projects.length * 6}s`,
-                        "--project-index": index,
-                      } as CSSProperties
-                    }
-                  />
-                ))}
-              </div>
-              <p className="hero-status">
-                <span className="status-dot" />
-                Rotating through current work
-              </p>
-            </aside>
+            <ProjectRotator projects={heroProjects} />
           </div>
         </section>
 
