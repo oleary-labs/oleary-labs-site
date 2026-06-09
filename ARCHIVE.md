@@ -366,3 +366,47 @@ _None._
   - 2026-06-09T03:55:30Z: Renamed light project surfaces and removed inverted headings (`app/globals.css, app/page.tsx, app/style-guide/page.tsx`)
   - 2026-06-09T03:56:33Z: released completed files: app/globals.css, app/page.tsx, app/style-guide/page.tsx, components/site-header.tsx, components/site-footer.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts (`app/globals.css, app/page.tsx, app/style-guide/page.tsx, components/site-header.tsx, components/site-footer.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts`)
   - 2026-06-09T03:57:00Z: finished implementation (`app/globals.css, app/page.tsx, app/style-guide/page.tsx, components/site-header.tsx, components/site-footer.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts`)
+
+## Completed 2026-06-09T04:11:27Z - `luxury-depth-pass`
+
+- Agent: Codex [bdfb7481-7be6-4f1e-9ed8-e65921bf4c8b]
+- Started: 2026-06-09T04:05:30Z
+- Last check-in: 2026-06-09T04:11:27Z
+- Completed: 2026-06-09T04:11:27Z
+- Goal: Reduce white-heavy styling and add more distinctive luxury depth
+- Final progress: finished implementation
+- Planned paths:
+  - `app/globals.css`
+  - `app/page.tsx`
+  - `app/style-guide/page.tsx`
+  - `app/layout.tsx`
+  - `components/site-header.tsx`
+  - `components/site-footer.tsx`
+  - `components/signet-threshold.tsx`
+  - `components/ui/button.tsx`
+  - `components/ui/card.tsx`
+  - `components/ui/badge.tsx`
+  - `data/style-guide.ts`
+- Completed paths:
+  - `app/globals.css`
+  - `app/page.tsx`
+  - `app/style-guide/page.tsx`
+  - `app/layout.tsx`
+  - `components/site-header.tsx`
+  - `components/site-footer.tsx`
+  - `components/signet-threshold.tsx`
+  - `components/ui/button.tsx`
+  - `components/ui/card.tsx`
+  - `components/ui/badge.tsx`
+  - `data/style-guide.ts`
+- Checked-out paths at completion:
+_None._
+- Queued paths at completion:
+_None._
+- Bumped paths at completion:
+_None._
+- Recent check-ins:
+  - 2026-06-09T04:05:30Z: checkout requested (`app/globals.css, app/page.tsx, app/style-guide/page.tsx, app/layout.tsx, components/site-header.tsx, components/site-footer.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts`)
+  - 2026-06-09T04:08:59Z: Applied smoked neutral palette, stronger typography, and muted surfaces (`app/globals.css, app/style-guide/page.tsx, app/layout.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts`)
+  - 2026-06-09T04:10:55Z: released completed files: app/globals.css, app/page.tsx, app/style-guide/page.tsx, app/layout.tsx, components/site-header.tsx, components/site-footer.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts (`app/globals.css, app/page.tsx, app/style-guide/page.tsx, app/layout.tsx, components/site-header.tsx, components/site-footer.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts`)
+  - 2026-06-09T04:11:27Z: finished implementation (`app/globals.css, app/page.tsx, app/style-guide/page.tsx, app/layout.tsx, components/site-header.tsx, components/site-footer.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts`)
