@@ -436,3 +436,31 @@ _None._
   - 2026-06-09T04:20:39Z: Replaced abstract hero headline and reduced hero type scale (`app/page.tsx, app/globals.css`)
   - 2026-06-09T04:21:31Z: released completed files: app/page.tsx, app/globals.css (`app/page.tsx, app/globals.css`)
   - 2026-06-09T04:22:04Z: finished implementation (`app/page.tsx, app/globals.css`)
+
+## Completed 2026-06-09T04:27:02Z - `initial-view-redesign`
+
+- Agent: Codex [b85e2f70-4bbe-4785-a698-a504cd98d483]
+- Started: 2026-06-09T04:23:55Z
+- Last check-in: 2026-06-09T04:27:02Z
+- Completed: 2026-06-09T04:27:02Z
+- Goal: Rework initial view away from hero-title layout and remove public style guide tab
+- Final progress: finished implementation
+- Planned paths:
+  - `app/page.tsx`
+  - `app/globals.css`
+  - `data/site.ts`
+- Completed paths:
+  - `app/page.tsx`
+  - `app/globals.css`
+  - `data/site.ts`
+- Checked-out paths at completion:
+_None._
+- Queued paths at completion:
+_None._
+- Bumped paths at completion:
+_None._
+- Recent check-ins:
+  - 2026-06-09T04:23:55Z: checkout requested (`app/page.tsx, app/globals.css, data/site.ts`)
+  - 2026-06-09T04:25:51Z: Replaced hero title layout with operating brief and removed style guide nav item (`app/page.tsx, app/globals.css, data/site.ts`)
+  - 2026-06-09T04:26:34Z: released completed files: app/page.tsx, app/globals.css, data/site.ts (`app/page.tsx, app/globals.css, data/site.ts`)
+  - 2026-06-09T04:27:02Z: finished implementation (`app/page.tsx, app/globals.css, data/site.ts`)
