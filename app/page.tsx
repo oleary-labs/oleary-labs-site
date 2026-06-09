@@ -1,4 +1,3 @@
-import Image from "next/image"
 import {
   ArrowRight,
   Github,
@@ -55,44 +54,73 @@ export default function HomePage() {
       <SiteHeader />
       <main>
         <section className="hero">
-          <div className="container hero-layout">
-            <div className="fade-up">
-              <BrandLogo className="brand-frame" imageClassName="h-12 w-auto" />
-              <p className="hero-kicker">Protocol systems studio</p>
-              <h1 className="hero-title">
-                Protocol tools for teams that need the details to hold.
-              </h1>
-              <p className="hero-copy">
-                O&apos;Leary Labs builds Signet, Bracket, and the systems around
-                them: signing infrastructure, account workflows, and operations
-                surfaces for work that cannot afford loose ends.
-              </p>
-              <div className="hero-actions">
-                <Button asChild size="lg">
-                  <a href="#projects">
-                    View projects
-                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                  </a>
-                </Button>
-                <Button asChild variant="outline" size="lg">
-                  <a href="#contact">
-                    Start a conversation
-                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                  </a>
-                </Button>
+          <div className="container hero-brief">
+            <article className="hero-record fade-up">
+              <div className="hero-record-mark">
+                <BrandLogo className="brand-frame" imageClassName="h-12 w-auto" />
               </div>
-            </div>
+              <div className="hero-record-body">
+                <p className="hero-kicker">O&apos;Leary Labs / protocol systems</p>
+                <h1 className="hero-brief-title">
+                  Signet first. Bracket alongside it. Systems work with a low
+                  tolerance for loose ends.
+                </h1>
+                <p className="hero-copy">
+                  We build signing infrastructure, account workflows, and
+                  operations surfaces for teams that need the technical layer to
+                  read cleanly under pressure.
+                </p>
+                <div className="hero-actions">
+                  <Button asChild size="lg">
+                    <a href="#projects">
+                      View projects
+                      <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" size="lg">
+                    <a href="#contact">
+                      Start a conversation
+                      <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </article>
 
-            <aside className="hero-panel fade-up" aria-label="Network summary">
-              <Image
-                src="/oleary_labs_logo_kit/logomark_transparent.png"
-                alt=""
-                width={641}
-                height={659}
-                className="mx-auto h-auto w-44"
-                priority
-              />
-              <dl className="metric-row">
+            <aside className="hero-docket fade-up" aria-label="Current project docket">
+              <div className="docket-topline">
+                <span>Current docket</span>
+                <span>O&apos;L Labs</span>
+              </div>
+              <div className="docket-list">
+                {featuredProject ? (
+                  <a
+                    className="docket-card primary"
+                    href={featuredProject.links[0]?.href ?? "#projects"}
+                  >
+                    <span className="docket-index">01</span>
+                    <span>
+                      <strong>{featuredProject.title}</strong>
+                      <span>{featuredProject.tagline}</span>
+                    </span>
+                    <Badge variant="success">{featuredProject.status}</Badge>
+                  </a>
+                ) : null}
+                {bracketProject ? (
+                  <a
+                    className="docket-card"
+                    href={bracketProject.links[0]?.href ?? "#projects"}
+                  >
+                    <span className="docket-index">02</span>
+                    <span>
+                      <strong>{bracketProject.title}</strong>
+                      <span>{bracketProject.tagline}</span>
+                    </span>
+                    <Badge>{bracketProject.status}</Badge>
+                  </a>
+                ) : null}
+              </div>
+              <dl className="hero-metrics">
                 {metrics.map((metric) => (
                   <div key={metric.label}>
                     <dt>{metric.label}</dt>

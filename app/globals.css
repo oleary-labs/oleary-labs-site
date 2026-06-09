@@ -259,8 +259,8 @@
 
   .hero {
     position: relative;
-    min-height: 760px;
-    padding: 132px 0 72px;
+    min-height: 720px;
+    padding: 128px 0 76px;
     overflow: hidden;
     border-bottom: 1px solid rgba(23, 18, 15, 0.14);
     background:
@@ -301,11 +301,39 @@
     gap: 44px;
   }
 
+  .hero-brief {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 26px;
+  }
+
+  .hero-record {
+    display: grid;
+    gap: 28px;
+    border: 1px solid rgba(23, 18, 15, 0.16);
+    border-radius: 2px;
+    background:
+      linear-gradient(180deg, rgba(255, 253, 247, 0.82), rgba(248, 244, 234, 0.82)),
+      var(--surface);
+    box-shadow:
+      inset 0 3px 0 rgba(185, 134, 63, 0.46),
+      0 24px 76px rgba(23, 18, 15, 0.1);
+    padding: 24px;
+  }
+
+  .hero-record-mark {
+    display: flex;
+  }
+
+  .hero-record-body {
+    max-width: 760px;
+  }
+
   .hero-kicker {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    margin-top: 30px;
     color: var(--red);
     font-size: 13px;
     font-weight: 800;
@@ -328,11 +356,20 @@
     line-height: 0.99;
   }
 
+  .hero-brief-title {
+    margin-top: 18px;
+    max-width: 760px;
+    color: var(--ink);
+    font-size: 46px;
+    font-weight: 720;
+    line-height: 1.05;
+  }
+
   .hero-copy {
-    margin-top: 28px;
+    margin-top: 18px;
     max-width: 660px;
     color: var(--ink-soft);
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.75;
   }
 
@@ -341,6 +378,105 @@
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 36px;
+  }
+
+  .hero-docket {
+    border: 1px solid rgba(23, 18, 15, 0.2);
+    border-radius: 2px;
+    background:
+      linear-gradient(180deg, rgba(47, 41, 36, 0.94), rgba(33, 29, 25, 0.96)),
+      var(--graphite);
+    box-shadow: 0 24px 76px rgba(23, 18, 15, 0.18);
+    color: var(--white-soft);
+    padding: 20px;
+  }
+
+  .docket-topline {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid rgba(224, 197, 141, 0.26);
+    color: rgba(245, 241, 232, 0.66);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 12px;
+    font-weight: 800;
+    padding-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .docket-list {
+    display: grid;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .docket-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 14px;
+    border: 1px solid rgba(224, 197, 141, 0.18);
+    border-radius: 2px;
+    background: rgba(245, 241, 232, 0.06);
+    padding: 14px;
+    transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+  }
+
+  .docket-card:hover {
+    border-color: rgba(224, 197, 141, 0.46);
+    background: rgba(245, 241, 232, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .docket-card.primary {
+    box-shadow: inset 3px 0 0 var(--gold);
+  }
+
+  .docket-index {
+    color: var(--gold-soft);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .docket-card strong {
+    display: block;
+    color: var(--white);
+    font-size: 18px;
+  }
+
+  .docket-card span span {
+    display: block;
+    margin-top: 4px;
+    color: rgba(245, 241, 232, 0.62);
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .hero-metrics {
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .hero-metrics div {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    border-top: 1px solid rgba(224, 197, 141, 0.16);
+    padding-top: 10px;
+  }
+
+  .hero-metrics dt {
+    color: rgba(245, 241, 232, 0.62);
+    font-size: 13px;
+  }
+
+  .hero-metrics dd {
+    color: var(--gold-soft);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 13px;
+    margin: 0;
   }
 
   .hero-panel {
@@ -397,6 +533,10 @@
     margin-top: 18px;
     color: var(--ink-soft);
     font-size: 14px;
+  }
+
+  .hero-docket .hero-status {
+    color: rgba(245, 241, 232, 0.66);
   }
 
   .status-dot {
@@ -976,7 +1116,7 @@
     display: flex;
   }
 
-  .hero-layout,
+  .hero-brief,
   .about-grid,
   .contact-layout {
     grid-template-columns: 1fr 0.9fr;
@@ -1037,8 +1177,22 @@
     width: 420px;
   }
 
-  .hero-title {
-    font-size: 43px;
+  .hero-record,
+  .hero-docket {
+    padding: 18px;
+  }
+
+  .hero-brief-title {
+    font-size: 34px;
+  }
+
+  .docket-card {
+    grid-template-columns: auto 1fr;
+  }
+
+  .docket-card > div,
+  .docket-card > span:last-child {
+    grid-column: 2;
   }
 
   .section {
