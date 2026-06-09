@@ -2,6 +2,7 @@ import Image from "next/image"
 import {
   ArrowRight,
   Github,
+  ListChecks,
   Mail,
   MessageCircle,
   Network,
@@ -9,6 +10,9 @@ import {
   Rocket,
   Shield,
   ShieldCheck,
+  Swords,
+  Trophy,
+  Users,
 } from "lucide-react"
 
 import { BrandLogo } from "@/components/brand-logo"
@@ -44,7 +48,10 @@ const contactIcons: Record<ContactLink["icon"], typeof Github> = {
 
 export default function HomePage() {
   const featuredProject = projects.find((project) => project.featured)
-  const supportingProjects = projects.filter((project) => !project.featured)
+  const bracketProject = projects.find((project) => project.brand === "bracket")
+  const supportingProjects = projects.filter(
+    (project) => !project.featured && project.brand !== "bracket",
+  )
 
   return (
     <div className="luxury-page">
@@ -233,6 +240,119 @@ export default function HomePage() {
                       </div>
                     </div>
                     <SignetThreshold className="m-4 lg:m-5" />
+                  </div>
+                </Card>
+              ) : null}
+
+              {bracketProject ? (
+                <Card className="overflow-hidden border-[#f11225]/40 bg-[#07080a] text-[#f7f8fa] shadow-[0_28px_86px_rgba(0,0,0,0.38)]">
+                  <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
+                    <div className="relative p-6 sm:p-8">
+                      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#980611] via-[#ff3d4b] to-[#d7dbe0]" />
+                      <Badge className="border-[#ff3d4b]/40 bg-[#f11225]/12 text-[#ff3d4b]">
+                        {bracketProject.status}
+                      </Badge>
+                      <div className="mt-5 flex items-center gap-4">
+                        <img
+                          src="/bracket/bracket-logomark-transparent.svg"
+                          alt=""
+                          className="h-14 w-14 shrink-0"
+                        />
+                        <img
+                          src="/bracket/bracket-wordmark-transparent.svg"
+                          alt="Bracket"
+                          className="h-8 w-auto max-w-44"
+                        />
+                      </div>
+                      <h3 className="mt-6 text-3xl font-semibold text-[#f7f8fa]">
+                        {bracketProject.tagline}
+                      </h3>
+                      <p className="mt-5 text-sm leading-7 text-[#b7bdc5] sm:text-base">
+                        {bracketProject.description}
+                      </p>
+                      <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                        {bracketProject.proofPoints?.map((point) => (
+                          <div
+                            key={point}
+                            className="rounded border border-[#d7dbe0]/16 bg-[#151922] p-3"
+                          >
+                            <ListChecks
+                              className="mb-2 h-4 w-4 text-[#ff3d4b]"
+                              aria-hidden="true"
+                            />
+                            <p className="text-xs font-semibold uppercase text-[#edf0f3]">
+                              {point}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-7 flex flex-wrap gap-3">
+                        {bracketProject.links.map((link) => (
+                          <Button
+                            key={link.href}
+                            asChild
+                            className="border-[#ff3d4b]/55 bg-[#f11225] text-white hover:bg-[#d30718]"
+                          >
+                            <a href={link.href}>
+                              {link.label}
+                              <ArrowRight
+                                className="ml-2 h-4 w-4"
+                                aria-hidden="true"
+                              />
+                            </a>
+                          </Button>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="tech-panel relative min-h-80 overflow-hidden border-t border-[#d7dbe0]/12 bg-[#0b0d10] p-5 lg:border-l lg:border-t-0">
+                      <div className="absolute inset-x-6 top-8 h-px bg-[#f11225]" />
+                      <div className="absolute right-7 top-8 h-10 w-24 bg-[#f11225] [clip-path:polygon(18%_0,100%_0,82%_100%,0_100%)]" />
+                      <div className="relative mt-14 grid gap-5">
+                        <div className="rounded border border-[#d7dbe0]/20 bg-[#111419] p-5">
+                          <div className="flex items-center gap-4">
+                            <img
+                              src="/bracket/bracket-logomark-with-background.svg"
+                              alt=""
+                              className="h-16 w-16 rounded"
+                            />
+                            <div>
+                              <p className="text-xs font-semibold uppercase text-[#ff3d4b]">
+                                Redline tournament ops
+                              </p>
+                              <p className="mt-2 text-sm leading-6 text-[#d7dbe0]">
+                                Built for public discovery, registration flow,
+                                match operations, and fast event-day reads.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="grid gap-3">
+                          {[
+                            { label: "Discovery", icon: Users },
+                            { label: "Pairings", icon: Swords },
+                            { label: "Results", icon: Trophy },
+                          ].map((item) => {
+                            const Icon = item.icon
+
+                            return (
+                              <div
+                                key={item.label}
+                                className="flex items-center justify-between rounded border border-[#d7dbe0]/14 bg-black/35 px-4 py-3"
+                              >
+                                <span className="flex items-center gap-3 text-sm font-semibold uppercase text-[#edf0f3]">
+                                  <Icon
+                                    className="h-4 w-4 text-[#ff3d4b]"
+                                    aria-hidden="true"
+                                  />
+                                  {item.label}
+                                </span>
+                                <span className="h-2 w-12 bg-[#f11225]" />
+                              </div>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </Card>
               ) : null}

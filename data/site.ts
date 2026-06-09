@@ -48,6 +48,7 @@ export const projects: Project[] = [
   {
     title: "Signet",
     status: "Testnet Live",
+    brand: "signet",
     tagline:
       "Threshold signing for social-login key management.",
     description:
@@ -70,8 +71,25 @@ export const projects: Project[] = [
     ],
   },
   {
+    title: "Bracket",
+    status: "Public Board",
+    brand: "bracket",
+    tagline: "Tournament operations for the heat of event day.",
+    description:
+      "Bracket gives organizers one place to publish public events, manage divisions, run check-in, generate pairings, operate timers, and report results. It brings a redline broadcast-command-center feel to the practical work of running competitive events.",
+    proofPoints: ["Publish events", "Manage divisions", "Generate pairings"],
+    links: [
+      {
+        label: "Open Bracket",
+        href: "https://bracket.sh",
+        kind: "primary",
+      },
+    ],
+  },
+  {
     title: "Signet Wallet",
     status: "In Development",
+    brand: "signet",
     tagline: "ERC-4337 smart account with modular plugins.",
     description:
       "Kernel v3 based smart account with ERC-7579 module support. Session keys, gas sponsorship, and batch operations, all backed by Signet threshold signing.",
@@ -85,6 +103,7 @@ export const projects: Project[] = [
   {
     title: "Signet Bundler",
     status: "In Development",
+    brand: "signet",
     tagline: "Minimal ERC-4337 bundler for UserOperations.",
     description:
       "A lightweight bundler that submits UserOperations on behalf of Signet smart accounts. Minimal dependencies, fast inclusion, and built to pair with the Signet signing flow.",

@@ -18,10 +18,12 @@ export type ProjectLink = {
 
 export type Project = {
   title: string
-  status: "Testnet Live" | "In Development"
+  status: string
   tagline: string
   description: string
+  brand: "signet" | "bracket"
   featured?: boolean
+  proofPoints?: string[]
   links: ProjectLink[]
 }
 

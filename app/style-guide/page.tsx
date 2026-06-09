@@ -88,6 +88,30 @@ export default function StyleGuidePage() {
                 </CardContent>
               </Card>
             </div>
+            <Card className="mt-5 overflow-hidden border-[#f11225]/28 bg-[#07080a] text-[#f7f8fa]">
+              <div className="grid gap-5 p-6 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
+                <div className="rounded-lg border border-[#d7dbe0]/16 bg-[#111419] p-5">
+                  <img
+                    src="/bracket/bracket-logo-transparent.svg"
+                    alt="Bracket"
+                    className="h-auto w-full max-w-md"
+                  />
+                </div>
+                <div>
+                  <Badge className="border-[#ff3d4b]/40 bg-[#f11225]/12 text-[#ff3d4b]">
+                    Umbrella product system
+                  </Badge>
+                  <h3 className="mt-4 text-2xl font-semibold text-[#f7f8fa]">
+                    Bracket uses a redline tournament-ops voice.
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-[#b7bdc5]">
+                    Keep Bracket components black, silver, and action red with
+                    squared geometry. It should feel like a broadcast command
+                    center inside O&apos;Leary Labs, not a luxury sub-brand.
+                  </p>
+                </div>
+              </div>
+            </Card>
           </div>
         </section>
 
