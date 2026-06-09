@@ -40,7 +40,7 @@ export function BrandLogo({
     return (
       <Link
         href="/"
-        className={cn("inline-flex min-h-10 items-center gap-3", className)}
+        className={cn("inline-flex min-h-10 items-center gap-2.5", className)}
         aria-label="O'Leary Labs home"
       >
         <Image
