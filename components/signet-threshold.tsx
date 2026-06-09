@@ -12,7 +12,7 @@ export function SignetThreshold({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "relative flex min-h-72 flex-col items-center justify-center overflow-hidden rounded-[2px] border border-[rgba(8,8,8,0.12)] bg-white p-6 text-[var(--ink)] shadow-[inset_0_3px_0_rgba(200,148,63,0.42),0_18px_44px_rgba(8,8,8,0.045)]",
+        "relative flex min-h-72 flex-col items-center justify-center overflow-hidden rounded-[2px] border border-[rgba(23,18,15,0.16)] bg-[var(--surface)] p-6 text-[var(--ink)] shadow-[inset_0_3px_0_rgba(185,134,63,0.44),0_18px_44px_rgba(23,18,15,0.08)]",
         className,
       )}
       aria-label="Signet threshold signing visual, 3 of 5 nodes active"
@@ -25,15 +25,15 @@ export function SignetThreshold({ className }: { className?: string }) {
             className={cn(
               "relative flex aspect-square items-center justify-center rounded-[2px] border font-mono text-xs font-bold shadow-[inset_0_-2px_0_rgba(8,8,8,0.04)]",
               node.active
-                ? "border-[var(--gold)] bg-[rgba(200,148,63,0.1)] text-[var(--gold-deep)]"
-                : "border-[rgba(8,8,8,0.12)] bg-[var(--white-mist)] text-[var(--ink-soft)]",
+                ? "border-[var(--gold)] bg-[rgba(185,134,63,0.14)] text-[var(--gold-deep)]"
+                : "border-[rgba(23,18,15,0.14)] bg-[var(--white-mist)] text-[var(--ink-soft)]",
             )}
           >
             {node.label}
           </div>
         ))}
       </div>
-      <div className="mt-6 rounded-[2px] border border-[rgba(8,8,8,0.12)] bg-white px-4 py-2 font-mono text-sm text-[var(--ink-soft)] shadow-[inset_0_-2px_0_rgba(36,95,69,0.14)]">
+      <div className="mt-6 rounded-[2px] border border-[rgba(23,18,15,0.16)] bg-[var(--surface-raised)] px-4 py-2 font-mono text-sm text-[var(--ink-soft)] shadow-[inset_0_-2px_0_rgba(31,83,63,0.16)]">
         threshold: <span className="text-[var(--green)]">3</span> of 5
       </div>
     </div>

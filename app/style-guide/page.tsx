@@ -16,9 +16,9 @@ export default function StyleGuidePage() {
             <h1 className="hero-title">Readable first. Stylized with intent.</h1>
             <p className="hero-copy">
               The visual system should make complex infrastructure feel easier
-              to approach. White space, sharp definition, editorial typography,
-              restrained brand color, and fewer competing surfaces do the heavy
-              lifting.
+              to approach without feeling sterile. Smoked neutrals, stronger
+              oldstyle typography, restrained brass, and controlled graphite
+              surfaces carry the luxury-tech balance.
             </p>
           </div>
         </section>
@@ -60,7 +60,7 @@ export default function StyleGuidePage() {
             <SectionHeading
               eyebrow="Palette"
               title="A narrow palette with stronger hierarchy."
-              description="White carries the site architecture. Red, gold, graphite, and green create hierarchy, product context, and technical confidence without turning into heavy panels."
+              description="Smoked pearl carries the site architecture. Oxblood, aged brass, graphite, and green create hierarchy, product context, and technical confidence without turning the whole site dark."
             />
             <div className="guide-grid five">
               {brandColors.map((color) => (
