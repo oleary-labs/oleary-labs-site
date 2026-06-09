@@ -464,3 +464,31 @@ _None._
   - 2026-06-09T04:25:51Z: Replaced hero title layout with operating brief and removed style guide nav item (`app/page.tsx, app/globals.css, data/site.ts`)
   - 2026-06-09T04:26:34Z: released completed files: app/page.tsx, app/globals.css, data/site.ts (`app/page.tsx, app/globals.css, data/site.ts`)
   - 2026-06-09T04:27:02Z: finished implementation (`app/page.tsx, app/globals.css, data/site.ts`)
+
+## Completed 2026-06-09T18:58:12Z - `broader-capability-messaging`
+
+- Agent: Codex [85dd3cb4-01cd-4337-874e-b72e8b053fd9]
+- Started: 2026-06-09T18:55:25Z
+- Last check-in: 2026-06-09T18:58:12Z
+- Completed: 2026-06-09T18:58:12Z
+- Goal: Broaden public messaging from blockchain-specific to general engineering capability
+- Final progress: finished implementation
+- Planned paths:
+  - `app/page.tsx`
+  - `data/site.ts`
+  - `app/layout.tsx`
+- Completed paths:
+  - `app/page.tsx`
+  - `data/site.ts`
+  - `app/layout.tsx`
+- Checked-out paths at completion:
+_None._
+- Queued paths at completion:
+_None._
+- Bumped paths at completion:
+_None._
+- Recent check-ins:
+  - 2026-06-09T18:55:25Z: checkout requested (`app/page.tsx, data/site.ts, app/layout.tsx`)
+  - 2026-06-09T18:56:47Z: Updated public messaging toward broader software capability (`app/page.tsx, data/site.ts, app/layout.tsx`)
+  - 2026-06-09T18:57:43Z: released completed files: app/page.tsx, data/site.ts, app/layout.tsx (`app/page.tsx, data/site.ts, app/layout.tsx`)
+  - 2026-06-09T18:58:12Z: finished implementation (`app/page.tsx, data/site.ts, app/layout.tsx`)
