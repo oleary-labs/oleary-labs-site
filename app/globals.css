@@ -380,23 +380,37 @@
     margin-top: 36px;
   }
 
-  .hero-docket {
+  .hero-project-banner {
+    position: relative;
+    overflow: hidden;
     border: 1px solid rgba(23, 18, 15, 0.2);
     border-radius: 2px;
     background:
-      linear-gradient(180deg, rgba(47, 41, 36, 0.94), rgba(33, 29, 25, 0.96)),
+      linear-gradient(180deg, rgba(47, 41, 36, 0.94), rgba(33, 29, 25, 0.97)),
       var(--graphite);
-    box-shadow: 0 24px 76px rgba(23, 18, 15, 0.18);
+    box-shadow: 0 24px 76px rgba(23, 18, 15, 0.2);
     color: var(--white-soft);
     padding: 20px;
   }
 
-  .docket-topline {
+  .hero-project-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(224, 197, 141, 0.08), transparent 32%),
+      repeating-linear-gradient(135deg, rgba(245, 241, 232, 0.045) 0 1px, transparent 1px 18px);
+    pointer-events: none;
+  }
+
+  .project-banner-topline {
+    position: relative;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     gap: 16px;
     border-bottom: 1px solid rgba(224, 197, 141, 0.26);
-    color: rgba(245, 241, 232, 0.66);
+    color: rgba(245, 241, 232, 0.68);
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     font-size: 12px;
     font-weight: 800;
@@ -404,79 +418,178 @@
     text-transform: uppercase;
   }
 
-  .docket-list {
-    display: grid;
-    gap: 12px;
-    margin-top: 16px;
+  .project-banner-stage {
+    position: relative;
+    z-index: 1;
+    min-height: 326px;
+    margin-top: 18px;
   }
 
-  .docket-card {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 14px;
-    border: 1px solid rgba(224, 197, 141, 0.18);
+  .banner-project-card {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    border: 1px solid rgba(224, 197, 141, 0.22);
     border-radius: 2px;
-    background: rgba(245, 241, 232, 0.06);
-    padding: 14px;
-    transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+    background:
+      linear-gradient(135deg, rgba(185, 134, 63, 0.2), transparent 36%),
+      linear-gradient(180deg, rgba(245, 241, 232, 0.08), rgba(245, 241, 232, 0.035));
+    box-shadow:
+      inset 0 3px 0 rgba(224, 197, 141, 0.38),
+      0 18px 46px rgba(8, 7, 6, 0.16);
+    color: var(--white-soft);
+    opacity: 0;
+    padding: 18px;
+    pointer-events: none;
+    transform: translateY(10px);
+    animation: project-card-rotation var(--project-cycle, 24s) ease-in-out infinite;
+    animation-delay: calc(var(--project-index) * 6s);
   }
 
-  .docket-card:hover {
-    border-color: rgba(224, 197, 141, 0.46);
+  .banner-project-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .banner-project-card-glow {
+    position: absolute;
+    inset: auto -42px -74px auto;
+    width: 210px;
+    height: 210px;
+    border-radius: 999px;
+    background: rgba(224, 197, 141, 0.22);
+    filter: blur(28px);
+    z-index: 0;
+  }
+
+  .banner-project-card.bracket {
+    border-color: rgba(214, 27, 40, 0.4);
+    background:
+      linear-gradient(135deg, rgba(214, 27, 40, 0.34), transparent 42%),
+      linear-gradient(180deg, rgba(245, 241, 232, 0.08), rgba(8, 7, 6, 0.16));
+    box-shadow:
+      inset 0 3px 0 var(--red-bright),
+      0 18px 46px rgba(8, 7, 6, 0.18);
+  }
+
+  .banner-project-card.wallet {
+    border-color: rgba(31, 83, 63, 0.5);
+    background:
+      linear-gradient(135deg, rgba(31, 83, 63, 0.34), transparent 42%),
+      linear-gradient(180deg, rgba(245, 241, 232, 0.08), rgba(8, 7, 6, 0.14));
+  }
+
+  .banner-project-card.bundler {
+    border-color: rgba(217, 221, 227, 0.3);
+    background:
+      linear-gradient(135deg, rgba(217, 221, 227, 0.16), transparent 42%),
+      linear-gradient(180deg, rgba(245, 241, 232, 0.07), rgba(8, 7, 6, 0.2));
+  }
+
+  .banner-project-card-top,
+  .banner-project-card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .banner-project-mark {
+    display: grid;
+    width: 62px;
+    height: 62px;
+    place-items: center;
+    border: 1px solid rgba(245, 241, 232, 0.18);
+    border-radius: 2px;
     background: rgba(245, 241, 232, 0.1);
-    transform: translateY(-2px);
+    padding: 10px;
   }
 
-  .docket-card.primary {
-    box-shadow: inset 3px 0 0 var(--gold);
+  .banner-project-card.bracket .banner-project-mark {
+    background: rgba(8, 7, 6, 0.22);
+    padding: 7px;
   }
 
-  .docket-index {
+  .banner-project-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .banner-project-card-body {
+    display: grid;
+    gap: 10px;
+  }
+
+  .banner-project-role {
     color: var(--gold-soft);
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     font-size: 12px;
     font-weight: 800;
+    text-transform: uppercase;
   }
 
-  .docket-card strong {
-    display: block;
+  .banner-project-card.bracket .banner-project-role {
+    color: #ffb5b5;
+  }
+
+  .banner-project-card.wallet .banner-project-role {
+    color: #add2ba;
+  }
+
+  .banner-project-card strong {
     color: var(--white);
-    font-size: 18px;
+    font-family:
+      "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+      Georgia, "Times New Roman", serif;
+    font-size: 38px;
+    font-weight: 720;
+    line-height: 1;
   }
 
-  .docket-card span span {
-    display: block;
-    margin-top: 4px;
+  .banner-project-card-body > span:last-child {
+    max-width: 320px;
+    color: rgba(245, 241, 232, 0.72);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .banner-project-card-foot {
+    border-top: 1px solid rgba(224, 197, 141, 0.18);
     color: rgba(245, 241, 232, 0.62);
-    font-size: 13px;
-    line-height: 1.45;
-  }
-
-  .hero-metrics {
-    display: grid;
-    gap: 10px;
-    margin-top: 18px;
-  }
-
-  .hero-metrics div {
-    display: flex;
-    justify-content: space-between;
-    gap: 18px;
-    border-top: 1px solid rgba(224, 197, 141, 0.16);
-    padding-top: 10px;
-  }
-
-  .hero-metrics dt {
-    color: rgba(245, 241, 232, 0.62);
-    font-size: 13px;
-  }
-
-  .hero-metrics dd {
-    color: var(--gold-soft);
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    font-size: 13px;
-    margin: 0;
+    font-size: 12px;
+    font-weight: 800;
+    padding-top: 12px;
+  }
+
+  .project-banner-rail {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .project-banner-rail span {
+    height: 3px;
+    background: rgba(245, 241, 232, 0.14);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .project-banner-rail span::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--gold), var(--red-bright));
+    transform: translateX(-100%);
+    animation: project-rail-rotation var(--project-cycle, 24s) linear infinite;
+    animation-delay: calc(var(--project-index) * 6s);
   }
 
   .hero-panel {
@@ -535,7 +648,7 @@
     font-size: 14px;
   }
 
-  .hero-docket .hero-status {
+  .hero-project-banner .hero-status {
     color: rgba(245, 241, 232, 0.66);
   }
 
@@ -1111,6 +1224,37 @@
   }
 }
 
+@keyframes project-card-rotation {
+  0%,
+  22% {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  28%,
+  100% {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes project-rail-rotation {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  22% {
+    transform: translateX(0);
+  }
+
+  28%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 @media (min-width: 768px) {
   .nav-links {
     display: flex;
@@ -1178,7 +1322,7 @@
   }
 
   .hero-record,
-  .hero-docket {
+  .hero-project-banner {
     padding: 18px;
   }
 
@@ -1186,13 +1330,16 @@
     font-size: 34px;
   }
 
-  .docket-card {
-    grid-template-columns: auto 1fr;
+  .project-banner-stage {
+    min-height: 346px;
   }
 
-  .docket-card > div,
-  .docket-card > span:last-child {
-    grid-column: 2;
+  .banner-project-card {
+    padding: 16px;
+  }
+
+  .banner-project-card strong {
+    font-size: 31px;
   }
 
   .section {
