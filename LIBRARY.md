@@ -62,12 +62,48 @@ Use the agent-work-coordinator skill or `scripts/coordinator.py` to edit this fi
             "types/style-guide.ts"
           ],
           "note": "checkout requested"
+        },
+        {
+          "at": "2026-06-09T03:32:25Z",
+          "bumped": [],
+          "checked_out": [
+            "app/globals.css",
+            "app/page.tsx",
+            "app/style-guide/page.tsx",
+            "components/site-header.tsx",
+            "components/site-footer.tsx",
+            "components/section-heading.tsx",
+            "components/signet-threshold.tsx",
+            "components/brand-logo.tsx",
+            "components/ui/button.tsx",
+            "components/ui/card.tsx",
+            "components/ui/badge.tsx",
+            "data/style-guide.ts",
+            "data/site.ts",
+            "types/style-guide.ts"
+          ],
+          "files": [
+            "app/globals.css",
+            "app/page.tsx",
+            "app/style-guide/page.tsx",
+            "components/site-header.tsx",
+            "components/site-footer.tsx",
+            "components/section-heading.tsx",
+            "components/signet-threshold.tsx",
+            "components/ui/button.tsx",
+            "components/ui/card.tsx",
+            "components/ui/badge.tsx",
+            "data/style-guide.ts"
+          ],
+          "note": "Rebuilt global styles, homepage, shared chrome, UI primitives, and style guide around a readability-first visual system",
+          "queued": [],
+          "remote_state": "up-to-date"
         }
       ],
       "completed_files": [],
       "goal": "Complete readability-first style overhaul from the ground up",
       "id": "readable-style-overhaul",
-      "last_checkin_at": "2026-06-09T03:27:19Z",
+      "last_checkin_at": "2026-06-09T03:32:25Z",
       "planned_files": [
         "app/globals.css",
         "app/page.tsx",
@@ -84,13 +120,14 @@ Use the agent-work-coordinator skill or `scripts/coordinator.py` to edit this fi
         "data/site.ts",
         "types/style-guide.ts"
       ],
-      "progress_note": "checkout requested",
+      "progress_note": "Rebuilt global styles, homepage, shared chrome, UI primitives, and style guide around a readability-first visual system",
       "queued": [],
-      "started_at": "2026-06-09T03:27:19Z"
+      "started_at": "2026-06-09T03:27:19Z",
+      "updated_at": "2026-06-09T03:32:25Z"
     }
   },
   "queues": {},
-  "updated_at": "2026-06-09T03:27:19Z",
+  "updated_at": "2026-06-09T03:32:25Z",
   "version": 1
 }
 agent-work-coordinator-state -->
@@ -101,9 +138,9 @@ agent-work-coordinator-state -->
 
 - Agent: Codex [7f8b1274-cffc-4245-a7cd-6cec4a504e2a]
 - Started: 2026-06-09T03:27:19Z
-- Last check-in: 2026-06-09T03:27:19Z
+- Last check-in: 2026-06-09T03:32:25Z
 - Goal: Complete readability-first style overhaul from the ground up
-- Progress: checkout requested
+- Progress: Rebuilt global styles, homepage, shared chrome, UI primitives, and style guide around a readability-first visual system
 - Planned paths:
   - `app/globals.css`
   - `app/page.tsx`
@@ -142,6 +179,7 @@ _None._
 _None._
 - Recent check-ins:
   - 2026-06-09T03:27:19Z: checkout requested (`app/globals.css, app/page.tsx, app/style-guide/page.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/brand-logo.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts, data/site.ts, types/style-guide.ts`)
+  - 2026-06-09T03:32:25Z: Rebuilt global styles, homepage, shared chrome, UI primitives, and style guide around a readability-first visual system (`app/globals.css, app/page.tsx, app/style-guide/page.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts`)
 
 ## File Checkouts
 
