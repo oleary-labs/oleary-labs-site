@@ -273,3 +273,28 @@ _None._
   - 2026-06-09T03:32:25Z: Rebuilt global styles, homepage, shared chrome, UI primitives, and style guide around a readability-first visual system (`app/globals.css, app/page.tsx, app/style-guide/page.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts`)
   - 2026-06-09T03:34:43Z: released completed files: app/globals.css, app/page.tsx, app/style-guide/page.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/brand-logo.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts, data/site.ts, types/style-guide.ts (`app/globals.css, app/page.tsx, app/style-guide/page.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/brand-logo.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts, data/site.ts, types/style-guide.ts`)
   - 2026-06-09T03:36:14Z: finished implementation (`app/globals.css, app/page.tsx, app/style-guide/page.tsx, components/site-header.tsx, components/site-footer.tsx, components/section-heading.tsx, components/signet-threshold.tsx, components/brand-logo.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts, data/site.ts, types/style-guide.ts`)
+
+## Completed 2026-06-09T03:42:07Z - `split-topbar-logo`
+
+- Agent: Codex [06ecb0dc-9c29-4769-9d0f-838e36a90bff]
+- Started: 2026-06-09T03:39:31Z
+- Last check-in: 2026-06-09T03:42:07Z
+- Completed: 2026-06-09T03:42:07Z
+- Goal: Use separate topbar logomark and wordmark with independent sizing
+- Final progress: finished implementation
+- Planned paths:
+  - `components/brand-logo.tsx`
+  - `components/site-header.tsx`
+- Completed paths:
+  - `components/brand-logo.tsx`
+  - `components/site-header.tsx`
+- Checked-out paths at completion:
+_None._
+- Queued paths at completion:
+_None._
+- Bumped paths at completion:
+_None._
+- Recent check-ins:
+  - 2026-06-09T03:39:31Z: checkout requested (`components/brand-logo.tsx, components/site-header.tsx`)
+  - 2026-06-09T03:41:33Z: released completed files: components/brand-logo.tsx, components/site-header.tsx (`components/brand-logo.tsx, components/site-header.tsx`)
+  - 2026-06-09T03:42:07Z: finished implementation (`components/brand-logo.tsx, components/site-header.tsx`)
