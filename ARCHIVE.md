@@ -518,3 +518,31 @@ _None._
   - 2026-06-09T19:07:38Z: Implemented rotating all-project hero banner markup and styling (`app/page.tsx, app/globals.css`)
   - 2026-06-09T19:08:26Z: released completed files: app/page.tsx, app/globals.css (`app/page.tsx, app/globals.css`)
   - 2026-06-09T19:08:55Z: finished implementation (`app/page.tsx, app/globals.css`)
+
+## Completed 2026-06-09T19:16:12Z - `rotating-project-banner`
+
+- Agent: Codex [9964db17-9d08-4505-b0dc-e21f5d34dfe6]
+- Started: 2026-06-09T19:09:57Z
+- Last check-in: 2026-06-09T19:16:12Z
+- Completed: 2026-06-09T19:16:12Z
+- Goal: Limit hero project banner to Signet and Bracket with manual paging controls
+- Final progress: finished implementation
+- Planned paths:
+  - `app/page.tsx`
+  - `app/globals.css`
+  - `components/project-rotator.tsx`
+- Completed paths:
+  - `app/page.tsx`
+  - `app/globals.css`
+  - `components/project-rotator.tsx`
+- Checked-out paths at completion:
+_None._
+- Queued paths at completion:
+_None._
+- Bumped paths at completion:
+_None._
+- Recent check-ins:
+  - 2026-06-09T19:09:57Z: checkout requested (`app/page.tsx, app/globals.css, components/project-rotator.tsx`)
+  - 2026-06-09T19:14:19Z: implemented two-step project rotator transition and controls (`app/page.tsx, app/globals.css, components/project-rotator.tsx`)
+  - 2026-06-09T19:15:51Z: released completed files: app/page.tsx, app/globals.css, components/project-rotator.tsx (`app/page.tsx, app/globals.css, components/project-rotator.tsx`)
+  - 2026-06-09T19:16:12Z: finished implementation (`app/page.tsx, app/globals.css, components/project-rotator.tsx`)
