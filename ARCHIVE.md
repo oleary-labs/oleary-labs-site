@@ -492,3 +492,29 @@ _None._
   - 2026-06-09T18:56:47Z: Updated public messaging toward broader software capability (`app/page.tsx, data/site.ts, app/layout.tsx`)
   - 2026-06-09T18:57:43Z: released completed files: app/page.tsx, data/site.ts, app/layout.tsx (`app/page.tsx, data/site.ts, app/layout.tsx`)
   - 2026-06-09T18:58:12Z: finished implementation (`app/page.tsx, data/site.ts, app/layout.tsx`)
+
+## Completed 2026-06-09T19:08:55Z - `rotating-project-banner`
+
+- Agent: Codex [cad18959-5d05-4a0f-9186-4076dfbe4125]
+- Started: 2026-06-09T19:04:35Z
+- Last check-in: 2026-06-09T19:08:55Z
+- Completed: 2026-06-09T19:08:55Z
+- Goal: Replace hero right card with rotating customized project banner
+- Final progress: finished implementation
+- Planned paths:
+  - `app/page.tsx`
+  - `app/globals.css`
+- Completed paths:
+  - `app/page.tsx`
+  - `app/globals.css`
+- Checked-out paths at completion:
+_None._
+- Queued paths at completion:
+_None._
+- Bumped paths at completion:
+_None._
+- Recent check-ins:
+  - 2026-06-09T19:04:35Z: checkout requested (`app/page.tsx, app/globals.css`)
+  - 2026-06-09T19:07:38Z: Implemented rotating all-project hero banner markup and styling (`app/page.tsx, app/globals.css`)
+  - 2026-06-09T19:08:26Z: released completed files: app/page.tsx, app/globals.css (`app/page.tsx, app/globals.css`)
+  - 2026-06-09T19:08:55Z: finished implementation (`app/page.tsx, app/globals.css`)
