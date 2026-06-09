@@ -410,3 +410,29 @@ _None._
   - 2026-06-09T04:08:59Z: Applied smoked neutral palette, stronger typography, and muted surfaces (`app/globals.css, app/style-guide/page.tsx, app/layout.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts`)
   - 2026-06-09T04:10:55Z: released completed files: app/globals.css, app/page.tsx, app/style-guide/page.tsx, app/layout.tsx, components/site-header.tsx, components/site-footer.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts (`app/globals.css, app/page.tsx, app/style-guide/page.tsx, app/layout.tsx, components/site-header.tsx, components/site-footer.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts`)
   - 2026-06-09T04:11:27Z: finished implementation (`app/globals.css, app/page.tsx, app/style-guide/page.tsx, app/layout.tsx, components/site-header.tsx, components/site-footer.tsx, components/signet-threshold.tsx, components/ui/button.tsx, components/ui/card.tsx, components/ui/badge.tsx, data/style-guide.ts`)
+
+## Completed 2026-06-09T04:22:04Z - `authored-hero-copy`
+
+- Agent: Codex [27096a3c-fcc9-41a4-9f95-21c0f1950547]
+- Started: 2026-06-09T04:19:54Z
+- Last check-in: 2026-06-09T04:22:04Z
+- Completed: 2026-06-09T04:22:04Z
+- Goal: Make hero headline less AI-like and more authored
+- Final progress: finished implementation
+- Planned paths:
+  - `app/page.tsx`
+  - `app/globals.css`
+- Completed paths:
+  - `app/page.tsx`
+  - `app/globals.css`
+- Checked-out paths at completion:
+_None._
+- Queued paths at completion:
+_None._
+- Bumped paths at completion:
+_None._
+- Recent check-ins:
+  - 2026-06-09T04:19:54Z: checkout requested (`app/page.tsx, app/globals.css`)
+  - 2026-06-09T04:20:39Z: Replaced abstract hero headline and reduced hero type scale (`app/page.tsx, app/globals.css`)
+  - 2026-06-09T04:21:31Z: released completed files: app/page.tsx, app/globals.css (`app/page.tsx, app/globals.css`)
+  - 2026-06-09T04:22:04Z: finished implementation (`app/page.tsx, app/globals.css`)
