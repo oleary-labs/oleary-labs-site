@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Bracket B logo on rounded black background">
+  <title>Bracket B Logo</title>
+  <rect width="512" height="512" rx="92" fill="#000000"/>
+  <g transform="translate(31 39)">
+    <g fill="#f4f4f4">
+      <path d="M55 22 L88 62 L91 75 H276 L311 108 V149 L285 176 H329 L364 167 V88 L298 22 Z"/>
+      <path d="M368 255 H329 L321 245 H280 L311 280 V313 L276 347 H97 L55 399 H298 L368 332 Z"/>
+      <rect x="86" y="274" width="51" height="48"/>
+      <rect x="137" y="287" width="48" height="18"/>
+      <rect x="167" y="203" width="18" height="102"/>
+    </g>
+    <g fill="#ff2a2a">
+      <rect x="86" y="95" width="51" height="48"/>
+      <rect x="137" y="113" width="48" height="18"/>
+      <rect x="167" y="113" width="18" height="107"/>
+      <rect x="167" y="202" width="168" height="18"/>
+      <rect x="335" y="187" width="50" height="48"/>
+    </g>
+  </g>
+</svg>
