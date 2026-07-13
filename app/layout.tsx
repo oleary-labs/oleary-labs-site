@@ -5,10 +5,13 @@ import "./globals.css"
 import Providers from "@/context/Providers"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://olearylabs.com"),
+  metadataBase: new URL("https://oleary.com"),
   title: "O'Leary Labs - Software Systems Studio",
   description:
     "O'Leary Labs builds infrastructure, internal tools, and product systems for projects that need the technical layer to hold up under pressure.",
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/oleary_labs_logo_kit/app_icon.png",
     apple: "/oleary_labs_logo_kit/app_icon.png",
@@ -17,6 +20,7 @@ export const metadata: Metadata = {
     title: "O'Leary Labs",
     description:
       "Infrastructure, internal tools, and product systems for projects that need the technical layer to hold up under pressure.",
+    url: "https://oleary.com",
     images: ["/oleary_labs_logo_kit/app_icon.png"],
   },
 }
