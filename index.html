@@ -19,6 +19,9 @@
     /* ───────────────────────── Reset ───────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html {
+      /* explicit canvas color: the viewport stays pearl (never default
+         white) for as long as this page owns it during navigation */
+      background-color: #f2eee4;
       scroll-behavior: smooth;
       /* Scroll segments on every device: mandatory + scroll-snap-stop:
          always — every rest position is a framed view and each scroll
@@ -303,9 +306,9 @@
       z-index: 50;
       border: 1px solid rgba(23, 18, 15, 0.1);
       border-radius: 18px;
-      background: var(--glass);
-      -webkit-backdrop-filter: blur(18px) saturate(1.3);
-      backdrop-filter: blur(18px) saturate(1.3);
+      /* no backdrop-filter anywhere: blur layers linger as detached
+         boxes while the browser tears the page down for navigation */
+      background: rgba(248, 245, 236, 0.96);
       box-shadow: 0 18px 44px rgba(23, 18, 15, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.5);
       animation: capsule-in 900ms var(--ease-out) both;
     }
@@ -485,31 +488,25 @@
       animation: fade-up 950ms var(--ease-out) 880ms both;
     }
 
-    /* Current-work ledger — dark glass with rotating energy border */
+    /* Current-work ledger — rotating energy border built mask-free:
+       a 1px conic ring under an opaque inner surface (masked pseudo
+       layers could flash as solid boxes during navigation teardown) */
     .ledger {
       position: relative;
       border-radius: var(--r-lg);
-      background: linear-gradient(168deg, rgba(44, 38, 32, 0.97), rgba(33, 29, 25, 0.99) 55%, rgba(24, 20, 17, 1));
-      box-shadow: 0 40px 90px rgba(23, 18, 15, 0.34), inset 0 1px 0 rgba(245, 241, 232, 0.08);
-      color: var(--cream);
-      overflow: hidden;
-      animation: fade-up 1100ms var(--ease-out) 520ms both;
-    }
-    .ledger::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
       padding: 1px;
       background: conic-gradient(from var(--spin),
-        rgba(224, 197, 141, 0.05), var(--gold-soft), rgba(224, 197, 141, 0.05) 28%,
-        rgba(224, 197, 141, 0.05) 50%, rgba(214, 27, 40, 0.55) 62%, rgba(224, 197, 141, 0.05) 78%);
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      mask-composite: exclude;
-      animation: border-spin 9s linear infinite;
-      pointer-events: none;
+        rgba(52, 45, 38, 1), var(--gold-soft), rgba(52, 45, 38, 1) 28%,
+        rgba(52, 45, 38, 1) 50%, rgba(214, 27, 40, 0.75) 62%, rgba(52, 45, 38, 1) 78%);
+      box-shadow: 0 40px 90px rgba(23, 18, 15, 0.34);
+      color: var(--cream);
+      animation: fade-up 1100ms var(--ease-out) 520ms both, border-spin 9s linear infinite;
+    }
+    .ledger-in {
+      border-radius: calc(var(--r-lg) - 1px);
+      background: linear-gradient(168deg, rgba(44, 38, 32, 1), rgba(33, 29, 25, 1) 55%, rgba(24, 20, 17, 1));
+      box-shadow: inset 0 1px 0 rgba(245, 241, 232, 0.08);
+      overflow: hidden;
     }
     .ledger-topline {
       display: flex;
@@ -711,6 +708,12 @@
         animation-timeline: view();
         animation-range: entry 5% entry 45%;
       }
+      /* the featured card keeps its ring spin alongside the reveal */
+      .project-card.featured.reveal {
+        animation: rise-in both, border-spin 11s linear infinite;
+        animation-timeline: view(), auto;
+        animation-range: entry 5% entry 45%, normal;
+      }
     }
 
     /* ───────────────────────── About ───────────────────────── */
@@ -805,22 +808,19 @@
       box-shadow: 0 40px 90px rgba(23, 18, 15, 0.16);
       transform: perspective(1200px) rotateX(0.6deg) translateY(-5px);
     }
-    .project-card.featured::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
+    /* featured card ring: same mask-free technique */
+    .project-card.featured {
+      border: 0;
       padding: 1px;
       background: conic-gradient(from var(--spin),
-        rgba(185, 134, 63, 0.05), var(--gold), rgba(185, 134, 63, 0.05) 30%,
-        rgba(185, 134, 63, 0.05) 55%, rgba(185, 134, 63, 0.55) 68%, rgba(185, 134, 63, 0.05) 85%);
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      mask-composite: exclude;
+        var(--hairline), var(--gold), var(--hairline) 30%,
+        var(--hairline) 55%, rgba(185, 134, 63, 0.6) 68%, var(--hairline) 85%);
       animation: border-spin 11s linear infinite;
-      pointer-events: none;
-      z-index: 1;
+    }
+    .project-card.featured .project-grid {
+      border-radius: calc(var(--r-lg) - 1px);
+      background: var(--surface-hi);
+      overflow: hidden;
     }
     .project-grid { display: grid; }
     .project-body { padding: 42px 38px; }
@@ -1651,6 +1651,7 @@
         </div>
 
         <aside class="ledger" aria-label="Current projects">
+          <div class="ledger-in">
           <div class="ledger-topline">
             <span class="live-dot">Working on</span>
             <span class="num">03 active tracks</span>
@@ -1703,6 +1704,7 @@
               <svg class="ledger-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </span>
           </a>
+          </div>
         </aside>
       </div>
     </section>
