@@ -1425,6 +1425,7 @@
       .hero-layout { grid-template-columns: 1.05fr 0.95fr; gap: 64px; }
       .about-grid { grid-template-columns: 0.95fr 1.05fr; gap: 72px; align-items: start; }
       .project-grid { grid-template-columns: 1.05fr 0.95fr; }
+      .support-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .signet-visual, .bracket-visual { border-top: 0; border-left: 1px solid var(--hairline); }
       .bracket-visual { border-left-color: var(--hairline-light); }
       .contact-layout { grid-template-columns: 1fr 0.9fr; gap: 80px; }
@@ -1618,6 +1619,7 @@
           <span>Project range — Infra + Apps</span>
           <span>Current focus — Signet / Bracket</span>
           <span>Threshold — <i>3 of 5</i></span>
+          <span><b>Assembly</b> — <i>Live</i></span>
           <span><b>Signet Wallet</b> — In Development</span>
           <span><b>Signet Bundler</b> — In Development</span>
         </div>
@@ -1628,6 +1630,7 @@
           <span>Project range — Infra + Apps</span>
           <span>Current focus — Signet / Bracket</span>
           <span>Threshold — <i>3 of 5</i></span>
+          <span><b>Assembly</b> — <i>Live</i></span>
           <span><b>Signet Wallet</b> — In Development</span>
           <span><b>Signet Bundler</b> — In Development</span>
         </div>
@@ -1857,6 +1860,22 @@
           <!-- Supporting projects -->
           <div class="support-grid">
             <article class="support-card reveal">
+              <span class="badge live">Live</span>
+              <h3>Assembly</h3>
+              <p class="support-tagline">Your organization, in its own app.</p>
+              <p class="support-desc">
+                A private, branded home for chapter-based organizations —
+                lodges, clubs, alumni groups, and associations. Feed, events
+                with RSVPs, dues and ticket payments, member directory, chat,
+                and shared albums, with each chapter running as its own
+                walled garden.
+              </p>
+              <div class="project-actions">
+                <a class="btn btn-ghost" href="https://yourassembly.app">Visit Assembly</a>
+              </div>
+            </article>
+
+            <article class="support-card reveal">
               <span class="badge dev">In Development</span>
               <h3>Signet Wallet</h3>
               <p class="support-tagline">Specialized account system with modular controls.</p>
@@ -1936,7 +1955,7 @@
             </div>
             <div>
               <dt>Projects</dt>
-              <dd>04</dd>
+              <dd>05</dd>
             </div>
           </dl>
         </div>
