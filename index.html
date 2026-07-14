@@ -88,8 +88,10 @@
       /* clearance below the floating capsule for snapped project cards */
       --snap-top: calc(var(--header-h) + 32px);
       /* internal top padding of full-view sections: capsule offset (16px)
-         + capsule height + breathing room, so titles land consistently */
-      --view-pad-top: calc(var(--header-h) + 60px);
+         + capsule height + breathing room, so titles land consistently.
+         Must exceed capsule bottom (82px) + the section-num overhang
+         (44px) so the ghost numerals never tuck under the top bar. */
+      --view-pad-top: calc(var(--header-h) + 84px);
     }
 
     /* Rotating angle for conic "energy" borders */
@@ -1138,7 +1140,7 @@
     /* studio metrics ledger — fills out the framed contact view */
     .contact-meta {
       display: grid;
-      margin-top: 42px;
+      margin-top: 46px;
       max-width: 480px;
       border-top: 1px solid var(--hairline-light);
     }
@@ -1368,9 +1370,10 @@
       .brand img.mark { height: 42px; }
       .brand img.wordmark { height: 38px; }
     }
-    /* short laptop viewports: tighten vertical rhythm so snapped views fit */
-    @media (min-width: 980px) and (max-height: 920px) {
-      :root { --view-pad-top: calc(var(--header-h) + 48px); }
+    /* shorter viewports: tighten vertical rhythm so snapped views fit
+       (boundary chosen so About fits exactly at every height above it) */
+    @media (min-width: 980px) and (max-height: 1063px) {
+      :root { --view-pad-top: calc(var(--header-h) + 64px); }
       .section { padding-bottom: 72px; }
       #about, .section.contact { padding-bottom: 40px; }
       .about-grid, .project-stack { margin-top: 32px; }
@@ -1393,7 +1396,7 @@
     }
     /* very short desktop viewports (13" laptops with browser chrome) */
     @media (min-width: 980px) and (max-height: 800px) {
-      :root { --view-pad-top: calc(var(--header-h) + 38px); }
+      :root { --view-pad-top: calc(var(--header-h) + 52px); }
       #about, .section.contact { padding-bottom: 28px; }
       .about-grid { margin-top: 24px; gap: 28px; }
       .section-title { font-size: clamp(30px, 3.8vw, 40px); }
@@ -1425,7 +1428,7 @@
       :root {
         --header-h: 60px;
         --snap-top: calc(var(--header-h) + 26px);
-        --view-pad-top: calc(var(--header-h) + 44px);
+        --view-pad-top: calc(var(--header-h) + 56px);
       }
       .container { padding: 0 20px; }
       .section { padding: var(--view-pad-top) 0 72px; }
