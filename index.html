@@ -292,10 +292,10 @@
     /* ───────────────────────── Header (floating capsule) ───────────────────────── */
     .topbar {
       position: fixed;
-      top: 14px;
+      top: 16px;
       left: 50%;
       transform: translateX(-50%);
-      width: min(var(--max-w), calc(100% - 24px));
+      width: min(var(--max-w), calc(100% - 32px));
       z-index: 50;
       border: 1px solid rgba(23, 18, 15, 0.1);
       border-radius: 18px;
@@ -311,7 +311,7 @@
       justify-content: space-between;
       gap: 20px;
       height: var(--header-h);
-      padding: 0 12px 0 22px;
+      padding: 0 16px 0 26px;
     }
     .brand {
       display: inline-flex;
@@ -351,7 +351,7 @@
     /* compact CTA — the capsule should read as navigation, not a banner */
     .topbar .btn {
       border-radius: 9px;
-      padding: 9px 15px;
+      padding: 10px 18px;
       font-size: 12.5px;
       box-shadow: 0 4px 12px rgba(23, 18, 15, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     }
@@ -1383,15 +1383,16 @@
       :root { --header-h: 60px; --snap-top: calc(var(--header-h) + 26px); }
       .container { padding: 0 20px; }
       .section { padding: 80px 0; }
-      .topbar { top: 10px; width: calc(100% - 20px); }
+      .topbar { top: 12px; width: calc(100% - 16px); }
+      .brand { gap: 10px; }
       .hero { padding: calc(var(--header-h) + 64px) 0 76px; }
       .hero-constellation { top: 6%; right: -12%; width: 280px; opacity: 0.35; }
       .hero-ring { right: -60vw; width: 520px; opacity: 0.07; }
-      .brand img.mark { height: 40px; }
-      .brand img.wordmark { height: 37px; }
+      .brand img.mark { height: 38px; }
+      .brand img.wordmark { height: 33px; }
       .btn { padding: 13px 20px; }
-      .topbar-inner { padding: 0 10px 0 16px; gap: 12px; }
-      .topbar .btn { padding: 8px 12px; font-size: 12px; }
+      .topbar-inner { padding: 0 12px 0 16px; gap: 14px; }
+      .topbar .btn { padding: 9px 14px; font-size: 12px; }
       .hero-actions { flex-direction: column; gap: 10px; }
       .hero-actions .btn { width: 100%; }
       .project-actions { gap: 10px; }
