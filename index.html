@@ -49,7 +49,9 @@
       --bg-deep: #e9e3d4;
       --surface: #f8f5ec;
       --surface-hi: #fdfcf7;
-      --glass: rgba(253, 252, 247, 0.66);
+      /* warm and near-opaque: if the browser ever flattens a glass layer
+         mid-navigation, it reads as pearl, not a white box */
+      --glass: rgba(248, 245, 236, 0.92);
       --ink: #17120f;
       --ink-soft: #5d5449;
       --ink-faint: #8a8073;
@@ -209,8 +211,6 @@
       text-transform: uppercase;
       color: var(--ink-soft);
       background: var(--glass);
-      -webkit-backdrop-filter: blur(8px);
-      backdrop-filter: blur(8px);
     }
     .badge::before {
       content: "";
@@ -285,8 +285,6 @@
 
     .btn-ghost {
       background: var(--glass);
-      -webkit-backdrop-filter: blur(8px);
-      backdrop-filter: blur(8px);
       border: 1px solid var(--hairline-strong);
       color: var(--ink);
     }
@@ -595,6 +593,9 @@
       text-transform: uppercase;
     }
     .ledger-row.bracket .ledger-role { color: #eda2a2; }
+    /* Assembly brand accents (Signal Cobalt, per the Assembly style guide) */
+    .ledger-row.assembly::before { background: linear-gradient(180deg, #3fe0ff, #2e63f6); }
+    .ledger-row.assembly .ledger-role { color: #9db8ff; }
     .ledger-body strong {
       display: block;
       margin-top: 6px;
@@ -636,8 +637,6 @@
       border: 1px solid rgba(23, 18, 15, 0.1);
       border-radius: 14px;
       background: var(--glass);
-      -webkit-backdrop-filter: blur(14px);
-      backdrop-filter: blur(14px);
       box-shadow: 0 20px 48px rgba(23, 18, 15, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.5);
       padding: 15px 0;
     }
@@ -1016,6 +1015,93 @@
     .bracket-row:nth-child(2) .state { animation-delay: 500ms; }
     .bracket-row:nth-child(3) .state { animation-delay: 1000ms; }
 
+    /* Assembly (light card, Assembly brand: Signal Cobalt #2e63f6,
+       Ion Cyan #3fe0ff edges, Assembly Crimson pulse — per ~/ASSEMBLY
+       webpage style guide) */
+    .project-card.assembly { border-color: rgba(46, 99, 246, 0.3); }
+    .project-card.assembly:hover {
+      border-color: rgba(46, 99, 246, 0.55);
+      box-shadow: 0 40px 90px rgba(13, 27, 62, 0.18);
+    }
+
+    .assembly-lockup {
+      display: flex;
+      width: fit-content;
+      align-items: center;
+      margin-top: 26px;
+      border: 1px solid rgba(46, 99, 246, 0.25);
+      border-radius: var(--r-md);
+      background: #fff;
+      box-shadow: inset 0 -2px 0 rgba(46, 99, 246, 0.5);
+      padding: 12px 16px;
+    }
+    .assembly-lockup img {
+      width: 190px;
+      height: auto;
+      transition: transform 420ms var(--ease-out);
+    }
+    .project-card.assembly:hover .assembly-lockup img { transform: scale(1.04); }
+
+    .assembly-visual {
+      display: grid;
+      align-content: center;
+      gap: 14px;
+      padding: 44px 36px;
+      border-top: 1px solid var(--hairline);
+      background:
+        repeating-linear-gradient(90deg, rgba(46, 99, 246, 0.05) 0 1px, transparent 1px 44px),
+        linear-gradient(160deg, rgba(46, 99, 246, 0.09), rgba(63, 224, 255, 0.05) 55%, transparent),
+        var(--surface-hi);
+    }
+    .assembly-command {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border: 1px solid rgba(46, 99, 246, 0.22);
+      border-radius: var(--r-md);
+      background: #fff;
+      box-shadow: 0 14px 34px rgba(13, 27, 62, 0.08);
+      padding: 18px;
+    }
+    .assembly-command img { width: 52px; height: auto; flex: none; }
+    .assembly-command p { color: var(--ink-soft); font-size: 14px; line-height: 1.6; }
+    .assembly-rows { display: grid; gap: 10px; }
+    .assembly-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid rgba(46, 99, 246, 0.18);
+      border-radius: var(--r-sm);
+      background: #fff;
+      padding: 13px 16px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      transition: background 260ms ease, border-color 260ms ease, transform 260ms var(--ease-out);
+    }
+    .assembly-row:hover {
+      border-color: rgba(46, 99, 246, 0.5);
+      transform: translateX(5px);
+    }
+    .assembly-row .label { display: inline-flex; align-items: center; gap: 10px; }
+    .assembly-row svg { width: 15px; height: 15px; color: #2e63f6; }
+    .assembly-row .state { color: #2e63f6; }
+
+    /* Assembly's primary action is Signal Cobalt, per its style guide */
+    .project-card.assembly .btn-primary {
+      background: linear-gradient(160deg, #3b74ff, #2e63f6 55%, #1e47c2);
+      border-color: #1e47c2;
+      box-shadow: 0 10px 26px rgba(46, 99, 246, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      animation: none;
+    }
+    .project-card.assembly .btn-primary:hover {
+      box-shadow: 0 18px 40px rgba(46, 99, 246, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    }
+
     /* Supporting projects */
     .support-grid { display: grid; gap: 30px; }
     .support-card {
@@ -1185,8 +1271,6 @@
       border: 1px solid var(--hairline-light);
       border-radius: var(--r-md);
       background: rgba(245, 241, 232, 0.05);
-      -webkit-backdrop-filter: blur(10px);
-      backdrop-filter: blur(10px);
       padding: 26px 28px;
       transition: transform 320ms var(--ease-out), border-color 320ms ease, background 320ms ease, box-shadow 320ms ease;
     }
@@ -1425,8 +1509,7 @@
       .hero-layout { grid-template-columns: 1.05fr 0.95fr; gap: 64px; }
       .about-grid { grid-template-columns: 0.95fr 1.05fr; gap: 72px; align-items: start; }
       .project-grid { grid-template-columns: 1.05fr 0.95fr; }
-      .support-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .signet-visual, .bracket-visual { border-top: 0; border-left: 1px solid var(--hairline); }
+      .signet-visual, .bracket-visual, .assembly-visual { border-top: 0; border-left: 1px solid var(--hairline); }
       .bracket-visual { border-left-color: var(--hairline-light); }
       .contact-layout { grid-template-columns: 1fr 0.9fr; gap: 80px; }
       .footer-inner { flex-direction: row; align-items: center; justify-content: space-between; }
@@ -1472,7 +1555,7 @@
       .hero-kicker::before { width: 30px; }
       .ticker-strip { margin-top: -26px; width: calc(100% - 32px); }
       .ticker-set { font-size: 10px; }
-      .project-body, .signet-visual, .bracket-visual { padding: 28px 22px; }
+      .project-body, .signet-visual, .bracket-visual, .assembly-visual { padding: 28px 22px; }
       .support-card { padding: 28px 22px; }
       .bracket-lockup img:last-child { width: 128px; }
       .bracket-command { align-items: flex-start; }
@@ -1570,7 +1653,7 @@
         <aside class="ledger" aria-label="Current projects">
           <div class="ledger-topline">
             <span class="live-dot">Working on</span>
-            <span class="num">02 active tracks</span>
+            <span class="num">03 active tracks</span>
           </div>
 
           <a class="ledger-row" href="https://signet-testnet.olearylabs.com">
@@ -1578,13 +1661,13 @@
               <img src="assets/logo-mark.svg" alt="" />
             </span>
             <span class="ledger-body">
-              <span class="ledger-role">Primary infrastructure</span>
+              <span class="ledger-role">Account infrastructure</span>
               <strong>Signet</strong>
               <p>Secure signing and account access for product teams.</p>
             </span>
             <span class="ledger-meta">
               <span class="badge dark live">Testnet Live</span>
-              <span class="ledger-index num">01 / 02</span>
+              <span class="ledger-index num">01 / 03</span>
               <svg class="ledger-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </span>
           </a>
@@ -1599,8 +1682,24 @@
               <p>Event operations for the heat of the day.</p>
             </span>
             <span class="ledger-meta">
-              <span class="badge dark">Public Board</span>
-              <span class="ledger-index num">02 / 02</span>
+              <span class="badge dark live">Live</span>
+              <span class="ledger-index num">02 / 03</span>
+              <svg class="ledger-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="ledger-row assembly" href="https://yourassembly.app">
+            <span class="ledger-mark">
+              <img src="assets/assembly/logomark.svg" alt="" />
+            </span>
+            <span class="ledger-body">
+              <span class="ledger-role">Community infrastructure</span>
+              <strong>Assembly</strong>
+              <p>Your organization, in its own app.</p>
+            </span>
+            <span class="ledger-meta">
+              <span class="badge dark live">Live</span>
+              <span class="ledger-index num">03 / 03</span>
               <svg class="ledger-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </span>
           </a>
@@ -1614,10 +1713,9 @@
       <div class="ticker-track">
         <div class="ticker-set">
           <span><b>Signet</b> — <i>Testnet Live</i></span>
-          <span><b>Bracket</b> — Public Board</span>
+          <span><b>Bracket</b> — <i>Live</i></span>
           <span>Delivery mode — Build / Refine</span>
           <span>Project range — Infra + Apps</span>
-          <span>Current focus — Signet / Bracket</span>
           <span>Threshold — <i>3 of 5</i></span>
           <span><b>Assembly</b> — <i>Live</i></span>
           <span><b>Signet Wallet</b> — In Development</span>
@@ -1625,10 +1723,9 @@
         </div>
         <div class="ticker-set">
           <span><b>Signet</b> — <i>Testnet Live</i></span>
-          <span><b>Bracket</b> — Public Board</span>
+          <span><b>Bracket</b> — <i>Live</i></span>
           <span>Delivery mode — Build / Refine</span>
           <span>Project range — Infra + Apps</span>
-          <span>Current focus — Signet / Bracket</span>
           <span>Threshold — <i>3 of 5</i></span>
           <span><b>Assembly</b> — <i>Live</i></span>
           <span><b>Signet Wallet</b> — In Development</span>
@@ -1737,8 +1834,8 @@
           <p class="eyebrow">Projects</p>
           <h2 class="section-title">Current work, built from the <em>same habits.</em></h2>
           <p class="section-copy">
-            Signet and Bracket are different products, but they come from the
-            same discipline: make the hard parts reliable, make the working
+            Signet, Bracket, and Assembly are different products, but they come
+            from the same discipline: make the hard parts reliable, make the working
             surface clear, and ship the parts people actually need.
           </p>
         </div>
@@ -1796,7 +1893,7 @@
           <article class="project-card bracket reveal">
             <div class="project-grid">
               <div class="project-body">
-                <span class="badge dark">Public Board</span>
+                <span class="badge dark live">Live</span>
                 <div class="bracket-lockup">
                   <img src="assets/bracket/bracket-logomark-transparent.svg" alt="" />
                   <img src="assets/bracket/bracket-wordmark-transparent.svg" alt="Bracket" />
@@ -1857,24 +1954,74 @@
             </div>
           </article>
 
+          <!-- Assembly -->
+          <article class="project-card assembly reveal">
+            <div class="project-grid">
+              <div class="project-body">
+                <span class="badge live">Live</span>
+                <div class="assembly-lockup">
+                  <img src="assets/assembly/full_logo_transparent.png" alt="Assembly" />
+                </div>
+                <h3>Your organization, in its own app.</h3>
+                <p class="project-desc">
+                  Assembly gives chapter-based organizations — lodges, clubs,
+                  alumni groups, and associations — a private, branded home.
+                  Feed and announcements, events with RSVPs, dues and ticket
+                  payments, a member directory, chat, and shared photo albums,
+                  with each chapter running as its own walled garden.
+                </p>
+                <div class="project-actions">
+                  <a class="btn btn-primary" href="https://yourassembly.app">
+                    Visit Assembly
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="assembly-visual">
+                <div class="assembly-command">
+                  <img src="assets/assembly/logomark.svg" alt="" />
+                  <p>
+                    Every chapter its own walled garden — members, board, and
+                    communications in one place.
+                  </p>
+                </div>
+                <div class="assembly-rows">
+                  <div class="assembly-row">
+                    <span class="label">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
+                      Feed
+                    </span>
+                    <span class="state">Included</span>
+                  </div>
+                  <div class="assembly-row">
+                    <span class="label">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+                      Events + RSVPs
+                    </span>
+                    <span class="state">Included</span>
+                  </div>
+                  <div class="assembly-row">
+                    <span class="label">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+                      Dues + Tickets
+                    </span>
+                    <span class="state">Included</span>
+                  </div>
+                  <div class="assembly-row">
+                    <span class="label">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                      Directory + Chat
+                    </span>
+                    <span class="state">Included</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
           <!-- Supporting projects -->
           <div class="support-grid">
-            <article class="support-card reveal">
-              <span class="badge live">Live</span>
-              <h3>Assembly</h3>
-              <p class="support-tagline">Your organization, in its own app.</p>
-              <p class="support-desc">
-                A private, branded home for chapter-based organizations —
-                lodges, clubs, alumni groups, and associations. Feed, events
-                with RSVPs, dues and ticket payments, member directory, chat,
-                and shared albums, with each chapter running as its own
-                walled garden.
-              </p>
-              <div class="project-actions">
-                <a class="btn btn-ghost" href="https://yourassembly.app">Visit Assembly</a>
-              </div>
-            </article>
-
             <article class="support-card reveal">
               <span class="badge dev">In Development</span>
               <h3>Signet Wallet</h3>
@@ -1950,8 +2097,8 @@
               <dd>Infra + Apps</dd>
             </div>
             <div>
-              <dt>Current focus</dt>
-              <dd>Signet / Bracket</dd>
+              <dt>In development</dt>
+              <dd>02</dd>
             </div>
             <div>
               <dt>Projects</dt>
