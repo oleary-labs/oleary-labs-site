@@ -186,6 +186,12 @@
       background-clip: text;
       color: transparent;
       animation: text-shimmer 7s ease-in-out infinite;
+      /* clipped text paints only where its background box is — pad the
+         box past the italic overhang and pull it back with margins so
+         ascenders, descenders, and swashes never get cut */
+      display: inline-block;
+      padding: 0.12em 0.14em 0.22em 0.08em;
+      margin: -0.12em -0.14em -0.22em -0.08em;
     }
 
     .section-copy {
@@ -468,6 +474,9 @@
       background-clip: text;
       color: transparent;
       animation: text-shimmer 6.5s ease-in-out 1.4s infinite;
+      display: inline-block;
+      padding: 0.12em 0.14em 0.22em 0.08em;
+      margin: -0.12em -0.14em -0.22em -0.08em;
     }
     .hero-copy {
       margin-top: 24px;
@@ -699,17 +708,14 @@
       }
     }
 
-    /* Scroll-driven reveals: blur-to-sharp rise (progressive enhancement) */
+    /* Scroll-driven reveals: blur-to-sharp rise (progressive enhancement).
+       Note: no parallax on .section-num — any upward drift would slide
+       the numerals under the floating capsule at snapped rest. */
     @supports (animation-timeline: view()) {
       .reveal {
         animation: rise-in both;
         animation-timeline: view();
         animation-range: entry 5% entry 45%;
-      }
-      .section-num {
-        animation: num-drift linear both;
-        animation-timeline: view();
-        animation-range: entry exit;
       }
     }
 
@@ -1109,7 +1115,14 @@
       background-clip: text;
     }
 
-    .contact-layout { display: grid; gap: 48px; align-items: center; }
+    /* the framed contact view stretches its columns to the full screen:
+       left column stays top-anchored, cards distribute down the frame */
+    .contact-layout { display: grid; gap: 48px; align-items: stretch; }
+    @media (min-width: 980px) {
+      .section.contact { display: flex; flex-direction: column; }
+      .section.contact .container { flex: 1 1 auto; }
+      .contact-card-grid { align-content: space-between; }
+    }
     .contact-email {
       position: relative;
       display: inline-flex;
@@ -1339,10 +1352,6 @@
     @keyframes cta-glow {
       0%, 100% { box-shadow: 0 10px 26px rgba(145, 19, 27, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.16); }
       50%      { box-shadow: 0 12px 34px rgba(145, 19, 27, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.16); }
-    }
-    @keyframes num-drift {
-      from { transform: translateY(70px); }
-      to   { transform: translateY(-70px); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1927,6 +1936,10 @@
             <div>
               <dt>Current focus</dt>
               <dd>Signet / Bracket</dd>
+            </div>
+            <div>
+              <dt>Projects</dt>
+              <dd>04</dd>
             </div>
           </dl>
         </div>
