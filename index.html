@@ -667,10 +667,12 @@
     }
 
     /* ───────────────────────── Sections ───────────────────────── */
+    /* Snap/anchor clearance comes solely from scroll-padding-top on the
+       root — adding scroll-margin here too would double the offset and
+       make nav anchors land off the snapped rest position. */
     .section {
       position: relative;
       padding: 116px 0;
-      scroll-margin-top: var(--snap-top);
       scroll-snap-align: start;
     }
 
@@ -687,7 +689,6 @@
       /* inside the tall projects section, each card is its own soft view */
       .project-card, .support-grid {
         scroll-snap-align: start;
-        scroll-margin-top: var(--snap-top);
       }
     }
 
