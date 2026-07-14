@@ -1121,7 +1121,9 @@
     @media (min-width: 980px) {
       .section.contact { display: flex; flex-direction: column; }
       .section.contact .container { flex: 1 1 auto; }
-      .contact-card-grid { align-content: space-between; }
+      /* cards keep their natural gap and center within the stretched
+         column rather than spreading across the full frame height */
+      .contact-card-grid { align-content: center; gap: 18px; }
     }
     .contact-email {
       position: relative;
