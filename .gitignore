@@ -5,30 +5,10 @@ Thumbs.db
 *.swo
 *~
 
-# dependencies
+# leftover local Next.js artifacts from earlier branches
 /node_modules
-
-# next.js
 /.next/
 /out/
-
-# production
-/build
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# env files
-.env
-.env.*
-!.env.example
-
-# vercel
-.vercel
-
-# typescript
+/.pnpm-store/
 next-env.d.ts
 *.tsbuildinfo

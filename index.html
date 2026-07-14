@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O’Leary Labs — Software Systems Studio</title>
+  <meta name="description" content="O’Leary Labs builds infrastructure, internal tools, and product systems for projects that need the technical layer to hold up under pressure." />
+  <meta name="theme-color" content="#eee8dd" />
+  <link rel="icon" href="assets/oleary_labs_logo_kit/app_icon.png" />
+  <link rel="apple-touch-icon" href="assets/oleary_labs_logo_kit/app_icon.png" />
+  <meta property="og:title" content="O’Leary Labs" />
+  <meta property="og:description" content="Infrastructure, internal tools, and product systems for projects that need the technical layer to hold up under pressure." />
+  <meta property="og:image" content="assets/oleary_labs_logo_kit/app_icon.png" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ───────────────────────── Reset ───────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img, svg { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─────────────── O’Leary Labs Brand Tokens ───────────────
+       Smoked Pearl   #eee8dd  page atmosphere
+       Old Graphite   #211d19  dense type, dark grounds
+       Oxblood Red    #91131b  primary actions, emphasis
+       Aged Brass     #b9863f  rules, premium details
+       Signal Green   #1f533f  live-state signals, sparing
+    ─────────────────────────────────────────────────────────── */
+    :root {
+      --pearl: #eee8dd;
+      --pearl-deep: #e4dcce;
+      --surface: #f6f2e9;
+      --surface-hi: #fdfbf5;
+      --ink: #17120f;
+      --ink-soft: #5d5449;
+      --ink-faint: #8a8073;
+      --graphite: #211d19;
+      --graphite-2: #2b2620;
+      --black: #080706;
+      --red: #91131b;
+      --red-bright: #d61b28;
+      --gold: #b9863f;
+      --gold-deep: #7d551d;
+      --gold-soft: #e0c58d;
+      --green: #1f533f;
+      --hairline: rgba(23, 18, 15, 0.14);
+      --hairline-strong: rgba(23, 18, 15, 0.24);
+      --hairline-light: rgba(245, 241, 232, 0.16);
+
+      --font-display: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+      --font-sans: "Inter", "Avenir Next", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+      --max-w: 1160px;
+      --header-h: 76px;
+    }
+
+    body {
+      background: var(--pearl);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;
+      min-width: 320px;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: rgba(185, 134, 63, 0.28); }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    /* ───────────────────────── Utility ───────────────────────── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--red);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      margin-top: 22px;
+      max-width: 720px;
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.6vw, 54px);
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      line-height: 1.06;
+    }
+
+    .section-copy {
+      margin-top: 22px;
+      max-width: 640px;
+      color: var(--ink-soft);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--hairline);
+      border-radius: 999px;
+      padding: 5px 13px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      background: var(--surface-hi);
+    }
+    .badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--ink-faint);
+    }
+    .badge.live {
+      border-color: rgba(31, 83, 63, 0.35);
+      color: var(--green);
+    }
+    .badge.live::before {
+      background: var(--green);
+      animation: signal-pulse 2400ms ease-in-out infinite;
+    }
+    .badge.dev {
+      border-color: rgba(185, 134, 63, 0.4);
+      color: var(--gold-deep);
+    }
+    .badge.dev::before { background: var(--gold); }
+    .badge.dark {
+      border-color: var(--hairline-light);
+      background: rgba(245, 241, 232, 0.06);
+      color: rgba(245, 241, 232, 0.8);
+    }
+
+    /* ───────────────────────── Buttons ───────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 2px;
+      padding: 13px 26px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      line-height: 1;
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+    .btn svg { width: 15px; height: 15px; flex: none; transition: transform 180ms ease; }
+    .btn:hover svg { transform: translateX(3px); }
+
+    .btn-primary {
+      background: var(--red);
+      border: 1px solid var(--red);
+      color: #fdfbf5;
+    }
+    .btn-primary:hover { background: #7a0f16; border-color: #7a0f16; }
+
+    .btn-ink {
+      background: var(--graphite);
+      border: 1px solid var(--graphite);
+      color: #fdfbf5;
+    }
+    .btn-ink:hover { background: var(--black); }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--hairline-strong);
+      color: var(--ink);
+    }
+    .btn-ghost:hover { border-color: var(--ink); }
+
+    .btn-ghost-dark {
+      background: transparent;
+      border: 1px solid var(--hairline-light);
+      color: rgba(245, 241, 232, 0.9);
+    }
+    .btn-ghost-dark:hover { border-color: var(--gold-soft); color: #fdfbf5; }
+
+    .btn-sm { padding: 10px 18px; font-size: 13px; }
+
+    /* ───────────────────────── Header ───────────────────────── */
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      background: rgba(238, 232, 221, 0.88);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .topbar::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 -1px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(185, 134, 63, 0.55), transparent);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      height: var(--header-h);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .brand img.mark { height: 40px; width: auto; flex: none; }
+    .brand img.wordmark { height: 26px; width: auto; }
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav-links a {
+      color: var(--ink-soft);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 160ms ease;
+    }
+    .nav-links a:hover { color: var(--red); }
+
+    /* ───────────────────────── Hero ───────────────────────── */
+    .hero {
+      position: relative;
+      padding: calc(var(--header-h) + 84px) 0 104px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--hairline);
+      background:
+        radial-gradient(1100px 520px at 82% -10%, rgba(185, 134, 63, 0.14), transparent 60%),
+        linear-gradient(180deg, #f2ede2, var(--pearl));
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: calc(var(--header-h) + 20px);
+      right: max(-140px, -8vw);
+      width: min(560px, 46vw);
+      aspect-ratio: 641 / 659;
+      background: url("assets/oleary_labs_logo_kit/logomark_transparent.png") center / contain no-repeat;
+      filter: grayscale(100%);
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 8%, var(--red) 38%, var(--gold) 62%, transparent 92%);
+    }
+    .hero .container { position: relative; z-index: 1; }
+
+    .hero-layout {
+      display: grid;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--red);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .hero-kicker::before {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero h1 {
+      margin-top: 26px;
+      font-family: var(--font-display);
+      font-size: clamp(48px, 7.2vw, 86px);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.0;
+    }
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 450;
+      color: var(--red);
+    }
+    .hero-copy {
+      margin-top: 26px;
+      max-width: 520px;
+      color: var(--ink-soft);
+      font-size: 18px;
+      line-height: 1.8;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 40px;
+    }
+
+    /* Current-work ledger (dark panel) */
+    .ledger {
+      position: relative;
+      border: 1px solid rgba(8, 7, 6, 0.5);
+      border-radius: 3px;
+      background: linear-gradient(170deg, var(--graphite-2), var(--graphite) 55%, #1a1613);
+      box-shadow: 0 32px 80px rgba(23, 18, 15, 0.28);
+      color: #f5f1e8;
+      overflow: hidden;
+    }
+    .ledger::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(224, 197, 141, 0.7), transparent);
+    }
+    .ledger-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 26px;
+      border-bottom: 1px solid var(--hairline-light);
+      color: rgba(245, 241, 232, 0.55);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .ledger-topline .live-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gold-soft);
+    }
+    .live-dot::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #4e9a77;
+      animation: signal-pulse 2400ms ease-in-out infinite;
+    }
+
+    .ledger-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 20px;
+      padding: 26px;
+      transition: background 200ms ease;
+    }
+    .ledger-row + .ledger-row { border-top: 1px solid var(--hairline-light); }
+    .ledger-row:hover { background: rgba(245, 241, 232, 0.045); }
+
+    .ledger-mark {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border: 1px solid var(--hairline-light);
+      border-radius: 2px;
+      background: rgba(245, 241, 232, 0.06);
+      padding: 10px;
+    }
+    .ledger-mark img { width: 100%; height: 100%; object-fit: contain; }
+
+    .ledger-body { min-width: 0; }
+    .ledger-role {
+      color: var(--gold-soft);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .ledger-row.bracket .ledger-role { color: #eda2a2; }
+    .ledger-body strong {
+      display: block;
+      margin-top: 6px;
+      font-family: var(--font-display);
+      font-size: 27px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      color: #fdfbf5;
+    }
+    .ledger-body p {
+      margin-top: 5px;
+      color: rgba(245, 241, 232, 0.62);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .ledger-meta {
+      display: grid;
+      justify-items: end;
+      gap: 12px;
+      text-align: right;
+    }
+    .ledger-index {
+      color: rgba(245, 241, 232, 0.4);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+    }
+    .ledger-arrow {
+      width: 16px;
+      height: 16px;
+      color: rgba(245, 241, 232, 0.5);
+      transition: transform 200ms ease, color 200ms ease;
+    }
+    .ledger-row:hover .ledger-arrow {
+      color: var(--gold-soft);
+      transform: translateX(4px);
+    }
+
+    /* ───────────────────────── Sections ───────────────────────── */
+    .section {
+      position: relative;
+      padding: 118px 0;
+      scroll-margin-top: var(--header-h);
+    }
+
+    /* ───────────────────────── About ───────────────────────── */
+    .about-grid {
+      display: grid;
+      gap: 48px;
+      margin-top: 64px;
+    }
+    .copy-column {
+      display: grid;
+      gap: 24px;
+      align-content: start;
+      max-width: 620px;
+    }
+    .copy-column p {
+      color: var(--ink-soft);
+      font-size: 17px;
+      line-height: 1.9;
+    }
+    .copy-column p::first-letter { color: var(--ink); }
+
+    .value-grid {
+      display: grid;
+      border: 1px solid var(--hairline);
+      border-radius: 3px;
+      background: var(--surface-hi);
+      overflow: hidden;
+    }
+    .value-card {
+      position: relative;
+      padding: 30px 28px;
+      border-top: 1px solid var(--hairline);
+      transition: background 200ms ease;
+    }
+    .value-card:first-child { border-top: 0; }
+    .value-card:hover { background: var(--surface); }
+    .value-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 2px;
+      background: var(--gold);
+      opacity: 0;
+      transition: opacity 200ms ease;
+    }
+    .value-card:hover::before { opacity: 1; }
+
+    .value-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .value-icon {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--hairline);
+      border-radius: 2px;
+      background: linear-gradient(180deg, var(--graphite-2), var(--graphite));
+      color: var(--gold-soft);
+    }
+    .value-icon svg { width: 18px; height: 18px; }
+    .value-eyebrow {
+      color: var(--red);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .value-card h3 {
+      margin-top: 18px;
+      font-family: var(--font-display);
+      font-size: 23px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    .value-card > p {
+      margin-top: 8px;
+      color: var(--ink-soft);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ───────────────────────── Projects ───────────────────────── */
+    .section.projects {
+      border-block: 1px solid var(--hairline);
+      background: linear-gradient(180deg, var(--pearl) 0%, var(--pearl-deep) 100%);
+    }
+    .section.projects::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 2px;
+      background: linear-gradient(90deg, var(--red), var(--gold), var(--green));
+    }
+
+    .project-stack {
+      display: grid;
+      gap: 28px;
+      margin-top: 64px;
+    }
+
+    .project-card {
+      border: 1px solid var(--hairline);
+      border-radius: 3px;
+      background: var(--surface-hi);
+      overflow: hidden;
+    }
+    .project-grid { display: grid; }
+    .project-body { padding: 44px 40px; }
+
+    .lockup {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .lockup img {
+      width: 56px;
+      height: 56px;
+      border: 1px solid var(--hairline);
+      border-radius: 2px;
+      background: var(--surface);
+      padding: 8px;
+    }
+    .lockup strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .lockup span {
+      display: block;
+      margin-top: 2px;
+      color: var(--ink-soft);
+      font-size: 13px;
+    }
+
+    .project-card h3 {
+      margin-top: 24px;
+      font-family: var(--font-display);
+      font-size: clamp(34px, 3.6vw, 46px);
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      line-height: 1.05;
+    }
+    .project-tagline {
+      margin-top: 12px;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 20px;
+      color: var(--gold-deep);
+    }
+    .project-card .project-desc {
+      margin-top: 18px;
+      max-width: 560px;
+      color: var(--ink-soft);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    /* Signet threshold visual */
+    .signet-visual {
+      display: grid;
+      place-content: center;
+      gap: 26px;
+      padding: 44px 36px;
+      border-top: 1px solid var(--hairline);
+      background:
+        radial-gradient(480px 300px at 78% 22%, rgba(185, 134, 63, 0.12), transparent 70%),
+        var(--surface);
+    }
+    .threshold-nodes {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      width: min(360px, 100%);
+    }
+    .threshold-nodes span {
+      display: grid;
+      place-items: center;
+      aspect-ratio: 1;
+      border: 1px solid var(--hairline);
+      border-radius: 2px;
+      background: var(--surface-hi);
+      color: var(--ink-faint);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .threshold-nodes span.active {
+      border-color: rgba(185, 134, 63, 0.65);
+      background: rgba(185, 134, 63, 0.13);
+      color: var(--gold-deep);
+      box-shadow: 0 0 0 3px rgba(185, 134, 63, 0.08);
+    }
+    .threshold-caption {
+      justify-self: center;
+      border: 1px solid var(--hairline);
+      border-radius: 2px;
+      background: var(--surface-hi);
+      padding: 10px 18px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+    .threshold-caption b { color: var(--green); font-weight: 600; }
+
+    /* Bracket (dark card) */
+    .project-card.bracket {
+      border-color: rgba(8, 7, 6, 0.5);
+      background: linear-gradient(165deg, var(--graphite-2), var(--graphite) 60%, #1a1613);
+      color: #f5f1e8;
+      box-shadow: 0 32px 80px rgba(23, 18, 15, 0.22);
+    }
+    .project-card.bracket .project-tagline { color: var(--gold-soft); }
+    .project-card.bracket h3 { color: #fdfbf5; }
+    .project-card.bracket .project-desc { color: rgba(245, 241, 232, 0.68); }
+
+    .bracket-lockup {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .bracket-lockup img:first-child { width: 48px; height: auto; }
+    .bracket-lockup img:last-child { width: 168px; height: auto; }
+
+    .proof-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .proof-row span {
+      border: 1px solid var(--hairline-light);
+      border-left: 2px solid var(--red-bright);
+      border-radius: 2px;
+      background: rgba(245, 241, 232, 0.05);
+      padding: 9px 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245, 241, 232, 0.85);
+    }
+
+    .bracket-visual {
+      display: grid;
+      align-content: center;
+      gap: 14px;
+      padding: 44px 36px;
+      border-top: 1px solid var(--hairline-light);
+      background:
+        repeating-linear-gradient(90deg, rgba(214, 27, 40, 0.05) 0 1px, transparent 1px 44px),
+        linear-gradient(160deg, rgba(214, 27, 40, 0.1), transparent 55%);
+    }
+    .bracket-command {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border: 1px solid var(--hairline-light);
+      border-radius: 2px;
+      background: rgba(8, 7, 6, 0.35);
+      padding: 18px;
+    }
+    .bracket-command img { width: 58px; height: 58px; flex: none; }
+    .bracket-command p {
+      color: rgba(245, 241, 232, 0.68);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .bracket-rows { display: grid; gap: 10px; }
+    .bracket-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid var(--hairline-light);
+      border-radius: 2px;
+      background: rgba(245, 241, 232, 0.05);
+      padding: 12px 16px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245, 241, 232, 0.85);
+    }
+    .bracket-row .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .bracket-row svg { width: 15px; height: 15px; color: var(--gold-soft); }
+    .bracket-row .state { color: #6fbf94; }
+
+    /* Supporting projects */
+    .support-grid { display: grid; gap: 28px; }
+    .support-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border: 1px solid var(--hairline);
+      border-radius: 3px;
+      background: var(--surface-hi);
+      padding: 34px 32px;
+      transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+    }
+    .support-card:hover {
+      border-color: rgba(185, 134, 63, 0.5);
+      box-shadow: 0 22px 52px rgba(23, 18, 15, 0.1);
+      transform: translateY(-3px);
+    }
+    .support-card h3 {
+      margin-top: 20px;
+      font-family: var(--font-display);
+      font-size: 27px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    .support-card .support-tagline {
+      margin-top: 8px;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 17px;
+      color: var(--gold-deep);
+    }
+    .support-card .support-desc {
+      margin-top: 14px;
+      color: var(--ink-soft);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+    .support-card .project-actions { margin-top: auto; padding-top: 26px; }
+
+    /* ───────────────────────── Contact ───────────────────────── */
+    .contact-layout {
+      display: grid;
+      gap: 48px;
+      align-items: center;
+    }
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 34px;
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.4vw, 26px);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      border-bottom: 1px solid rgba(185, 134, 63, 0.55);
+      padding-bottom: 6px;
+      transition: color 180ms ease, border-color 180ms ease;
+    }
+    .contact-email:hover { color: var(--red); border-color: var(--red); }
+    .contact-email svg { width: 20px; height: 20px; color: var(--gold-deep); }
+
+    .contact-card-grid { display: grid; gap: 14px; }
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      border: 1px solid var(--hairline);
+      border-radius: 3px;
+      background: var(--surface-hi);
+      padding: 22px 24px;
+      transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+    }
+    .contact-card:hover {
+      border-color: rgba(145, 19, 27, 0.4);
+      box-shadow: 0 22px 52px rgba(23, 18, 15, 0.1);
+      transform: translateY(-3px);
+    }
+    .contact-icon {
+      display: grid;
+      place-items: center;
+      flex: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--hairline);
+      border-radius: 2px;
+      background: linear-gradient(180deg, var(--graphite-2), var(--graphite));
+      color: var(--gold-soft);
+    }
+    .contact-icon svg { width: 18px; height: 18px; }
+    .contact-card strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .contact-card .contact-desc {
+      display: block;
+      margin-top: 3px;
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+    .contact-card .card-arrow {
+      margin-left: auto;
+      width: 15px;
+      height: 15px;
+      flex: none;
+      color: var(--ink-faint);
+      transition: transform 200ms ease, color 200ms ease;
+    }
+    .contact-card:hover .card-arrow {
+      color: var(--red);
+      transform: translate(2px, -2px);
+    }
+
+    /* ───────────────────────── Footer ───────────────────────── */
+    .footer {
+      border-top: 1px solid var(--hairline);
+      background: linear-gradient(180deg, var(--pearl), var(--pearl-deep));
+    }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      padding: 48px 0;
+    }
+    .footer .brand img.mark { height: 34px; }
+    .footer .brand img.wordmark { height: 22px; }
+    .footer p {
+      color: var(--ink-soft);
+      font-size: 13.5px;
+    }
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 26px;
+    }
+    .footer-nav a {
+      color: var(--ink-soft);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 160ms ease;
+    }
+    .footer-nav a:hover { color: var(--red); }
+
+    /* ───────────────────────── Motion ───────────────────────── */
+    .fade-up { animation: fade-up 800ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .fade-up.d1 { animation-delay: 90ms; }
+    .fade-up.d2 { animation-delay: 180ms; }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes signal-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(78, 154, 119, 0.45); }
+      50%      { box-shadow: 0 0 0 6px rgba(78, 154, 119, 0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 1ms !important;
+      }
+    }
+
+    /* ───────────────────────── Responsive ───────────────────────── */
+    @media (min-width: 640px) {
+      .support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+    }
+
+    @media (min-width: 980px) {
+      .hero-layout {
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 64px;
+      }
+      .about-grid {
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 72px;
+        align-items: start;
+      }
+      .value-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .value-card { border-top: 0; }
+      .value-card:nth-child(n + 3) { border-top: 1px solid var(--hairline); }
+      .value-card:nth-child(even) { border-left: 1px solid var(--hairline); }
+      .project-grid { grid-template-columns: 1.05fr 0.95fr; }
+      .signet-visual, .bracket-visual { border-top: 0; border-left: 1px solid var(--hairline); }
+      .bracket-visual { border-left-color: var(--hairline-light); }
+      .contact-layout { grid-template-columns: 1fr 0.9fr; gap: 80px; }
+      .footer-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 639px) {
+      :root { --header-h: 68px; }
+      .container { padding: 0 20px; }
+      .section { padding: 84px 0; }
+      .hero { padding: calc(var(--header-h) + 56px) 0 72px; }
+      .hero::before { top: var(--header-h); right: -160px; width: 380px; }
+      .brand img.mark { height: 34px; }
+      .brand img.wordmark { height: 21px; }
+      .btn { padding: 12px 20px; }
+      .hero-actions .btn { flex: 1 1 auto; }
+      .ledger-topline, .ledger-row { padding-inline: 20px; }
+      .ledger-row {
+        grid-template-columns: auto 1fr;
+        row-gap: 16px;
+      }
+      .ledger-meta {
+        grid-column: 1 / -1;
+        grid-template-columns: 1fr auto auto;
+        justify-items: start;
+        align-items: center;
+        border-top: 1px dashed var(--hairline-light);
+        padding-top: 14px;
+      }
+      .hero-kicker { font-size: 11px; letter-spacing: 0.18em; }
+      .hero-kicker::before { width: 30px; }
+      .project-body, .signet-visual, .bracket-visual { padding: 28px 22px; }
+      .support-card { padding: 26px 22px; }
+      .bracket-lockup img:last-child { width: 128px; }
+      .bracket-command { align-items: flex-start; }
+      .contact-card { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─────────── Header ─────────── -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top" aria-label="O’Leary Labs home">
+        <img class="mark" src="assets/oleary_labs_logo_kit/logomark_transparent.png" alt="" />
+        <img class="wordmark" src="assets/oleary_labs_logo_kit/wordmark_transparent.png" alt="O’Leary Labs" />
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-ink btn-sm" href="https://signet-testnet.olearylabs.com">
+        Signet Testnet
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ─────────── Hero ─────────── -->
+    <section class="hero">
+      <div class="container hero-layout">
+        <div class="fade-up">
+          <p class="hero-kicker">O’Leary Labs / Software Systems</p>
+          <h1>A team that <em>works.</em></h1>
+          <p class="hero-copy">
+            We build infrastructure for projects that need their technical
+            layer to hold up under pressure.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">
+              View projects
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn-ghost" href="#contact">
+              Start a conversation
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <aside class="ledger fade-up d1" aria-label="Current projects">
+          <div class="ledger-topline">
+            <span class="live-dot">Working on</span>
+            <span>02 active tracks</span>
+          </div>
+
+          <a class="ledger-row" href="https://signet-testnet.olearylabs.com">
+            <span class="ledger-mark">
+              <img src="assets/logo-mark.svg" alt="" />
+            </span>
+            <span class="ledger-body">
+              <span class="ledger-role">Primary infrastructure</span>
+              <strong>Signet</strong>
+              <p>Secure signing and account access for product teams.</p>
+            </span>
+            <span class="ledger-meta">
+              <span class="badge dark live">Testnet Live</span>
+              <span class="ledger-index">01 / 02</span>
+              <svg class="ledger-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="ledger-row bracket" href="https://bracket.sh">
+            <span class="ledger-mark">
+              <img src="assets/bracket/bracket-logomark-transparent.svg" alt="" />
+            </span>
+            <span class="ledger-body">
+              <span class="ledger-role">Operations software</span>
+              <strong>Bracket</strong>
+              <p>Event operations for the heat of the day.</p>
+            </span>
+            <span class="ledger-meta">
+              <span class="badge dark">Public Board</span>
+              <span class="ledger-index">02 / 02</span>
+              <svg class="ledger-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ─────────── About ─────────── -->
+    <section id="about" class="section">
+      <div class="container">
+        <p class="eyebrow">About</p>
+        <h2 class="section-title">Software for hard operating environments.</h2>
+        <p class="section-copy">
+          The studio sits between engineering, product judgment, and execution.
+          We build systems that can survive real usage, not just a clean demo.
+        </p>
+
+        <div class="about-grid">
+          <div class="copy-column">
+            <p>
+              Our work starts with the part of a project that cannot be flimsy:
+              account flows, internal tools, event operations, system
+              integrations, and infrastructure that needs to be precise. We
+              care as much about how a screen reads under pressure as we do
+              about the machinery behind it.
+            </p>
+            <p>
+              We prefer explicit states, quiet controls, and language that says
+              what the system is doing. The point is not to make difficult
+              software look simple; it is to make it easier to trust.
+            </p>
+          </div>
+
+          <div class="value-grid">
+            <article class="value-card">
+              <div class="value-head">
+                <p class="value-eyebrow">Trust</p>
+                <span class="value-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                </span>
+              </div>
+              <h3>Systems That Hold</h3>
+              <p>
+                Critical paths, edge cases, and operational risk handled with
+                the seriousness they deserve.
+              </p>
+            </article>
+
+            <article class="value-card">
+              <div class="value-head">
+                <p class="value-eyebrow">Execution</p>
+                <span class="value-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+                </span>
+              </div>
+              <h3>Ship the Thing</h3>
+              <p>
+                Production-grade software with the taste, pacing, and
+                follow-through expected from a senior team.
+              </p>
+            </article>
+
+            <article class="value-card">
+              <div class="value-head">
+                <p class="value-eyebrow">Standards</p>
+                <span class="value-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg>
+                </span>
+              </div>
+              <h3>Integration Fluent</h3>
+              <p>
+                APIs, identity, payments, data flows, workflow tools, and
+                specialized infrastructure where the job calls for it.
+              </p>
+            </article>
+
+            <article class="value-card">
+              <div class="value-head">
+                <p class="value-eyebrow">Craft</p>
+                <span class="value-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-9"/><path d="M15.17 2.21a1.67 1.67 0 0 1 1.63 0L21 4.57a1.93 1.93 0 0 1 0 3.36L8.82 14.79a1.655 1.655 0 0 1-1.64 0L3 12.43a1.93 1.93 0 0 1 0-3.36z"/><path d="M20 13v3.87a2.06 2.06 0 0 1-1.11 1.83l-6 3.08a1.93 1.93 0 0 1-1.78 0l-6-3.08A2.06 2.06 0 0 1 4 16.87V13"/><path d="M21 12.43a1.93 1.93 0 0 0 0-3.36L8.83 2.2a1.64 1.64 0 0 0-1.63 0L3 4.57a1.93 1.93 0 0 0 0 3.36l12.18 6.86a1.636 1.636 0 0 0 1.63 0z"/></svg>
+                </span>
+              </div>
+              <h3>Operator-Centered</h3>
+              <p>
+                Interfaces, docs, and internal tools built for the people who
+                have to use them repeatedly.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── Projects ─────────── -->
+    <section id="projects" class="section projects">
+      <div class="container">
+        <p class="eyebrow">Projects</p>
+        <h2 class="section-title">Current work, built from the same habits.</h2>
+        <p class="section-copy">
+          Signet and Bracket are different products, but they come from the
+          same discipline: make the hard parts reliable, make the working
+          surface clear, and ship the parts people actually need.
+        </p>
+
+        <div class="project-stack">
+          <!-- Signet -->
+          <article class="project-card">
+            <div class="project-grid">
+              <div class="project-body">
+                <span class="badge live">Testnet Live</span>
+                <div class="lockup">
+                  <img src="assets/logo-mark.svg" alt="" />
+                  <div>
+                    <strong>Signet</strong>
+                    <span>Secure account infrastructure</span>
+                  </div>
+                </div>
+                <h3>Signet</h3>
+                <p class="project-tagline">Secure signing and account access for product teams.</p>
+                <p class="project-desc">
+                  Signet is a secure signing system for products that need
+                  strong account access without making users think about keys.
+                  Under the hood it splits trust across independent providers;
+                  on the surface it gives teams a cleaner way to bring people
+                  into an application.
+                </p>
+                <div class="project-actions">
+                  <a class="btn btn-primary" href="https://signet-testnet.olearylabs.com">
+                    Launch Testnet
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  </a>
+                  <a class="btn btn-ghost" href="https://github.com/oleary-labs/signet-protocol">GitHub</a>
+                  <a class="btn btn-ghost" href="#contact">Docs</a>
+                </div>
+              </div>
+
+              <div class="signet-visual" role="img" aria-label="Signet threshold signing visual, 3 of 5 nodes active">
+                <div class="threshold-nodes" aria-hidden="true">
+                  <span class="active">N1</span>
+                  <span class="active">N2</span>
+                  <span>N3</span>
+                  <span class="active">N4</span>
+                  <span>N5</span>
+                </div>
+                <p class="threshold-caption" aria-hidden="true">threshold: <b>3</b> of 5</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Bracket -->
+          <article class="project-card bracket">
+            <div class="project-grid">
+              <div class="project-body">
+                <span class="badge dark">Public Board</span>
+                <div class="bracket-lockup">
+                  <img src="assets/bracket/bracket-logomark-transparent.svg" alt="" />
+                  <img src="assets/bracket/bracket-wordmark-transparent.svg" alt="Bracket" />
+                </div>
+                <h3>Event operations for the heat of the day.</h3>
+                <p class="project-desc">
+                  Bracket gives organizers one place to publish events, manage
+                  divisions, run check-in, generate pairings, operate timers,
+                  and report results. It is the kind of practical operations
+                  software we like building: clear, fast, and useful when the
+                  room is busy.
+                </p>
+                <div class="proof-row">
+                  <span>Publish events</span>
+                  <span>Manage divisions</span>
+                  <span>Generate pairings</span>
+                </div>
+                <div class="project-actions">
+                  <a class="btn btn-primary" href="https://bracket.sh">
+                    Open Bracket
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="bracket-visual">
+                <div class="bracket-command">
+                  <img src="assets/bracket/bracket-logomark-with-background.svg" alt="" />
+                  <p>
+                    Public discovery, registration, match operations, and fast
+                    event-day reads.
+                  </p>
+                </div>
+                <div class="bracket-rows">
+                  <div class="bracket-row">
+                    <span class="label">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                      Discovery
+                    </span>
+                    <span class="state">Ready</span>
+                  </div>
+                  <div class="bracket-row">
+                    <span class="label">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" x2="19" y1="19" y2="13"/><line x1="16" x2="20" y1="16" y2="20"/><line x1="19" x2="21" y1="21" y2="19"/><polyline points="14.5 6.5 18 3 21 3 21 6 17.5 9.5"/><line x1="5" x2="9" y1="14" y2="18"/><line x1="7" x2="4" y1="17" y2="20"/><line x1="3" x2="5" y1="19" y2="21"/></svg>
+                      Pairings
+                    </span>
+                    <span class="state">Ready</span>
+                  </div>
+                  <div class="bracket-row">
+                    <span class="label">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                      Results
+                    </span>
+                    <span class="state">Ready</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Supporting projects -->
+          <div class="support-grid">
+            <article class="support-card">
+              <span class="badge dev">In Development</span>
+              <h3>Signet Wallet</h3>
+              <p class="support-tagline">Specialized account system with modular controls.</p>
+              <p class="support-desc">
+                A modular account system built for session keys, sponsorship,
+                and batch operations, backed by the Signet signing layer where
+                strong account infrastructure matters.
+              </p>
+              <div class="project-actions">
+                <a class="btn btn-ghost" href="https://github.com/oleary-labs/signet-wallet">GitHub</a>
+              </div>
+            </article>
+
+            <article class="support-card">
+              <span class="badge dev">In Development</span>
+              <h3>Signet Bundler</h3>
+              <p class="support-tagline">Lean transaction service for Signet accounts.</p>
+              <p class="support-desc">
+                A lightweight service for moving Signet account operations
+                through the system with minimal dependencies, fast inclusion,
+                and a narrow operational surface.
+              </p>
+              <div class="project-actions">
+                <a class="btn btn-ghost" href="https://github.com/oleary-labs/signet-min-bundler">GitHub</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── Contact ─────────── -->
+    <section id="contact" class="section">
+      <div class="container contact-layout">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2 class="section-title">Bring the system that needs to work better.</h2>
+          <p class="section-copy">
+            Reach out about product infrastructure, internal tooling,
+            operations software, Signet, Bracket, or a surface that needs to
+            become sharper and easier to run.
+          </p>
+          <a class="contact-email" href="mailto:hello@olearylabs.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            hello@olearylabs.com
+          </a>
+        </div>
+
+        <div class="contact-card-grid">
+          <a class="contact-card" href="https://github.com/oleary-labs">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </span>
+            <span>
+              <strong>GitHub</strong>
+              <span class="contact-desc">Product code, infrastructure, and experiments</span>
+            </span>
+            <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+          </a>
+
+          <a class="contact-card" href="https://x.com/olearylabs">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+            </span>
+            <span>
+              <strong>X</strong>
+              <span class="contact-desc">Build notes and product updates</span>
+            </span>
+            <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+          </a>
+
+          <a class="contact-card" href="https://signet-testnet.olearylabs.com">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+            </span>
+            <span>
+              <strong>Signet Testnet</strong>
+              <span class="contact-desc">Try the current signing system</span>
+            </span>
+            <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ─────────── Footer ─────────── -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a class="brand" href="#top" aria-label="O’Leary Labs home">
+          <img class="mark" src="assets/oleary_labs_logo_kit/logomark_transparent.png" alt="" />
+          <img class="wordmark" src="assets/oleary_labs_logo_kit/wordmark_transparent.png" alt="O’Leary Labs" />
+        </a>
+        <p style="margin-top: 16px;">&copy; 2026 O&rsquo;Leary Labs. All rights reserved.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="https://github.com/oleary-labs">GitHub</a>
+        <a href="https://x.com/olearylabs">X</a>
+        <a href="mailto:hello@olearylabs.com">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
