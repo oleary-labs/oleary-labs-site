@@ -1,11 +1,14 @@
 # O'Leary Labs Site
 
-Static site for O'Leary Labs — a single self-contained `index.html` (HTML +
-CSS only, no JavaScript, no build step) plus brand assets in `assets/`.
+Static site for O'Leary Labs — a single self-contained `index.html` (no
+build step, no frameworks, no dependencies) plus brand assets in `assets/`.
+A small inline vanilla script powers the paged tension-scrolling; everything
+else is HTML + CSS, and the site degrades gracefully to native CSS
+scroll-snap without JavaScript.
 
 ## Structure
 
-- `index.html` — the entire site: markup and styles inline
+- `index.html` — the entire site: markup, styles, and the scroll script inline
 - `assets/oleary_labs_logo_kit/` — O'Leary Labs logo kit (mark, wordmark, full logo, app icon)
 - `assets/bracket/` — Bracket project brand assets, sourced from the local
   `../../BRACKET/migration/public` project
