@@ -20,11 +20,18 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html {
       scroll-behavior: smooth;
-      /* Soft-locking scroll segments */
+      /* Soft-locking scroll segments. Mobile stays proximity (gentle);
+         desktop upgrades to mandatory below — rest positions always
+         resolve to a framed view, while flick momentum still carries
+         across screens because scroll-snap-stop remains `normal` and
+         oversized sections scroll freely inside. */
       scroll-snap-type: y proximity;
-      scroll-padding-top: calc(var(--header-h) + 18px);
+      scroll-padding-top: var(--snap-top);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+    }
+    @media (min-width: 980px) {
+      html { scroll-snap-type: y mandatory; }
     }
     img, svg { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
@@ -65,11 +72,14 @@
 
       --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
       --ease-lux: cubic-bezier(0.6, 0, 0.1, 1);
-      --r-lg: 22px;
-      --r-md: 16px;
-      --r-sm: 11px;
+      --r-lg: 16px;
+      --r-md: 12px;
+      --r-sm: 8px;
       --max-w: 1180px;
       --header-h: 66px;
+      /* clearance from viewport top to a snapped section: capsule top
+         offset (14px) + capsule height + breathing room */
+      --snap-top: calc(var(--header-h) + 32px);
     }
 
     /* Rotating angle for conic "energy" borders */
@@ -147,7 +157,7 @@
     }
 
     .section-title {
-      margin-top: 22px;
+      margin-top: 18px;
       max-width: 760px;
       font-family: var(--font-display);
       font-size: clamp(36px, 5vw, 60px);
@@ -167,7 +177,7 @@
     }
 
     .section-copy {
-      margin-top: 22px;
+      margin-top: 18px;
       max-width: 640px;
       color: var(--ink-soft);
       font-size: 17px;
@@ -282,7 +292,7 @@
       width: min(var(--max-w), calc(100% - 24px));
       z-index: 50;
       border: 1px solid rgba(23, 18, 15, 0.1);
-      border-radius: 999px;
+      border-radius: 18px;
       background: var(--glass);
       -webkit-backdrop-filter: blur(18px) saturate(1.3);
       backdrop-filter: blur(18px) saturate(1.3);
@@ -305,8 +315,8 @@
     }
     .brand img { transition: transform 400ms var(--ease-out); }
     .brand:hover img.mark { transform: rotate(-5deg) scale(1.07); }
-    .brand img.mark { height: 38px; width: auto; flex: none; }
-    .brand img.wordmark { height: 32px; width: auto; }
+    .brand img.mark { height: 46px; width: auto; flex: none; }
+    .brand img.wordmark { height: 38px; width: auto; }
     .nav-links { display: none; align-items: center; gap: 34px; }
     .nav-links a {
       position: relative;
@@ -332,7 +342,7 @@
     }
     .nav-links a:hover { color: var(--red); }
     .nav-links a:hover::after { transform: scaleX(1); }
-    .topbar .btn { border-radius: 999px; }
+    .topbar .btn { border-radius: 10px; }
 
     /* ───────────────────────── Hero ───────────────────────── */
     .hero {
@@ -410,7 +420,7 @@
       animation: rule-draw 900ms var(--ease-out) 150ms both;
     }
     .hero h1 {
-      margin-top: 26px;
+      margin-top: 22px;
       font-family: var(--font-display);
       font-size: clamp(52px, 7.6vw, 96px);
       font-weight: 500;
@@ -436,7 +446,7 @@
       animation: text-shimmer 6.5s ease-in-out 1.4s infinite;
     }
     .hero-copy {
-      margin-top: 28px;
+      margin-top: 24px;
       max-width: 520px;
       color: var(--ink-soft);
       font-size: 18px;
@@ -447,7 +457,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-top: 42px;
+      margin-top: 36px;
       animation: fade-up 950ms var(--ease-out) 880ms both;
     }
 
@@ -482,7 +492,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding: 20px 28px;
+      padding: 18px 26px;
       border-bottom: 1px solid var(--hairline-light);
       color: rgba(245, 241, 232, 0.55);
       font-family: var(--font-mono);
@@ -512,7 +522,7 @@
       grid-template-columns: auto 1fr auto;
       align-items: center;
       gap: 20px;
-      padding: 27px 28px;
+      padding: 24px 26px;
       transition: background 280ms var(--ease-out);
     }
     .ledger-row + .ledger-row { border-top: 1px solid var(--hairline-light); }
@@ -595,10 +605,10 @@
       position: relative;
       z-index: 2;
       overflow: hidden;
-      margin: -34px auto 0;
+      margin: -30px auto 0;
       width: min(var(--max-w), calc(100% - 48px));
       border: 1px solid rgba(23, 18, 15, 0.1);
-      border-radius: 999px;
+      border-radius: 14px;
       background: var(--glass);
       -webkit-backdrop-filter: blur(14px);
       backdrop-filter: blur(14px);
@@ -642,17 +652,25 @@
     /* ───────────────────────── Sections ───────────────────────── */
     .section {
       position: relative;
-      padding: 128px 0;
-      scroll-margin-top: calc(var(--header-h) + 18px);
+      padding: 116px 0;
+      scroll-margin-top: var(--snap-top);
       scroll-snap-align: start;
     }
 
+    /* Framed views: when snapped, the section fills exactly the area
+       below the floating header — a complete screen, nothing cut off. */
     @media (min-width: 980px) {
       #about, .section.contact {
         display: grid;
         align-content: center;
-        min-height: 100vh;
-        min-height: 100svh;
+        min-height: calc(100vh - var(--snap-top));
+        min-height: calc(100svh - var(--snap-top));
+        padding-block: 64px;
+      }
+      /* inside the tall projects section, each card is its own soft view */
+      .project-card, .support-grid {
+        scroll-snap-align: start;
+        scroll-margin-top: var(--snap-top);
       }
     }
 
@@ -671,7 +689,7 @@
     }
 
     /* ───────────────────────── About ───────────────────────── */
-    .about-grid { display: grid; gap: 48px; margin-top: 68px; }
+    .about-grid { display: grid; gap: 44px; margin-top: 52px; }
     .copy-column { display: grid; gap: 24px; align-content: start; max-width: 620px; }
     .copy-column p { color: var(--ink-soft); font-size: 17px; line-height: 1.9; }
     .copy-column p::first-letter { color: var(--ink); }
@@ -746,7 +764,7 @@
       background: linear-gradient(180deg, transparent, rgba(233, 227, 212, 0.7) 12%, rgba(233, 227, 212, 0.7) 88%, transparent);
     }
 
-    .project-stack { display: grid; gap: 30px; margin-top: 68px; }
+    .project-stack { display: grid; gap: 26px; margin-top: 52px; }
 
     .project-card {
       position: relative;
@@ -780,9 +798,9 @@
       z-index: 1;
     }
     .project-grid { display: grid; }
-    .project-body { padding: 46px 42px; }
+    .project-body { padding: 42px 38px; }
 
-    .lockup { display: flex; align-items: center; gap: 16px; margin-top: 30px; }
+    .lockup { display: flex; align-items: center; gap: 16px; margin-top: 26px; }
     .lockup img {
       width: 58px;
       height: 58px;
@@ -806,7 +824,7 @@
     .lockup span { display: block; margin-top: 2px; color: var(--ink-soft); font-size: 13px; }
 
     .project-card h3 {
-      margin-top: 24px;
+      margin-top: 20px;
       font-family: var(--font-display);
       font-size: clamp(36px, 3.8vw, 50px);
       font-weight: 500;
@@ -814,20 +832,20 @@
       line-height: 1.04;
     }
     .project-tagline {
-      margin-top: 12px;
+      margin-top: 10px;
       font-family: var(--font-display);
       font-style: italic;
       font-size: 20px;
       color: var(--gold-deep);
     }
     .project-card .project-desc {
-      margin-top: 18px;
+      margin-top: 16px;
       max-width: 560px;
       color: var(--ink-soft);
       font-size: 16px;
       line-height: 1.8;
     }
-    .project-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .project-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 
     /* Signet visual — animated inline brand SVG */
     .signet-visual {
@@ -864,7 +882,7 @@
     .threshold-caption {
       justify-self: center;
       border: 1px solid var(--hairline);
-      border-radius: 999px;
+      border-radius: 10px;
       background: var(--surface-hi);
       padding: 10px 20px;
       font-family: var(--font-mono);
@@ -908,7 +926,7 @@
     .proof-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
     .proof-row span {
       border: 1px solid var(--hairline-light);
-      border-radius: 999px;
+      border-radius: var(--r-sm);
       background: rgba(245, 241, 232, 0.06);
       box-shadow: inset 2px 0 0 var(--red-bright);
       padding: 9px 16px;
@@ -983,7 +1001,7 @@
       border-radius: var(--r-lg);
       background: var(--surface-hi);
       box-shadow: 0 16px 40px rgba(23, 18, 15, 0.07);
-      padding: 36px 34px;
+      padding: 30px 28px;
       overflow: hidden;
       transition: transform 360ms var(--ease-out), border-color 360ms ease, box-shadow 360ms ease;
     }
@@ -1072,7 +1090,7 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      margin-top: 34px;
+      margin-top: 30px;
       font-family: var(--font-display);
       font-size: clamp(21px, 2.5vw, 28px);
       font-weight: 500;
@@ -1155,6 +1173,7 @@
     .footer {
       background: linear-gradient(180deg, var(--bg), var(--bg-deep));
       border-top: 1px solid var(--hairline);
+      scroll-snap-align: end;
     }
     .footer-inner {
       display: flex;
@@ -1162,8 +1181,8 @@
       gap: 28px;
       padding: 50px 0;
     }
-    .footer .brand img.mark { height: 34px; }
-    .footer .brand img.wordmark { height: 28px; }
+    .footer .brand img.mark { height: 42px; }
+    .footer .brand img.wordmark { height: 34px; }
     .footer p { color: var(--ink-soft); font-size: 13.5px; }
     .footer-nav { display: flex; flex-wrap: wrap; gap: 26px; }
     .footer-nav a {
@@ -1266,9 +1285,51 @@
     /* ───────────────────────── Responsive ───────────────────────── */
     @media (min-width: 640px) {
       .support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .value-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (min-width: 768px) {
       .nav-links { display: flex; }
+    }
+    /* tablet: keep the capsule airy */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .nav-links { gap: 22px; }
+      .brand img.mark { height: 40px; }
+      .brand img.wordmark { height: 30px; }
+    }
+    /* short laptop viewports: tighten vertical rhythm so snapped views fit */
+    @media (min-width: 980px) and (max-height: 920px) {
+      .section { padding: 92px 0; }
+      #about, .section.contact { padding-block: 36px; }
+      .about-grid, .project-stack { margin-top: 32px; }
+      .about-grid { gap: 36px; }
+      .section-title { font-size: clamp(32px, 4.2vw, 46px); }
+      .section-copy { margin-top: 14px; font-size: 16px; }
+      .section-num { font-size: clamp(90px, 11vw, 150px); top: -30px; }
+      .hero { padding: calc(var(--header-h) + 56px) 0 84px; }
+      .hero h1 { font-size: clamp(46px, 6.6vw, 80px); }
+      .value-grid { gap: 12px; }
+      .value-card { padding: 16px 18px; }
+      .value-card h3 { font-size: 20px; margin-top: 12px; }
+      .value-card > p { margin-top: 6px; font-size: 14px; line-height: 1.5; }
+      .value-icon { width: 34px; height: 34px; }
+      .copy-column { gap: 18px; }
+      .copy-column p { font-size: 15px; line-height: 1.75; }
+      .project-body { padding: 34px 32px; }
+    }
+    /* very short desktop viewports (13" laptops with browser chrome) */
+    @media (min-width: 980px) and (max-height: 800px) {
+      #about, .section.contact { padding-block: 28px; }
+      .about-grid { margin-top: 24px; gap: 28px; }
+      .section-title { font-size: clamp(30px, 3.8vw, 40px); }
+      .section-copy { margin-top: 12px; font-size: 15px; }
+      .section-num { font-size: 110px; top: -22px; }
+      .value-grid { gap: 10px; }
+      .value-card { padding: 14px 16px; }
+      .value-card h3 { font-size: 19px; margin-top: 10px; }
+      .value-card > p { font-size: 13px; line-height: 1.5; }
+      .copy-column p { font-size: 14px; line-height: 1.7; }
+      .contact-email { margin-top: 22px; }
+      .contact-card { padding: 16px 20px; }
     }
     @media (max-width: 767px) {
       .section-num { display: none; }
@@ -1276,7 +1337,6 @@
     @media (min-width: 980px) {
       .hero-layout { grid-template-columns: 1.05fr 0.95fr; gap: 64px; }
       .about-grid { grid-template-columns: 0.95fr 1.05fr; gap: 72px; align-items: start; }
-      .value-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .project-grid { grid-template-columns: 1.05fr 0.95fr; }
       .signet-visual, .bracket-visual { border-top: 0; border-left: 1px solid var(--hairline); }
       .bracket-visual { border-left-color: var(--hairline-light); }
@@ -1284,16 +1344,16 @@
       .footer-inner { flex-direction: row; align-items: center; justify-content: space-between; }
     }
     @media (max-width: 639px) {
-      :root { --header-h: 60px; }
+      :root { --header-h: 60px; --snap-top: calc(var(--header-h) + 26px); }
       .container { padding: 0 20px; }
-      .section { padding: 92px 0; }
+      .section { padding: 80px 0; }
       .topbar { top: 10px; width: calc(100% - 20px); }
       .topbar-inner { padding: 0 8px 0 16px; }
       .hero { padding: calc(var(--header-h) + 64px) 0 76px; }
       .hero-constellation { top: 6%; right: -12%; width: 280px; opacity: 0.35; }
       .hero-ring { right: -60vw; width: 520px; opacity: 0.07; }
-      .brand img.mark { height: 32px; }
-      .brand img.wordmark { height: 26px; }
+      .brand img.mark { height: 38px; }
+      .brand img.wordmark { height: 30px; }
       .btn { padding: 12px 20px; }
       .hero-actions .btn { flex: 1 1 auto; }
       .ledger-topline, .ledger-row { padding-inline: 20px; }
