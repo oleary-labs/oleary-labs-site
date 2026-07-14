@@ -20,6 +20,10 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html {
       scroll-behavior: smooth;
+      /* Soft-locking scroll segments: sections gently settle into view
+         when you stop near a boundary, without hijacking mid-scroll. */
+      scroll-snap-type: y proximity;
+      scroll-padding-top: var(--header-h);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
@@ -299,7 +303,7 @@
     .brand img { transition: transform 400ms var(--ease-out); }
     .brand:hover img.mark { transform: rotate(-4deg) scale(1.05); }
     .brand img.mark { height: 40px; width: auto; flex: none; }
-    .brand img.wordmark { height: 26px; width: auto; }
+    .brand img.wordmark { height: 34px; width: auto; }
     .nav-links {
       display: none;
       align-items: center;
@@ -332,6 +336,11 @@
     /* ───────────────────────── Hero ───────────────────────── */
     .hero {
       position: relative;
+      display: grid;
+      align-content: center;
+      min-height: 100vh;
+      min-height: 100svh;
+      scroll-snap-align: start;
       padding: calc(var(--header-h) + 88px) 0 108px;
       overflow: hidden;
       border-bottom: 1px solid var(--hairline);
@@ -611,6 +620,7 @@
       position: relative;
       padding: 122px 0;
       scroll-margin-top: var(--header-h);
+      scroll-snap-align: start;
     }
 
     /* Scroll-driven reveals (progressive enhancement) */
@@ -624,6 +634,17 @@
         animation: rule-draw both;
         animation-timeline: view();
         animation-range: entry 10% entry 50%;
+      }
+    }
+
+    /* Sections that frame as a full soft-locked view (the tall projects
+       section scrolls freely; snapping only catches its start). */
+    @media (min-width: 980px) {
+      #about, .section.contact {
+        display: grid;
+        align-content: center;
+        min-height: 100vh;
+        min-height: 100svh;
       }
     }
 
@@ -1169,7 +1190,7 @@
       padding: 48px 0;
     }
     .footer .brand img.mark { height: 34px; }
-    .footer .brand img.wordmark { height: 22px; }
+    .footer .brand img.wordmark { height: 28px; }
     .footer p {
       color: var(--ink-soft);
       font-size: 13.5px;
@@ -1318,7 +1339,7 @@
       .hero { padding: calc(var(--header-h) + 56px) 0 72px; }
       .hero::before { top: var(--header-h); right: -160px; width: 380px; }
       .brand img.mark { height: 34px; }
-      .brand img.wordmark { height: 21px; }
+      .brand img.wordmark { height: 27px; }
       .btn { padding: 12px 20px; }
       .hero-actions .btn { flex: 1 1 auto; }
       .ledger-topline, .ledger-row { padding-inline: 20px; }
