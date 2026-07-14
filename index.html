@@ -20,12 +20,11 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html {
       scroll-behavior: smooth;
-      /* Scroll segments. Mobile stays proximity (gentle); desktop
-         upgrades to mandatory + scroll-snap-stop: always below — every
-         rest position is a framed view and each scroll gesture commits
-         to exactly the adjacent view. Oversized sections still scroll
-         freely inside themselves. */
-      scroll-snap-type: y proximity;
+      /* Scroll segments on every device: mandatory + scroll-snap-stop:
+         always — every rest position is a framed view and each scroll
+         gesture commits to exactly the adjacent view. Sections taller
+         than the viewport still scroll freely inside themselves. */
+      scroll-snap-type: y mandatory;
       /* Sections snap flush to the viewport top (they carry their own
          internal padding to clear the floating capsule), so the previous
          view is never visible above a snapped section. */
@@ -33,14 +32,8 @@
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
-    @media (min-width: 980px) {
-      html { scroll-snap-type: y mandatory; }
-      /* Heavy per-view inertia: a decisive scroll always commits to the
-         adjacent view — momentum can neither skim past it nor settle
-         ambiguously between frames. */
-      .hero, .section, .footer,
-      .project-card, .support-grid { scroll-snap-stop: always; }
-    }
+    .hero, .section, .footer,
+    .project-card, .support-grid { scroll-snap-stop: always; }
     img, svg { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
@@ -700,12 +693,14 @@
         min-height: 100svh;
         padding-bottom: 56px;
       }
-      /* inside the tall projects section, each card is its own soft view;
-         cards need explicit clearance since root scroll-padding is 0 */
-      .project-card, .support-grid {
-        scroll-snap-align: start;
-        scroll-margin-top: var(--snap-top);
-      }
+    }
+
+    /* inside the tall projects section, each card is its own view on all
+       devices; cards need explicit clearance since root scroll-padding
+       is 0 (sections snap flush, cards must clear the capsule) */
+    .project-card, .support-grid {
+      scroll-snap-align: start;
+      scroll-margin-top: var(--snap-top);
     }
 
     /* Scroll-driven reveals: blur-to-sharp rise (progressive enhancement).
