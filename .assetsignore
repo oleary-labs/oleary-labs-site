@@ -1,0 +1,9 @@
+.git
+.gitignore
+.assetsignore
+wrangler.jsonc
+.DS_Store
+node_modules
+.next
+out
+.wrangler
