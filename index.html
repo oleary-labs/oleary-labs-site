@@ -29,10 +29,13 @@
          white) for as long as this page owns it during navigation */
       background-color: #f2eee4;
       scroll-behavior: smooth;
-      /* Scroll segments on every device: mandatory + scroll-snap-stop:
-         always — every rest position is a framed view and each scroll
-         gesture commits to exactly the adjacent view. Sections taller
-         than the viewport still scroll freely inside themselves. */
+      /* Scroll segments on every device: mandatory snapping — every rest
+         position resolves to a framed view, while views taller than the
+         viewport scroll freely inside themselves. Note: no
+         scroll-snap-stop: always anywhere — on areas taller than the
+         viewport (hero with the full ledger, tall sections, mobile
+         cards) browsers force-stop at the area's top edge, yanking the
+         scroll back up. */
       scroll-snap-type: y mandatory;
       /* Sections snap flush to the viewport top (they carry their own
          internal padding to clear the floating capsule), so the previous
@@ -41,8 +44,6 @@
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
-    .hero, .section, .footer,
-    .project-card, .support-grid { scroll-snap-stop: always; }
     img, svg { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
@@ -697,13 +698,11 @@
       }
     }
 
-    /* inside the tall projects section, each card is its own view on all
-       devices; cards need explicit clearance since root scroll-padding
-       is 0 (sections snap flush, cards must clear the capsule) */
-    .project-card, .support-grid {
-      scroll-snap-align: start;
-      scroll-margin-top: var(--snap-top);
-    }
+    /* No snap targets inside the tall projects section: interior card
+       snap points make mandatory snapping "correct" any rest position
+       between cards (perceived as the page jumping back up). The section
+       itself is an oversized snap area, so it scrolls freely inside and
+       still locks at its start. */
 
     /* Scroll-driven reveals: blur-to-sharp rise (progressive enhancement).
        Note: no parallax on .section-num — any upward drift would slide
